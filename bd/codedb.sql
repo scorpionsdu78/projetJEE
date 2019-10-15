@@ -1,20 +1,15 @@
--- ****************** SqlDBM: MySQL ******************;
--- ***************************************************;
-
-
--- ************************************** `employee`
-
-CREATE TABLE `employee`
+CREATE TABLE "employee"
 (
- `id`         int NOT NULL AUTO_INCREMENT ,
- `fisrt_name` varchar(45) NOT NULL ,
- `last_name`  varchar(45) NOT NULL ,
- `home_phone` varchar(45) NOT NULL ,
- `cell_phone` varchar(45) NULL ,
- `work_phone` varchar(45) NULL ,
- `e_mail`     varchar(45) NULL ,
+ "id" int NOT NULL GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1) ,
+ "fisrt_name" varchar(45) NOT NULL ,
+ "last_name"  varchar(45) NOT NULL ,
+ "home_phone" varchar(45) NOT NULL ,
+ "cell_phone" varchar(45),
+ "work_phone" varchar(45),
+ "e_mail"     varchar(45),
 
-PRIMARY KEY (`id`)
+PRIMARY KEY ("id")
 );
 
 
@@ -22,18 +17,18 @@ PRIMARY KEY (`id`)
 
 
 
--- ************************************** `adress`
+-- ************************************** "adress"
 
-CREATE TABLE `adress`
+CREATE TABLE "adress"
 (
- `id`          int NOT NULL AUTO_INCREMENT ,
- `rue`         varchar(45) NOT NULL ,
- `code_postal` varchar(45) NOT NULL ,
- `ville`       varchar(45) NOT NULL ,
- `complement`  varchar(45) NULL ,
- `batiment`    varchar(45) NULL ,
+ "id"          int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) ,
+ "rue"         varchar(45) NOT NULL ,
+ "code_postal" varchar(45) NOT NULL ,
+ "ville"       varchar(45) NOT NULL ,
+ "complement"  varchar(45)  ,
+ "batiment"    varchar(45) ,
 
-PRIMARY KEY (`id`)
+PRIMARY KEY ("id")
 );
 
 
@@ -41,22 +36,15 @@ PRIMARY KEY (`id`)
 -- ***************************************************;
 
 
--- ************************************** `adress_employee`
+-- ************************************** "adress_employee"
 
-CREATE TABLE `adress_employee`
+CREATE TABLE "adress_employee"
 (
- `id`          int NOT NULL AUTO_INCREMENT ,
- `id_adress`   int NOT NULL ,
- `id_employee` int NOT NULL ,
+ "id"          int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) ,
+ "id_adress"   int NOT NULL ,
+ "id_employee" int NOT NULL ,
 
-PRIMARY KEY (`id`),
-KEY `fkIdx_22` (`id_adress`),
-CONSTRAINT `FK_22` FOREIGN KEY `fkIdx_22` (`id_adress`) REFERENCES `adress` (`id`),
-KEY `fkIdx_25` (`id_employee`),
-CONSTRAINT `FK_25` FOREIGN KEY `fkIdx_25` (`id_employee`) REFERENCES `employee` (`id`)
+PRIMARY KEY ("id"),
+FOREIGN KEY ("id_adress") REFERENCES "adress" ("id"),
+FOREIGN KEY ("id_employee") REFERENCES "employee" ("id")
 );
-
-
-
-
-
