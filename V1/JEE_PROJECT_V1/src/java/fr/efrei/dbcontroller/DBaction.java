@@ -30,14 +30,31 @@ public class DBaction {
         
         try {
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/project","root","root");
+            System.out.println("connection reussit");
         } catch (SQLException ex) {
             Logger.getLogger(DBaction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
+    public Statement getStatement() {
+        try {
+            stmt = conn.createStatement();
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+        return stmt;
+
+    }
     
-    
-    
-    
+    public ResultSet getResultSet(String SQL_QUERY) {
+        stmt = getStatement();
+        try {
+            rs = stmt.executeQuery(SQL_QUERY);
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+        return rs;
+
+    }
     
 }

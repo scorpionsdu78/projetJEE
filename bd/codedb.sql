@@ -27,8 +27,10 @@ CREATE TABLE "adress"
  "ville"       varchar(45) NOT NULL ,
  "complement"  varchar(45)  ,
  "batiment"    varchar(45) ,
+ "id_employee" int NOT NULL,
 
-PRIMARY KEY ("id")
+PRIMARY KEY ("id"),
+FOREIGN KEY ("id_employee") REFERENCES "employee" ("id")
 );
 
 
@@ -38,13 +40,3 @@ PRIMARY KEY ("id")
 
 -- ************************************** "adress_employee"
 
-CREATE TABLE "adress_employee"
-(
- "id"          int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) ,
- "id_adress"   int NOT NULL ,
- "id_employee" int NOT NULL ,
-
-PRIMARY KEY ("id"),
-FOREIGN KEY ("id_adress") REFERENCES "adress" ("id"),
-FOREIGN KEY ("id_employee") REFERENCES "employee" ("id")
-);
