@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td scope="row"><input type="radio" name="radio_employees_v1"></td>
+                                <td scope="row"><input type="radio" name="radio_employees_v1" form="employee"></td>
                                 <td>NAME</td>
                                 <td>FIRST NAME</td>
                                 <td>HOME PHONE</td>
@@ -40,7 +40,7 @@
                                 <td>EMAIL</td>
                             </tr>
                             <tr>
-                                <td scope="row"><input type="radio" name="radio_employees_v1"></td>
+                                <td scope="row"><input type="radio" name="radio_employees_v1" form="employee"></td>
                                 <td>NAME</td>
                                 <td>FIRST NAME</td>
                                 <td>HOME PHONE</td>
@@ -52,7 +52,7 @@
                                 <td>EMAIL</td>
                             </tr>
                             <tr>
-                                <td scope="row"><input type="radio" name="radio_employees_v1"></td>
+                                <td scope="row"><input type="radio" name="radio_employees_v1" form="employee"></td>
                                 <td>NAME</td>
                                 <td>FIRST NAME</td>
                                 <td>HOME PHONE</td>
@@ -71,9 +71,17 @@
             <div class="row">
                 <div class="col">
                     
-                <button type="submit" class="btn btn-primary">Delete</button>
-                <button type="submit" class="btn btn-primary">Details</button>
-                <button type="submit" class="btn btn-primary">Add</button>
+                    <form action="employee_delete.jsp">
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </form>
+                    
+                    <form action="employee.jsp" id="employee">
+                        <button type="submit" class="btn btn-primary">Details</button>
+                    </form>
+                    
+                    <form action="employee.jsp">
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </form>
                     
                 </div>
             </div>

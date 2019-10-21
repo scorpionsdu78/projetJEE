@@ -5,7 +5,14 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
+<web-app>
 
-<root>
+    <welcome-file-list>  
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
     
-</root>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>PWD2</param-value>
+    </context-param>
+</web-app>
