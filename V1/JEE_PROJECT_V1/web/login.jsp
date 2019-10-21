@@ -4,8 +4,12 @@
     Author     : Eddy
 --%>
 
+<%@page import="fr.efrei.dbcontroller.DBaction"%>
 <% String JSP_TEMPLATE_TITLE = "Login"; %>
 <%@include file="includes/template_top.jsp" %>
+
+
+<% DBaction dba = new DBaction(); %>
 
         <div class="container" style="padding-top: 4vh">
             <div class="row">
