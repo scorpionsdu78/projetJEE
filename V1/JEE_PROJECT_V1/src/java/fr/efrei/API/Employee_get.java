@@ -38,49 +38,7 @@ public class Employee_get extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException
     {
-        //Data entered by the user
-        String inputLogin = request.getParameter(FORM_FIELD_LOGIN);
-        String inputPwd = request.getParameter(FORM_FIELD_PWD);
-        
-       
-        
-        // We verify that the user filled both form's fields
-        if( inputLogin.length() == 0 || inputPwd.length()==0)
-        {
-            request.setAttribute("errKey", ERR_MESSAGE_EMPTY_FIELDS);
-            request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
-        }
-        
-        
-        // Checking if the inputs correspond to the ADMIN credentials
-        String adminLogin = getServletContext().getInitParameter("Admin_Login");
-        String adminPwd = getServletContext().getInitParameter("Admin_Pwd");
-        
-        if(adminLogin.equals(inputLogin) && adminPwd.equals(inputPwd))
-        {
-            request.setAttribute("errKey", "I am the Admin !");
-            request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
-        }
-        
-        
-        
-        // Checking if the inputs correspond to the EMPLOYEE credentials
-        String EmployeeLogin = getServletContext().getInitParameter("Employee_Login");
-        String EmployeePwd = getServletContext().getInitParameter("Employee_Pwd");
-        
-        if(EmployeeLogin.equals(inputLogin) && EmployeePwd.equals(inputPwd))
-        {
-            request.setAttribute("errKey", "I am the Employee !");
-            request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
-        }        
-
-        
-        // Since no match was found, 
-        request.setAttribute("errKey", ERR_MESSAGE_INVALID);
-        request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
-        
-        
-        
+          
         // Francois's Code
         /*
         DBaction dba = new DBaction();

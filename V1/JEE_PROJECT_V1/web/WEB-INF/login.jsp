@@ -18,6 +18,8 @@
                                 
                     <%-- Displaying the Error Message if there is one --%>
                     <div style="color:red; text-align: center">
+                        <label>
+                            <small>
                         <%
                             if(request.getAttribute("errKey") != null)
                             {
@@ -28,6 +30,8 @@
                                 out.println( " " );
                             }
                         %>
+                            </small>
+                        </label>
                     </div>
             
                     <div class="card">
@@ -36,7 +40,7 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="Employee_get">
+                            <form action="Login_controller" method="post">
                               <div class="form-group">
                                   <input type="text" class="form-control" name="Login_v1" placeholder="Login">
                               </div>
