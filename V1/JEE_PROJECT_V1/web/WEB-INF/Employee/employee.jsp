@@ -15,7 +15,7 @@
                     
                     <hr/>
                     
-                    <form>
+                    <form action="/Employee_get" method="POST">
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_nom" class="col-sm-2 col-form-label" style="text-align: right;">Nom</label>
@@ -34,28 +34,28 @@
                             <div class="col-sm-1"></div>
                             <label for="Employee_tel_dom" class="col-sm-2 col-form-label" style="text-align: right;">Tél dom</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_prenom" id="Employee_tel_dom" placeholder="Tél dom">
+                                <input type="text" class="form-control" name="Employee_tel_dom" id="Employee_tel_dom" placeholder="Tél dom">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_tel_mob" class="col-sm-2 col-form-label" style="text-align: right;">Tél mob</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_prenom" id="Employee_tel_mob" placeholder="Tél mob">
+                                <input type="text" class="form-control" name="Employee_tel_mob" id="Employee_tel_mob" placeholder="Tél mob">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_tel_pro" class="col-sm-2 col-form-label" style="text-align: right;">Tél pro</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_prenom" id="Employee_tel_pro" placeholder="Tél pro">
+                                <input type="text" class="form-control" name="Employee_tel_pro" id="Employee_tel_pro" placeholder="Tél pro">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_adresse" class="col-sm-2 col-form-label" style="text-align: right;">Adresse</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_prenom" id="Employee_adresse" placeholder="Adresse">
+                                <input type="text" class="form-control" name="Employee_street" id="Employee_adresse" placeholder="Adresse">
                             </div>
                         </div>
                         <div class="form-group row">

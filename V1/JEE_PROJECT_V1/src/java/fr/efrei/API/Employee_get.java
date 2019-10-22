@@ -117,11 +117,14 @@ public class Employee_get extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(Employee_get.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        String Last_name = request.getParameter(FORM_EMPLOYEE_LAST_NAME);
+        String First_name = request.getParameter(FORM_EMPLOYEE_FIRST_NAME);
+        String home_tel = request.getParameter(FORM_EMPLOYEE_HOME_PHO);
+        String mob_tel = request.getParameter(FORM_EMPLOYEE_MOB_PHO);
+        String pro_tel = request.getParameter(FORM_EMPLOYEE_PRO_PHO);
+        
+        System.out.println(Last_name + First_name + home_tel + mob_tel + pro_tel);
     }
 
     /**
