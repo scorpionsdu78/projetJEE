@@ -8,13 +8,15 @@ package fr.efrei.API;
 import fr.efrei.dbcontroller.DBaction;
 import fr.efrei.jeeproject.Employee;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author francois
  */
-public class Employee_get extends HttpServlet {
-
+public class Employee_get extends HttpServlet
+{
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,13 +36,15 @@ public class Employee_get extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.sql.SQLException
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException
+    {
         DBaction dba = new DBaction();
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
-        
+
         ResultSet rs = dba.getResultSet("SELECT * FROM EMPLOYEE");
         
+
         while(rs.next()){
             Employee emp = new Employee();
             emp.setFirst_name(rs.getString("fisrt_name"));
@@ -52,13 +56,12 @@ public class Employee_get extends HttpServlet {
             employees.add(emp);
             
         }
-        
+
         request.setAttribute("empList", employees);
         request.getRequestDispatcher("Employee/employees.jsp").forward(request, response);
-        
-        
-        
     }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -106,5 +109,4 @@ public class Employee_get extends HttpServlet {
     public String getServletInfo() {
         return "is this magic? yes it is ";
     }// </editor-fold>
-
 }
