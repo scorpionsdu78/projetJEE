@@ -4,8 +4,9 @@
     Author     : Eddy
 --%>
 
+<%@page import="fr.efrei.jeeproject.Constants"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="javax.servlet.http.HttpSession" %>
+<%@page import="javax.servlet.http.HttpSession" %>
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,7 +34,7 @@
         
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="btn btn-light" href="goodbye.jsp" style="color: black; font-size: 8px; font-size: 1.2vw;">
+                <a class="btn btn-light" href="Controller_Logout" style="color: black; font-size: 8px; font-size: 1.2vw;">
                     Log out
                     <span style="
                         background-image: url('https://c7.uihere.com/icons/826/332/883/operating-log-off-860f8851a94474056cfa47ff8435ddc1.png');

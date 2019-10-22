@@ -39,7 +39,7 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="Login_controller" method="post">
+                            <form action="Controller_Login" method="post">
                               <div class="form-group">
                                   <input type="text" class="form-control" name="Login_v1" placeholder="Login">
                               </div>

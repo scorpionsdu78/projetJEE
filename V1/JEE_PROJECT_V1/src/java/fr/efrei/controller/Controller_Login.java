@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Eddy
  */
-@WebServlet(urlPatterns = {"/Login_controller"})
-public class Login_controller extends HttpServlet
+@WebServlet(urlPatterns = {"/Controller_Login"})
+public class Controller_Login extends HttpServlet
 {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
