@@ -1,5 +1,7 @@
 package fr.efrei.jeeproject;
 
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,6 +19,7 @@ public class Employee {
     private String cell_phone;
     private String work_phone;
     private String email;
+    private ArrayList<Adress> adresses;
 
     public String getFirst_name() {
         return first_name;
@@ -66,5 +69,8 @@ public class Employee {
         this.email = email;
     }
     
+    public void setAdresses(ArrayList<Adress> _adress){
+        this.adresses = _adress;
+    }
     
 }

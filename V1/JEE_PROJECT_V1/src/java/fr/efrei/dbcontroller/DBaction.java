@@ -24,12 +24,11 @@ public class DBaction {
     Connection conn;
     Statement stmt;
     ResultSet rs;
-    ArrayList<Employee> employees;
 
     public DBaction() {
         
         try {
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/project","root","root");
+            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/projet","projet","projet");
             System.out.println("connection reussit");
         } catch (SQLException ex) {
             Logger.getLogger(DBaction.class.getName()).log(Level.SEVERE, null, ex);
@@ -50,6 +49,7 @@ public class DBaction {
         stmt = getStatement();
         try {
             rs = stmt.executeQuery(SQL_QUERY);
+            System.out.println("query execute success");
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
         }

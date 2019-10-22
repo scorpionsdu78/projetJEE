@@ -4,12 +4,12 @@
     Author     : Eddy
 --%>
 
+<%@page import="java.sql.ResultSet"%>
 <%@page import="fr.efrei.dbcontroller.DBaction"%>
 <% String JSP_TEMPLATE_TITLE = "Login"; %>
 <%@include file="includes/template_top.jsp" %>
 
 
-<% DBaction dba = new DBaction(); %>
 
         <div class="container" style="padding-top: 4vh">
             <div class="row">
@@ -21,7 +21,7 @@
                         </div>
                         <div class="card-body">
 
-                            <form>
+                            <form action="Employee_get">
                               <div class="form-group">
                                   <input type="text" class="form-control" name="Login_v1" placeholder="Login">
                               </div>

@@ -1,4 +1,4 @@
-CREATE TABLE "employee"
+CREATE TABLE "EMPLOYEE"
 (
  "id" int NOT NULL GENERATED ALWAYS AS IDENTITY
         (START WITH 1, INCREMENT BY 1) ,
@@ -19,7 +19,7 @@ PRIMARY KEY ("id")
 
 -- ************************************** "adress"
 
-CREATE TABLE "adress"
+CREATE TABLE "ADRESS"
 (
  "id"          int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) ,
  "rue"         varchar(45) NOT NULL ,
@@ -30,7 +30,7 @@ CREATE TABLE "adress"
  "id_employee" int NOT NULL,
 
 PRIMARY KEY ("id"),
-FOREIGN KEY ("id_employee") REFERENCES "employee" ("id")
+FOREIGN KEY ("id_employee") REFERENCES "EMPLOYEE" ("id")
 );
 
 
