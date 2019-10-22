@@ -43,17 +43,18 @@ public class Employee_get extends HttpServlet {
         
         while(rs.next()){
             Employee emp = new Employee();
-            emp.setFirst_name(rs.getString("first_name"));
+            emp.setFirst_name(rs.getString("fisrt_name"));
             emp.setLast_name(rs.getString("last_name"));
             emp.setHome_phone(rs.getString("home_phone"));
             emp.setCell_phone("cell_phone");
             emp.setWork_phone(rs.getString("work_phone"));
             emp.setEmail("e_mail");
             employees.add(emp);
+            
         }
         
         request.setAttribute("empList", employees);
-        request.getRequestDispatcher("employees.jsp");
+        request.getRequestDispatcher("Employee/employees.jsp").forward(request, response);
         
         
         
