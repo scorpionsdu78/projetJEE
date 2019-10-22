@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * @author Eddy
  */
 public class Employee {
+    private int id;
     private String first_name;
     private String last_name;
     private String home_phone;
@@ -21,6 +22,16 @@ public class Employee {
     private String email;
     private ArrayList<Adress> adresses;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
+    
     public String getFirst_name() {
         return first_name;
     }
