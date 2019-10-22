@@ -18,5 +18,6 @@ public class Constants
     
     // JSP File's location
     public static final String JSP_PAGE_LOGIN = "WEB-INF/login.jsp";
-    public static final String JSP_PAGE_EMPLOYEES = "WEB-INF/employees.jsp";
+    public static final String JSP_PAGE_EMPLOYEE_SINGLE = "WEB-INF/Employee/employee.jsp";
+    public static final String JSP_PAGE_EMPLOYEE_ALL = "WEB-INF/Employee/employees.jsp";
 }
