@@ -71,17 +71,25 @@
             <div class="row">
                 <div class="col">
                     
-                    <form action="employee_delete.jsp">
-                        <button type="submit" class="btn btn-primary">Delete</button>
-                    </form>
+                    <hr/>
                     
-                    <form action="employee.jsp" id="employee">
-                        <button type="submit" class="btn btn-primary">Details</button>
-                    </form>
+                    <div>
+                        
+                        <form class="d-inline" action="employee_delete.jsp">
+                            <button type="submit" class="btn btn-primary">Delete</button>
+                        </form>
+
+                        <form class="d-inline" action="employee.jsp" id="employee">
+                            <button type="submit" class="btn btn-primary">Details</button>
+                        </form>
+
+                        <form class="d-inline" action="employee.jsp">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </form>
+                        
+                    </div>
                     
-                    <form action="employee.jsp">
-                        <button type="submit" class="btn btn-primary">Add</button>
-                    </form>
+                    <hr/>
                     
                 </div>
             </div>
