@@ -14,7 +14,11 @@
     
     <context-param>
         <param-name>username</param-name>
-        <param-value>PWD2</param-value>
+        <param-value>toto</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>africa</param-value>
     </context-param>
 
     <servlet>
@@ -25,8 +29,10 @@
         <servlet-name>Employee_get</servlet-name>
         <url-pattern>/Employee_get</url-pattern>
     </servlet-mapping>
+    
+    
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>/WEB-INF/Employee/employee.jsp</welcome-file>
     </welcome-file-list>
     
   

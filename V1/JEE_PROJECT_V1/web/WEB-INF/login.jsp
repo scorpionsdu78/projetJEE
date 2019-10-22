@@ -4,7 +4,6 @@
     Author     : Eddy
 --%>
 
-<%@page import="java.sql.ResultSet"%>
 <%@page import="fr.efrei.dbcontroller.DBaction"%>
 <% String JSP_TEMPLATE_TITLE = "Login"; %>
 <%@include file="includes/template_top.jsp" %>

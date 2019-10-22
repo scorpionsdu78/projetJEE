@@ -11,12 +11,21 @@ package fr.efrei.jeeproject;
  */
 public class Adress {
     
+    private int id;
     private String rue;
     private String codePostal;
     private String ville;
     private String complement;
     private String batiment;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getRue() {
         return rue;
     }

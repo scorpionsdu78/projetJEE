@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col">
                     
-                    <table class="table table-striped">
+                    <table class="table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">Sél</th>
@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td scope="row"><input type="radio" name="radio_employees_v1" form="employee"></td>
+                                <td scope="row"><input type="radio" name="radio_employees_v1" form="employee" value="1"></td>
                                 <td>NAME</td>
                                 <td>FIRST NAME</td>
                                 <td>HOME PHONE</td>
@@ -40,7 +40,7 @@
                                 <td>EMAIL</td>
                             </tr>
                             <tr>
-                                <td scope="row"><input type="radio" name="radio_employees_v1" form="employee"></td>
+                                <td scope="row"><input type="radio" name="radio_employees_v1" form="employee" value="2"></td>
                                 <td>NAME</td>
                                 <td>FIRST NAME</td>
                                 <td>HOME PHONE</td>
@@ -52,7 +52,7 @@
                                 <td>EMAIL</td>
                             </tr>
                             <tr>
-                                <td scope="row"><input type="radio" name="radio_employees_v1" form="employee"></td>
+                                <td scope="row"><input type="radio" name="radio_employees_v1" form="employee" value="3"></td>
                                 <td>NAME</td>
                                 <td>FIRST NAME</td>
                                 <td>HOME PHONE</td>
@@ -75,17 +75,13 @@
                     
                     <div>
                         
-                        <form class="d-inline" action="employee_delete.jsp">
-                            <button type="submit" class="btn btn-primary">Delete</button>
+                        <form class="d-inline" action="employee_controller.jsp" id="employee">
+                            <input type="radio" name="radio_employees_v1" hidden required>
+                            <input type="submit" class="btn btn-primary" name="test" value="Delete">
+                            <input type="submit" class="btn btn-primary" name="test2" value="Details">
                         </form>
 
-                        <form class="d-inline" action="employee.jsp" id="employee">
-                            <button type="submit" class="btn btn-primary">Details</button>
-                        </form>
-
-                        <form class="d-inline" action="employee.jsp">
-                            <button type="submit" class="btn btn-primary">Add</button>
-                        </form>
+                        <a class="btn btn-primary" href="employee.jsp">Add</a>
                         
                     </div>
                     

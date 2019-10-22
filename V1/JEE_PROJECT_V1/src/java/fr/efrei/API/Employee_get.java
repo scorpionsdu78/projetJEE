@@ -6,13 +6,12 @@
 package fr.efrei.API;
 
 import fr.efrei.dbcontroller.DBaction;
+import fr.efrei.jeeproject.Adress;
 import fr.efrei.jeeproject.Employee;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServlet;
@@ -43,10 +42,13 @@ public class Employee_get extends HttpServlet
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
 
         ResultSet rs = dba.getResultSet("SELECT * FROM EMPLOYEE");
+        ResultSet rs_adress; 
         
 
-        while(rs.next()){
+        while(rs.next())
+        {
             Employee emp = new Employee();
+            emp.setId(rs.getInt("id"));
             emp.setFirst_name(rs.getString("fisrt_name"));
             emp.setLast_name(rs.getString("last_name"));
             emp.setHome_phone(rs.getString("home_phone"));
@@ -54,7 +56,25 @@ public class Employee_get extends HttpServlet
             emp.setWork_phone(rs.getString("work_phone"));
             emp.setEmail("e_mail");
             employees.add(emp);
+
             
+            rs_adress = dba.getResultSet("SELECT * FROM ADRESS WHERE \"id_employee\" = 1");
+            
+            ArrayList<Adress> adresses = new ArrayList<Adress>();
+            
+            while(rs_adress.next()){
+                Adress addr = new Adress();
+                addr.setId(rs_adress.getInt("id"));
+                addr.setRue(rs_adress.getString("rue"));
+                addr.setVille("ville");
+                addr.setComplement(rs_adress.getString("complement"));
+                addr.setBatiment(rs_adress.getString("batiment"));
+                adresses.add(addr);
+            }
+            
+            emp.setAdresses(adresses);
+            
+
         }
 
         request.setAttribute("empList", employees);
