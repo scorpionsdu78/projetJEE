@@ -12,7 +12,7 @@
             <div class="row">             
                 <div class="col-lg-5 col-md-8 col-sm-12" style="margin: auto;">
                         
-                        <div class="card-body">Coucou</div>    
+                        <div class="card-body">Coucou, ici c'est la page de Logout... on peut mettre un meme sur le JAVA ? merci :)</div>    
             
                 </div>
             </div>
