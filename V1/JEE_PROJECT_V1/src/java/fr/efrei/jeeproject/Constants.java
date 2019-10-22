@@ -15,6 +15,13 @@ public class Constants
     public static final String FORM_FIELD_LOGIN = "Login_v1";
     public static final String FORM_FIELD_PWD = "Password_v1";
     
+    // Form Employee from
+    public static final String FORM_EMPLOYEE_LAST_NAME = "Employee_nom";
+    public static final String FORM_EMPLOYEE_FIRST_NAME = "Employee_prenom";
+    public static final String FORM_EMPLOYEE_HOME_PHO = "Employee_tel_dom";
+    public static final String FORM_EMPLOYEE_MOB_PHO = "Employee_tel_mob";
+    public static final String FORM_EMPLOYEE_PRO_PHO = "Employee_tel_pro";
+    
     
     // JSP File's location
     public static final String JSP_PAGE_LOGIN = "WEB-INF/login.jsp";
