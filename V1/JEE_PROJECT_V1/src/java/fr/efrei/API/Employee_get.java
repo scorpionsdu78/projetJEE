@@ -6,6 +6,7 @@
 package fr.efrei.API;
 
 import fr.efrei.dbcontroller.DBaction;
+import fr.efrei.jeeproject.Adress;
 import static fr.efrei.jeeproject.Constants.*;
 import fr.efrei.jeeproject.Employee;
 import java.io.IOException;
@@ -40,7 +41,7 @@ public class Employee_get extends HttpServlet
     {
           
         // Francois's Code
-        /*
+        
         DBaction dba = new DBaction();
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
 
@@ -82,7 +83,7 @@ public class Employee_get extends HttpServlet
 
         request.setAttribute("empList", employees);
         request.getRequestDispatcher("Employee/employees.jsp").forward(request, response);
-        */
+        
     }
 
 
