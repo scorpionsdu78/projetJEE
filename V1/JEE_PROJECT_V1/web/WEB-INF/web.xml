@@ -12,27 +12,38 @@
         </session-timeout>
     </session-config>
     
+    
     <context-param>
-        <param-name>username</param-name>
-        <param-value>toto</param-value>
-    </context-param>
+        <param-name>Admin_Login</param-name>
+        <param-value>admin</param-value>
+    </context-param>    
     <context-param>
-        <param-name>password</param-name>
-        <param-value>africa</param-value>
+        <param-name>Admin_Pwd</param-name>
+        <param-value>admin</param-value>
+    </context-param>    
+        
+    <context-param>
+        <param-name>Employee_Login</param-name>
+        <param-value>empl</param-value>
+    </context-param>    
+    <context-param>
+        <param-name>Employee_Pwd</param-name>
+        <param-value>empl</param-value>
     </context-param>
+    
 
     <servlet>
         <servlet-name>Employee_get</servlet-name>
         <servlet-class>fr.efrei.API.Employee_get</servlet-class>
     </servlet>
+    
     <servlet-mapping>
         <servlet-name>Employee_get</servlet-name>
         <url-pattern>/Employee_get</url-pattern>
     </servlet-mapping>
     
-    
     <welcome-file-list>
-        <welcome-file>/WEB-INF/Employee/employee.jsp</welcome-file>
+        <welcome-file>/WEB-INF/login.jsp</welcome-file>
     </welcome-file-list>
     
   

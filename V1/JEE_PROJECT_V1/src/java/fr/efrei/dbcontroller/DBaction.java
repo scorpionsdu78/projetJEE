@@ -29,7 +29,7 @@ public class DBaction
         try
         {
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/projet","projet","projet");
-            System.out.println("connection reussit");
+            System.out.println("connection réussie");
         }
         catch (SQLException ex)
         {

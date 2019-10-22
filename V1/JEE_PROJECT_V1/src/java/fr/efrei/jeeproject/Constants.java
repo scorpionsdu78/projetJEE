@@ -6,17 +6,17 @@ package fr.efrei.jeeproject;
  */
 public class Constants
 {
-    // Admin's Login Credentials
-    public static final String ADMIN_LOGIN = "admin";
-    public static final String ADMIN_PWD = "admin";
-
-
     // Error Messages
     public static final String ERR_MESSAGE_EMPTY_FIELDS = "You must enter values in both fields !";
     public static final String ERR_MESSAGE_INVALID = "Connection failed ! Verify your login / password and try again !";
 
 
     // Form Fields' names
-    public static final String FORM_FIELD_LOGIN = "loginField";
-    public static final String FORM_FIELD_PWD = "pwdField";
+    public static final String FORM_FIELD_LOGIN = "Login_v1";
+    public static final String FORM_FIELD_PWD = "Password_v1";
+    
+    
+    // JSP File's location
+    public static final String JSP_PAGE_LOGIN = "WEB-INF/login.jsp";
+    public static final String JSP_PAGE_EMPLOYEES = "WEB-INF/employees.jsp";
 }
