@@ -6,7 +6,6 @@
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="fr.efrei.dbcontroller.DBaction"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <% String JSP_TEMPLATE_TITLE = "Login"; %>
 <%@include file="includes/template_top.jsp" %>
 
