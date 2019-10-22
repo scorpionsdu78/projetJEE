@@ -28,12 +28,15 @@ public class DBaction {
     public DBaction() {
         
         try {
+
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/projet","projet","projet");
             System.out.println("connection reussit");
+
         } catch (SQLException ex) {
             Logger.getLogger(DBaction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     
     public Statement getStatement() {
         try {
@@ -42,8 +45,8 @@ public class DBaction {
             System.out.println(sqle.getMessage());
         }
         return stmt;
-
     }
+    
     
     public ResultSet getResultSet(String SQL_QUERY) {
         stmt = getStatement();
@@ -54,7 +57,5 @@ public class DBaction {
             System.out.println(sqle.getMessage());
         }
         return rs;
-
     }
-    
 }
