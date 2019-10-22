@@ -14,8 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author francois
  */
-public class Employee_get extends HttpServlet {
-
+public class Employee_get extends HttpServlet
+{
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,15 +35,18 @@ public class Employee_get extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.sql.SQLException
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException
+    {
         DBaction dba = new DBaction();
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
-        
+
         ResultSet rs = dba.getResultSet("SELECT * FROM EMPLOYEE");
         ResultSet rs_adress; 
         
-        while(rs.next()){
+
+        while(rs.next())
+        {
             Employee emp = new Employee();
             emp.setId(rs.getInt("id"));
             emp.setFirst_name(rs.getString("fisrt_name"));
@@ -53,6 +56,7 @@ public class Employee_get extends HttpServlet {
             emp.setWork_phone(rs.getString("work_phone"));
             emp.setEmail("e_mail");
             employees.add(emp);
+
             
             rs_adress = dba.getResultSet("SELECT * FROM ADRESS WHERE \"id_employee\" = 1");
             
@@ -70,14 +74,14 @@ public class Employee_get extends HttpServlet {
             
             emp.setAdresses(adresses);
             
+
         }
-        
+
         request.setAttribute("empList", employees);
         request.getRequestDispatcher("Employee/employees.jsp").forward(request, response);
-        
-        
-        
     }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -125,5 +129,4 @@ public class Employee_get extends HttpServlet {
     public String getServletInfo() {
         return "is this magic? yes it is ";
     }// </editor-fold>
-
 }
