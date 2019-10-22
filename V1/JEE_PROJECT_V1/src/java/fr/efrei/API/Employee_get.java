@@ -8,11 +8,9 @@ package fr.efrei.API;
 import fr.efrei.dbcontroller.DBaction;
 import fr.efrei.jeeproject.Employee;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServlet;
@@ -45,7 +43,8 @@ public class Employee_get extends HttpServlet
         ResultSet rs = dba.getResultSet("SELECT * FROM EMPLOYEE");
         
 
-        while(rs.next()){
+        while(rs.next())
+        {
             Employee emp = new Employee();
             emp.setFirst_name(rs.getString("fisrt_name"));
             emp.setLast_name(rs.getString("last_name"));
@@ -54,7 +53,6 @@ public class Employee_get extends HttpServlet
             emp.setWork_phone(rs.getString("work_phone"));
             emp.setEmail("e_mail");
             employees.add(emp);
-            
         }
 
         request.setAttribute("empList", employees);

@@ -2,17 +2,13 @@ package fr.efrei.jeeproject;
 
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
+/** This Class is the representation of an Employee
  *
  * @author Eddy
  */
-public class Employee {
+public class Employee
+{
     private String first_name;
     private String last_name;
     private String home_phone;
