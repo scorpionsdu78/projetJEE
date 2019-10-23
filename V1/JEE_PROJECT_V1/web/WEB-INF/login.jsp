@@ -41,10 +41,10 @@
 
                             <form action="Controller_Login" method="post">
                               <div class="form-group">
-                                  <input type="text" class="form-control" name="Login_v1" placeholder="Login">
+                                  <input type="text" class="form-control" name="Login_v1" placeholder="Login" required>
                               </div>
                               <div class="form-group">
-                                  <input type="password" class="form-control" name="Password_v1" placeholder="Password">
+                                  <input type="password" class="form-control" name="Password_v1" placeholder="Password" required>
                               </div>
                               <button type="submit" class="btn btn-primary">Login</button>
                             </form>

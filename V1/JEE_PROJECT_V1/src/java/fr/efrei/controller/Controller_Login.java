@@ -28,18 +28,13 @@ public class Controller_Login extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
+        if(request.getParameter(FORM_FIELD_LOGIN) == null || request.getParameter(FORM_FIELD_PWD) == null){
+            request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
+        }
+        
         //Data entered by the user
         String inputLogin = request.getParameter(FORM_FIELD_LOGIN);
         String inputPwd = request.getParameter(FORM_FIELD_PWD);
-        
-       
-        
-        // We verify that the user filled both form's fields
-        if( inputLogin.length() == 0 || inputPwd.length()==0)
-        {
-            request.setAttribute("errKey", ERR_MESSAGE_EMPTY_FIELDS);
-            request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
-        }
         
         
         
@@ -55,7 +50,7 @@ public class Controller_Login extends HttpServlet
             session.setAttribute("role", "admin");
             
             // Redirecting
-            request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
+            request.getRequestDispatcher("employees").forward(request, response);
         }
         
         
@@ -72,13 +67,13 @@ public class Controller_Login extends HttpServlet
             session.setAttribute("role", "employee");
             
             // Redirecting
-            request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
+            request.getRequestDispatcher("employees").forward(request, response);
         }
         
         
         // Since no match was found
         request.setAttribute("errKey", ERR_MESSAGE_INVALID);
-        request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
+        request.getRequestDispatcher("login").forward(request, response);
     }
 
     

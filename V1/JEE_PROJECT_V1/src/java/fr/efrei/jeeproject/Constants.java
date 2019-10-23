@@ -7,7 +7,6 @@ package fr.efrei.jeeproject;
 public class Constants
 {
     // Error Messages
-    public static final String ERR_MESSAGE_EMPTY_FIELDS = "You must enter values in both fields !";
     public static final String ERR_MESSAGE_INVALID = "Connection failed ! Verify your login / password and try again !";
 
 
