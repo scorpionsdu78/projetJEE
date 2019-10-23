@@ -11,9 +11,16 @@
         <div class="container" style="padding-top: 4vh">
             <div class="row">             
                 <div class="col-lg-5 col-md-8 col-sm-12" style="margin: auto;">
-                        
-                        <div class="card-body">Coucou, ici c'est la page de Logout... on peut mettre un meme sur le JAVA ? merci :)</div>    
-            
+                                    
+                    <div class="card">
+                        <div class="card-header">
+                            You got log out. See you soon.
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.gyazo.com/f0e3a206546e2952fd088d3954e0c132.png" style="width: 100%;" />
+                        </div>            
+                    </div>
+                    
                 </div>
             </div>
         </div>

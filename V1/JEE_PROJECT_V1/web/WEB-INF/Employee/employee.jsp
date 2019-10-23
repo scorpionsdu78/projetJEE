@@ -82,7 +82,7 @@
                         <div class="col-sm-11">
                             <div class="float-right">
                                 <input type="button" class="btn btn-primary" value="Save">
-                                <a class="btn btn-danger" href="employees.jsp">Cancel</a>
+                                <a class="btn btn-danger" href="employees">Cancel</a>
                             </div>
                         </div>
                         

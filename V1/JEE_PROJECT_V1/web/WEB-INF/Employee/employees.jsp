@@ -75,13 +75,13 @@
                     
                     <div>
                         
-                        <form class="d-inline" action="employee_controller.jsp" id="employee">
+                        <form class="d-inline" action="employee" id="employee">
                             <input type="radio" name="radio_employees_v1" hidden required>
-                            <input type="submit" class="btn btn-primary" name="test" value="Delete">
-                            <input type="submit" class="btn btn-primary" name="test2" value="Details">
+                            <input type="submit" class="btn btn-primary" name="button" value="Delete">
+                            <input type="submit" class="btn btn-primary" name="button" value="Details">
                         </form>
 
-                        <a class="btn btn-primary" href="employee.jsp">Add</a>
+                        <a class="btn btn-primary" href="employee">Add</a>
                         
                     </div>
                     
