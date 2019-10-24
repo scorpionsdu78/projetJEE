@@ -20,7 +20,10 @@ public class Constants
     public static final String FORM_EMPLOYEE_HOME_PHO = "Employee_tel_dom";
     public static final String FORM_EMPLOYEE_MOB_PHO = "Employee_tel_mob";
     public static final String FORM_EMPLOYEE_PRO_PHO = "Employee_tel_pro";
+    public static final String FORM_EMPLOYEE_EMAIL = "Employee_email";
     
+    // QUERY SQL
+    public static final String INSERT_EMPLOYEE = "INSERT INTO EMPLOYEE(\"fisrt_name\",\"last_name\",\"home_phone\",\"cell_phone\",\"work_phone\",\"e_mail\") VALUES(?,?,?,?,?,?)";
     
     // JSP File's location
     public static final String JSP_PAGE_LOGIN = "WEB-INF/login.jsp";

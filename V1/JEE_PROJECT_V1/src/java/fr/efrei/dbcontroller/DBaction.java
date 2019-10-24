@@ -1,8 +1,10 @@
 package fr.efrei.dbcontroller;
 
 
+import static fr.efrei.jeeproject.Constants.INSERT_EMPLOYEE;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -76,4 +78,29 @@ public class DBaction
         
         return rs;
     }
+    
+    public void postData(String first_name, String last_name, String home_phone, String cell_phone, String work_phone, String email){
+        
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(INSERT_EMPLOYEE);
+            pstmt.setString(1, first_name);
+            pstmt.setString(2, last_name);
+            pstmt.setString(3, home_phone);
+            pstmt.setString(4, cell_phone);
+            pstmt.setString(5, work_phone);
+            pstmt.setString(6, email);
+            pstmt.executeUpdate();
+            
+            ResultSet local_rs = pstmt.getGeneratedKeys();
+            if(local_rs !=null){
+                int a = local_rs.getInt(1);
+                System.out.println(a);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBaction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
 }

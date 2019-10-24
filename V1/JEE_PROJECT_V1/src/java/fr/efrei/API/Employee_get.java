@@ -123,9 +123,12 @@ public class Employee_get extends HttpServlet
         String home_tel = request.getParameter(FORM_EMPLOYEE_HOME_PHO);
         String mob_tel = request.getParameter(FORM_EMPLOYEE_MOB_PHO);
         String pro_tel = request.getParameter(FORM_EMPLOYEE_PRO_PHO);
+        String email = request.getParameter(FORM_EMPLOYEE_EMAIL);
         
         System.out.println(Last_name + First_name + home_tel + mob_tel + pro_tel);
         try {
+            DBaction dba = new DBaction();
+            dba.postData(First_name, Last_name, home_tel, mob_tel, pro_tel, email);
             processRequest(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(Employee_get.class.getName()).log(Level.SEVERE, null, ex);
