@@ -37,7 +37,7 @@ public class Controller_Employee extends HttpServlet {
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
         }
         
-        if(request.getParameter("button").equals("Delete")){
+        else if(request.getParameter("button").equals("Delete")){
             System.out.println("DELETE");
             //call the api to delete here
             response.sendRedirect("employees");

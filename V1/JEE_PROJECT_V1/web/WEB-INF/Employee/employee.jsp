@@ -15,7 +15,7 @@
                     
                     <hr/>
                     
-                    <form action="/Employee_get" method="POST">
+                    <form action="Employee_get" method="POST">
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_nom" class="col-sm-2 col-form-label" style="text-align: right;">Nom</label>
@@ -81,7 +81,7 @@
                         
                         <div class="col-sm-11">
                             <div class="float-right">
-                                <input type="button" class="btn btn-primary" value="Save">
+                                <input type="submit" class="btn btn-primary" value="Save">
                                 <a class="btn btn-danger" href="employees">Cancel</a>
                             </div>
                         </div>

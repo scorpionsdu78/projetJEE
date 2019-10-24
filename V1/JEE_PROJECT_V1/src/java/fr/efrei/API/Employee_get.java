@@ -82,7 +82,7 @@ public class Employee_get extends HttpServlet
         }
 
         request.setAttribute("empList", employees);
-        request.getRequestDispatcher("Employee/employees.jsp").forward(request, response);
+        request.getRequestDispatcher("employees").forward(request, response);
         
     }
 
@@ -125,6 +125,11 @@ public class Employee_get extends HttpServlet
         String pro_tel = request.getParameter(FORM_EMPLOYEE_PRO_PHO);
         
         System.out.println(Last_name + First_name + home_tel + mob_tel + pro_tel);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(Employee_get.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

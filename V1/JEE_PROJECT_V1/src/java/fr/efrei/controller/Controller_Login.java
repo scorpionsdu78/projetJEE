@@ -30,6 +30,7 @@ public class Controller_Login extends HttpServlet
     {
         if(request.getParameter(FORM_FIELD_LOGIN) == null || request.getParameter(FORM_FIELD_PWD) == null){
             request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
+            return;
         }
         
         //Data entered by the user
@@ -51,6 +52,7 @@ public class Controller_Login extends HttpServlet
             
             // Redirecting
             request.getRequestDispatcher("employees").forward(request, response);
+            return;
         }
         
         
@@ -68,12 +70,16 @@ public class Controller_Login extends HttpServlet
             
             // Redirecting
             request.getRequestDispatcher("employees").forward(request, response);
+            return;
         }
         
         
         // Since no match was found
-        request.setAttribute("errKey", ERR_MESSAGE_INVALID);
-        request.getRequestDispatcher("login").forward(request, response);
+        else{
+            request.setAttribute("errKey", ERR_MESSAGE_INVALID);
+            request.getRequestDispatcher("login").forward(request, response);
+            return;
+        }
     }
 
     
