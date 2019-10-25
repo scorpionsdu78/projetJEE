@@ -1,6 +1,7 @@
 package fr.efrei.dbcontroller;
 
 
+import static fr.efrei.jeeproject.Constants.INSERT_ADRESS;
 import static fr.efrei.jeeproject.Constants.INSERT_EMPLOYEE;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -69,7 +70,6 @@ public class DBaction
         try
         {
             rs = stmt.executeQuery(SQL_QUERY);
-            System.out.println("query execute success");
         }
         catch (SQLException sqle)
         {
@@ -79,7 +79,7 @@ public class DBaction
         return rs;
     }
     
-    public void postData(String first_name, String last_name, String home_phone, String cell_phone, String work_phone, String email){
+    public void postData(String first_name, String last_name, String home_phone, String cell_phone, String work_phone, String email, String rue, String code_postal, String ville){
         
         try {
             PreparedStatement pstmt = conn.prepareStatement(INSERT_EMPLOYEE, Statement.RETURN_GENERATED_KEYS);
@@ -95,7 +95,15 @@ public class DBaction
             if(local_rs !=null){
                 local_rs.next();
                 int a = local_rs.getInt(1);
-                System.out.println(a);
+                System.out.println("entrer IF");
+                PreparedStatement pstmt2 = conn.prepareStatement(INSERT_ADRESS);
+                pstmt2.setString(1, rue);
+                pstmt2.setString(2, code_postal);
+                pstmt2.setString(3, ville);
+                pstmt2.setInt(4, a);
+                System.out.println("update ready");
+                pstmt2.executeUpdate();
+                System.out.println("updated?");
             }
             
         } catch (SQLException ex) {

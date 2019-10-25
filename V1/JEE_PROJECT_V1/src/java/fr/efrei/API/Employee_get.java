@@ -124,11 +124,14 @@ public class Employee_get extends HttpServlet
         String mob_tel = request.getParameter(FORM_EMPLOYEE_MOB_PHO);
         String pro_tel = request.getParameter(FORM_EMPLOYEE_PRO_PHO);
         String email = request.getParameter(FORM_EMPLOYEE_EMAIL);
+        String street = request.getParameter(FORM_EMPLOYEE_STREET);
+        String postal = request.getParameter(FORM_EMPLOYEE_POSTAL);
+        String city = request.getParameter(FORM_EMPLOYEE_CITY);
         
-        System.out.println(Last_name + First_name + home_tel + mob_tel + pro_tel);
+        System.out.println(Last_name + First_name + home_tel + mob_tel + pro_tel + street + postal + city);
         try {
             DBaction dba = new DBaction();
-            dba.postData(First_name, Last_name, home_tel, mob_tel, pro_tel, email);
+            dba.postData(First_name, Last_name, home_tel, mob_tel, pro_tel, email, street, postal, city);
             processRequest(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(Employee_get.class.getName()).log(Level.SEVERE, null, ex);

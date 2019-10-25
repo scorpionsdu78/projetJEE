@@ -21,10 +21,13 @@ public class Constants
     public static final String FORM_EMPLOYEE_MOB_PHO = "Employee_tel_mob";
     public static final String FORM_EMPLOYEE_PRO_PHO = "Employee_tel_pro";
     public static final String FORM_EMPLOYEE_EMAIL = "Employee_email";
+    public static final String FORM_EMPLOYEE_STREET = "Employee_street";
+    public static final String FORM_EMPLOYEE_POSTAL = "Employee_code_postal";
+    public static final String FORM_EMPLOYEE_CITY = "Employee_ville";
     
     // QUERY SQL
     public static final String INSERT_EMPLOYEE = "INSERT INTO EMPLOYEE(\"fisrt_name\",\"last_name\",\"home_phone\",\"cell_phone\",\"work_phone\",\"e_mail\") VALUES(?,?,?,?,?,?)";
-    
+    public static final String INSERT_ADRESS = "INSERT INTO ADRESS(\"rue\",\"code_postal\",\"ville\",\"id_employee\") VALUES(?,?,?,?)";
     // JSP File's location
     public static final String JSP_PAGE_LOGIN = "WEB-INF/login.jsp";
     public static final String JSP_PAGE_LOGOUT = "WEB-INF/logout.jsp";
