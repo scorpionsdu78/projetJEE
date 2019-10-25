@@ -2,7 +2,7 @@ CREATE TABLE "EMPLOYEE"
 (
  "id" int NOT NULL GENERATED ALWAYS AS IDENTITY
         (START WITH 1, INCREMENT BY 1) ,
- "fisrt_name" varchar(45) NOT NULL ,
+ "first_name" varchar(45) NOT NULL ,
  "last_name"  varchar(45) NOT NULL ,
  "home_phone" varchar(45) NOT NULL ,
  "cell_phone" varchar(45),

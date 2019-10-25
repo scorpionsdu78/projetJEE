@@ -6,9 +6,9 @@
 package fr.efrei.controller;
 
 import fr.efrei.API.Employee_API;
-import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_SINGLE;
-import fr.efrei.jeeproject.Employee;
+import static fr.efrei.jeeproject.Constants.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,9 +20,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Eddy
  */
-@WebServlet(name = "Controller_Employee", urlPatterns = {"/Controller_Employee"})
-public class Controller_Employee extends HttpServlet
-{
+@WebServlet(name = "Controller_POST_Employee", urlPatterns = {"/Controller_POST_Employee"})
+public class Controller_POST_Employee extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,33 +33,29 @@ public class Controller_Employee extends HttpServlet
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {        
-        if(request.getParameter("radio_employees_v1") == null)
-        {
-            request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
-            return;
-        }
+            throws ServletException, IOException {
         
-        if(request.getParameter("button").equals("Delete"))
-        {
-            //call the api to delete here
-            response.sendRedirect("employees");
+        try{
+            String last_name = request.getParameter(FORM_EMPLOYEE_LAST_NAME);
+            String first_name = request.getParameter(FORM_EMPLOYEE_FIRST_NAME);
+            String home_tel = request.getParameter(FORM_EMPLOYEE_HOME_PHO);
+            String mob_tel = request.getParameter(FORM_EMPLOYEE_MOB_PHO);
+            String pro_tel = request.getParameter(FORM_EMPLOYEE_PRO_PHO);
+            String email = request.getParameter(FORM_EMPLOYEE_EMAIL);
+            String street = request.getParameter(FORM_EMPLOYEE_STREET);
+            String postal = request.getParameter(FORM_EMPLOYEE_POSTAL);
+            String city = request.getParameter(FORM_EMPLOYEE_CITY);
+            
+            int id = Employee_API.post_employee(last_name, first_name, home_tel, mob_tel, pro_tel, email, street, postal, city);
+            
+            request.setAttribute("new_employee_ID", id);
+            request.getRequestDispatcher("employees").forward(request, response);
+            return;
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+            request.getRequestDispatcher("employees").forward(request, response);
             return;
         }
-        if(request.getParameter("button").equals("Details"))
-        {
-            try{//call the api to get the employee here
-                Employee employee = Employee_API.get_employee_byID((Integer.valueOf(request.getParameter("radio_employees_v1"))));
-                request.setAttribute("employee", employee);
-            }catch(SQLException e){
-                System.out.println(e.getMessage());
-            }
-            request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
-            return;
-        }
-        
-        request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
