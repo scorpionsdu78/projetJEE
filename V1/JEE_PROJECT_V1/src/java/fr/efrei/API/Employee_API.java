@@ -11,7 +11,6 @@ import fr.efrei.jeeproject.Constants;
 import fr.efrei.jeeproject.Employee;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -25,13 +24,16 @@ public class Employee_API
         DBaction db = new DBaction();
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
 
-        ResultSet rs = db.executeQuery("SELECT * FROM EMPLOYEE");
-        ResultSet rs_adress; 
         
 
+        // We get all the employees
+        ResultSet rs = db.executeQuery("SELECT * FROM EMPLOYEE");
         while(rs.next())
         {
+            // Creating an employee
             Employee emp = new Employee();
+            
+            // Adding all the basic employee's data
             emp.setId(rs.getInt("id"));
             emp.setFirst_name(rs.getString("fisrt_name"));
             emp.setLast_name(rs.getString("last_name"));
@@ -39,19 +41,13 @@ public class Employee_API
             emp.setCell_phone(rs.getString("cell_phone"));
             emp.setWork_phone(rs.getString("work_phone"));
             emp.setEmail(rs.getString("e_mail"));
-            
-            employees.add(emp);
-
-            
             ArrayList<Adress> adresses = new ArrayList<Adress>();
             
             
-            rs_adress = db.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = " + emp.getId());
-            
-            while(rs_adress.next())
+            // We get all the adress of the given employee (we verify the ID)
+            ResultSet rs_adress = db.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = " + emp.getId());
+            while( rs_adress.next() )
             {
-                System.out.println("OUI");
-                
                 Adress addr = new Adress();
                 addr.setId(rs_adress.getInt("id"));
                 addr.setRue(rs_adress.getString("rue"));
@@ -60,22 +56,27 @@ public class Employee_API
                 addr.setComplement(rs_adress.getString("complement"));
                 addr.setBatiment(rs_adress.getString("batiment"));
                 adresses.add(addr);
-            }
+            }        
             
-            
+            // We add the Addresses to the current Employee
             emp.setAdresses(adresses);
+            
+            // We add the current Employee to the list
+            employees.add(emp);
         }
         
         return employees;
     }
     
     
-    static public Employee get_employee_byID(int ID) throws SQLException{
+    static public Employee get_employee_byID(int ID) throws SQLException
+    {
         return null;
     }
     
     
-    static public int post_employee(String last_name, String first_name, String home_pho, String mob_pho, String email, String street, String postal, String city) throws SQLException{
+    static public int post_employee(String last_name, String first_name, String home_pho, String mob_pho, String email, String street, String postal, String city) throws SQLException
+    {
         DBaction db = new DBaction();
         db.getPreparedStatement(Constants.INSERT_EMPLOYEE);
         
@@ -87,7 +88,8 @@ public class Employee_API
         
         ResultSet rs = db.executeUpdate();
         
-        if(rs != null){
+        if(rs != null)
+        {
             rs.next();
             int a = rs.getInt(1);
             
