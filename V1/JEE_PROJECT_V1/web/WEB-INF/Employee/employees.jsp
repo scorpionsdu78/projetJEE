@@ -4,6 +4,7 @@
     Author     : Eddy
 --%>
 
+<%@page import="fr.efrei.jeeproject.Adress"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="fr.efrei.jeeproject.Employee"%>
 <% String JSP_TEMPLATE_TITLE = "Employee list"; %>
@@ -36,6 +37,15 @@
                                 ArrayList<Employee> employees = (ArrayList<Employee>)request.getAttribute("employees");
                                 for(Employee employee : employees)
                                 {
+                                    
+                                    Adress add = null;
+                                    System.out.println(employee);
+                                    System.out.println(employee.getAdresses());
+                                    if(!employee.getAdresses().isEmpty()){
+                                        System.out.println("inside");
+                                        add = employee.getAdresses().get(0);
+                                    }
+                        
                                     out.println("                            <tr>");
                                     out.println("                                <td scope=\"row\"><input type=\"radio\" name=\"radio_employees_v1\" form=\"employee\" value=\"" + employee.getId() + "\"></td>");
                                     out.println("                                <td>" + employee.getLast_name() + "</td>");
@@ -43,9 +53,15 @@
                                     out.println("                                <td>" + employee.getHome_phone()+ "</td>");
                                     out.println("                                <td>" + employee.getCell_phone()+ "</td>");
                                     out.println("                                <td>" + employee.getWork_phone()+ "</td>");
-                                    out.println("                                <td>" + employee.getAdresses().get(0).getRue() + "</td>");
-                                    out.println("                                <td>" + employee.getAdresses().get(0).getVille() + "</td>");
-                                    out.println("                                <td>" + employee.getAdresses().get(0).getCodePostal() + "</td>");
+                                    if(add != null){
+                                        out.println("                                <td>" + add.getRue() + "</td>");
+                                        out.println("                                <td>" + add.getCodePostal() +  "</td>");
+                                        out.println("                                <td>" + add.getVille() +  "</td>");
+                                    }else{
+                                        out.println("                                <td>NA</td>");
+                                        out.println("                                <td>NA</td>");
+                                        out.println("                                <td>NA</td>");                                      
+                                    }
                                     out.println("                                <td>" + employee.getEmail()+ "</td>");
                                     out.println("                            </tr>");
                                 }
@@ -78,7 +94,7 @@
                 </div>
             </div>
             
-            <iframe width="100%" height="400px" src="https://www.watchisup.fr/compte-a-rebours/embed/frozen-2-2019-11-20-10-30?backgroundcolor=&color=" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="400px" src="https://www.watchisup.fr/compte-a-rebours/embed/frozen-2-2019-11-20-10-30?backgroundcolor=&color=" frameborder="0" allowfullscreen style="overflow: hidden;"></iframe>
             
         </div>
 <%@include file="../includes/template_bot.jsp" %>
