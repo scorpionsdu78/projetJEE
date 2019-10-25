@@ -51,7 +51,7 @@ public class Controller_Login extends HttpServlet
             session.setAttribute("role", "admin");
             
             // Redirecting
-            request.getRequestDispatcher("employees").forward(request, response);
+            response.sendRedirect("employees");
             return;
         }
         
@@ -69,7 +69,7 @@ public class Controller_Login extends HttpServlet
             session.setAttribute("role", "employee");
             
             // Redirecting
-            request.getRequestDispatcher("employees").forward(request, response);
+            response.sendRedirect("employees");
             return;
         }
         

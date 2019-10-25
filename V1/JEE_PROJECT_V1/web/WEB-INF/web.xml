@@ -55,6 +55,18 @@
     </servlet-mapping>
     <!-- End Login -->
     
+    <!-- Logout -->
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>fr.efrei.controller.Controller_Logout</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <!-- End Logout -->
+    
     <!-- Employee -->
     <servlet>
         <servlet-name>Employee</servlet-name>
