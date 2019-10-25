@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="java.sql.ResultSet"%>
-<% String JSP_TEMPLATE_TITLE = "Login"; %>
+<% String JSP_TEMPLATE_TITLE = "Logout"; %>
 <%@include file="includes/template_top.jsp" %>
 
         <div class="container" style="padding-top: 4vh">

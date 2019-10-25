@@ -9,6 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
+                 
         <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="/JEE_PROJECT_V1">Employees Management</a>
             <div class="collapse navbar-collapse" id="navbarText">
