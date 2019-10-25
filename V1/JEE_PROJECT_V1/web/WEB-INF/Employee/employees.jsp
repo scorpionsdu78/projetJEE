@@ -5,6 +5,8 @@
 --%>
 
 <% String JSP_TEMPLATE_TITLE = "Employee list"; %>
+<% boolean JSP_TEMPLATE_SECURITY = false; %>
+
 <%@include file="../includes/template_top.jsp" %>
 
         <div class="container" style="padding-top: 4vh">
@@ -89,5 +91,8 @@
                     
                 </div>
             </div>
+            
+            <iframe width="100%" height="400px" src="https://www.watchisup.fr/compte-a-rebours/embed/frozen-2-2019-11-20-10-30?backgroundcolor=&color=" frameborder="0" allowfullscreen></iframe>
+            
         </div>
 <%@include file="../includes/template_bot.jsp" %>
