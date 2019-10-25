@@ -100,7 +100,20 @@ public class Employee_get extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            processRequest(request, response);
+            DBaction dba = new DBaction();
+            ResultSet rs = dba.executeQuery("SELECT * FROM EMPLOYEE WHERE \"id\"=1");
+            ResultSet rsAdress; 
+            rs.next();
+            Employee emp = new Employee();
+            emp.setId(rs.getInt("id"));
+            emp.setFirst_name(rs.getString("fisrt_name"));
+            emp.setLast_name(rs.getString("last_name"));
+            emp.setHome_phone(rs.getString("home_phone"));
+            emp.setCell_phone("cell_phone");
+            emp.setWork_phone(rs.getString("work_phone"));
+            emp.setEmail("e_mail");
+            request.setAttribute("emp",emp);
+            request.getRequestDispatcher("JSP_PAGE_EMPLOYEE_SINGLE").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(Employee_get.class.getName()).log(Level.SEVERE, null, ex);
         }

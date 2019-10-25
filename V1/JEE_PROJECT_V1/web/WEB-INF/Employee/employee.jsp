@@ -22,7 +22,10 @@
                     <%
                     
                         Employee emp = (Employee)request.getAttribute("emp");
-                        Adress add = emp.getAdresses().get(0);
+                        System.out.println(emp);
+                        Adress add = null;
+                        if(emp != null && emp.getAdresses()!=null)
+                            add= emp.getAdresses().get(0);
 
                     %>
                     
