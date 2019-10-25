@@ -4,6 +4,8 @@
     Author     : Eddy
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="fr.efrei.jeeproject.Employee"%>
 <% String JSP_TEMPLATE_TITLE = "Employee list"; %>
 <% boolean JSP_TEMPLATE_SECURITY = false; %>
 
@@ -29,30 +31,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td scope="row"><input type="radio" name="radio_employees_v1" form="employee" value="1"></td>
-                                <td>NAME</td>
-                                <td>FIRST NAME</td>
-                                <td>HOME PHONE</td>
-                                <td>MOBILE PHONE</td>
-                                <td>WORK PHONE</td>
-                                <td>ADRESS</td>
-                                <td>POSTAL CODE</td>
-                                <td>CITY</td>
-                                <td>EMAIL</td>
-                            </tr>
-                            <tr>
-                                <td scope="row"><input type="radio" name="radio_employees_v1" form="employee" value="2"></td>
-                                <td>NAME</td>
-                                <td>FIRST NAME</td>
-                                <td>HOME PHONE</td>
-                                <td>MOBILE PHONE</td>
-                                <td>WORK PHONE</td>
-                                <td>ADRESS</td>
-                                <td>POSTAL CODE</td>
-                                <td>CITY</td>
-                                <td>EMAIL</td>
-                            </tr>
+                            <%
+                              
+                                ArrayList<Employee> employees = (ArrayList<Employee>)request.getAttribute("employees");
+                                for(Employee employee : employees){
+                                    out.println("                                <td scope=\"row\"><input type=\"radio\" name=\"radio_employees_v1\" form=\"employee\" value=\"" + employee.getId() + "\"></td>");
+                                    out.println("                                <td>NAME</td>");
+                                }
+
+                            %>
                             <tr>
                                 <td scope="row"><input type="radio" name="radio_employees_v1" form="employee" value="3"></td>
                                 <td>NAME</td>
