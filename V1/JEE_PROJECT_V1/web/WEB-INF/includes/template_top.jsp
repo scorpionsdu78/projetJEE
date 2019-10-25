@@ -5,8 +5,10 @@
 --%>
 
 <%
-    if(session.getAttribute("role") == null
-            && !request.getRequestURI().equals( "/JEE_PROJECT_V1/WEB-INF/login.jsp" ) )
+    Boolean sessionActive = (session.getAttribute("role") != null);
+    Boolean pageLogin = request.getRequestURI().equals( "/JEE_PROJECT_V1/WEB-INF/login.jsp" );
+    
+    if( !sessionActive && !pageLogin )
     {
         // rediriger vers le Login
         response.sendRedirect("login");
