@@ -22,7 +22,10 @@
                     <%
                     
                         Employee emp = (Employee)request.getAttribute("emp");
-                        Adress add = emp.getAdresses().get(0);
+                        Adress add = null;
+                        if(emp != null){
+                            add = emp.getAdresses().get(0);
+                        }
 
                     %>
                     
