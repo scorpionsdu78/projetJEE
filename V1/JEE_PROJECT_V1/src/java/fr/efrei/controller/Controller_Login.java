@@ -75,11 +75,8 @@ public class Controller_Login extends HttpServlet
         
         
         // Since no match was found
-        else{
-            request.setAttribute("errKey", ERR_MESSAGE_INVALID);
-            request.getRequestDispatcher("login").forward(request, response);
-            return;
-        }
+        request.setAttribute("errKey", ERR_MESSAGE_INVALID);
+        request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
     }
 
     
