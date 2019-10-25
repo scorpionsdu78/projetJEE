@@ -8,6 +8,8 @@
 <%@page import="fr.efrei.dbcontroller.DBaction"%>
 
 <% String JSP_TEMPLATE_TITLE = "Login"; %>
+<% boolean JSP_TEMPLATE_SECURITY = true; %>
+
 <%@include file="includes/template_top.jsp" %>
 
         <div class="container" style="padding-top: 4vh">
