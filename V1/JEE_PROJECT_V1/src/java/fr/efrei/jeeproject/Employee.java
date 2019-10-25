@@ -22,6 +22,10 @@ public class Employee {
         return id;
     }
 
+    public ArrayList<Adress> getAdresses() {
+        return adresses;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
