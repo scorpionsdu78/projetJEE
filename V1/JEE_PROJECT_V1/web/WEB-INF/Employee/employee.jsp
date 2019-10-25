@@ -27,9 +27,10 @@
                             
                             emp = (Employee)request.getAttribute("emp");
                             
-                            if(emp != null && emp.getAdresses()!= null){
+                            if(emp != null && !emp.getAdresses().isEmpty()){
                                 add = emp.getAdresses().get(0);
                             }
+                            
                         
                         }
 

@@ -105,36 +105,7 @@ public class Employee_get extends HttpServlet
             int id = Integer.valueOf(value) ;
             
             
-            DBaction dba = new DBaction();
-            ResultSet rs = dba.executeQuery("SELECT * FROM EMPLOYEE WHERE \"id\"="+id);
-            ResultSet rsAdress; 
-            
-            rs.next();
-            
-            Employee emp = new Employee();
-            emp.setId(rs.getInt("id"));
-            emp.setFirst_name(rs.getString("fisrt_name"));
-            emp.setLast_name(rs.getString("last_name"));
-            emp.setHome_phone(rs.getString("home_phone"));
-            emp.setCell_phone(rs.getString("cell_phone"));
-            emp.setWork_phone(rs.getString("work_phone"));
-            emp.setEmail(rs.getString("e_mail"));
-            
-            rsAdress = dba.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\"="+id);
-            
-            ArrayList<Adress> adresses = new ArrayList<Adress>();
-            
-            while(rsAdress.next()){
-                Adress addr = new Adress();
-                addr.setId(rsAdress.getInt("id"));
-                addr.setRue(rsAdress.getString("rue"));
-                addr.setVille(rsAdress.getString("ville"));
-                addr.setComplement(rsAdress.getString("complement"));
-                addr.setBatiment(rsAdress.getString("batiment"));
-                adresses.add(addr);
-            }
-            
-            emp.setAdresses(adresses);
+            Employee emp = Employee_API.get_employee_byID(id);
             
             request.setAttribute("emp",emp);
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
