@@ -42,24 +42,28 @@ public class Employee_API
             
             employees.add(emp);
 
-            /*
-            rs_adress = db.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = " + emp.getId());
             
             ArrayList<Adress> adresses = new ArrayList<Adress>();
             
+            
+            rs_adress = db.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = " + emp.getId());
+            
             while(rs_adress.next())
             {
+                System.out.println("OUI");
+                
                 Adress addr = new Adress();
                 addr.setId(rs_adress.getInt("id"));
                 addr.setRue(rs_adress.getString("rue"));
-                addr.setVille(rs.getString("ville"));
+                addr.setVille(rs_adress.getString("ville"));
+                addr.setCodePostal(rs_adress.getString("code_postal"));
                 addr.setComplement(rs_adress.getString("complement"));
                 addr.setBatiment(rs_adress.getString("batiment"));
                 adresses.add(addr);
             }
             
+            
             emp.setAdresses(adresses);
-            */
         }
         
         return employees;
