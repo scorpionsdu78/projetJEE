@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -150,6 +152,32 @@ public class Employee_API
         }
         
         
+        return 0;
+    }
+    
+    static public int putEmployee(int id, String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city){
+        
+        DBaction db;
+        try {
+            db = new DBaction();
+            PreparedStatement psmt = db.getPreparedStatement(Constants.UPDATE_EMPLOYEE);
+            
+            psmt.setString(1, last_name);
+            psmt.setString(2, first_name);
+            psmt.setString(3, home_pho);
+            psmt.setString(4, mob_pho);
+            psmt.setString(5, work_pho);
+            psmt.setString(6, email);
+            
+            psmt.setInt(7, id);
+            
+            psmt.executeUpdate();
+            
+            return 0;
+                    
+        } catch (SQLException ex) {
+            Logger.getLogger(Employee_API.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return 0;
     }
 }
