@@ -35,8 +35,10 @@
                               
                                 ArrayList<Employee> employees = (ArrayList<Employee>)request.getAttribute("employees");
                                 for(Employee employee : employees){
+                                    out.println("                            <tr>");
                                     out.println("                                <td scope=\"row\"><input type=\"radio\" name=\"radio_employees_v1\" form=\"employee\" value=\"" + employee.getId() + "\"></td>");
-                                    out.println("                                <td>NAME</td>");
+                                    out.println("                                <td>" + employee.getLast_name() + "</td>");
+                                    out.println("                            </tr>");
                                 }
 
                             %>
