@@ -41,6 +41,24 @@ public class DBaction
     }
     
     
+    /** Try to prepare a Statement from the database
+     * 
+     * @return The Statement created from the database
+     */
+    public Statement getPreparedStatement(String query)
+    {
+        try
+        {
+            stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        }
+        catch (SQLException sqle)
+        {
+            System.out.println(sqle.getMessage());
+        }
+        return stmt;
+    }
+    
+    
     /** Try to create a Statement from the database
      * 
      * @return The Statement created from the database
@@ -64,7 +82,7 @@ public class DBaction
      * @param SQL_QUERY Syntax of the SQL query
      * @return The ResultSet corresponding to the SQL query
      */
-    public ResultSet getResultSet(String SQL_QUERY)
+    public ResultSet executeQuery(String SQL_QUERY)
     {
         stmt = getStatement();
         try
