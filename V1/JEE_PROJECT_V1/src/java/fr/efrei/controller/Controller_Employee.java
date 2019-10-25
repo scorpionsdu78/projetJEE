@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author Eddy
  */
 @WebServlet(name = "Controller_Employee", urlPatterns = {"/Controller_Employee"})
-public class Controller_Employee extends HttpServlet {
-
+public class Controller_Employee extends HttpServlet
+{
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,19 +30,22 @@ public class Controller_Employee extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-            
-        if(request.getParameter("radio_employees_v1") == null){
+            throws ServletException, IOException
+    {        
+        if(request.getParameter("radio_employees_v1") == null)
+        {
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
             return;
         }
         
-        if(request.getParameter("button").equals("Delete")){
+        if(request.getParameter("button").equals("Delete"))
+        {
             //call the api to delete here
             response.sendRedirect("employees");
             return;
         }
-        if(request.getParameter("button").equals("Details")){
+        if(request.getParameter("button").equals("Details"))
+        {
             //call the api to get the employee here
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
             return;

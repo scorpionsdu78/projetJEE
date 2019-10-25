@@ -9,7 +9,6 @@ import fr.efrei.API.Employee_API;
 import fr.efrei.jeeproject.Employee;
 import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_ALL;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -23,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author Eddy
  */
 @WebServlet(name = "Controller_Employees", urlPatterns = {"/Controller_Employees"})
-public class Controller_Employees extends HttpServlet {
-
+public class Controller_Employees extends HttpServlet
+{
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,12 +34,16 @@ public class Controller_Employees extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try{
+            throws ServletException, IOException
+    {
+        try
+        {
             ArrayList<Employee> employees = Employee_API.get_employees();
             request.setAttribute("employees", employees);
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
-        }catch(SQLException e){
+        }
+        catch(SQLException e)
+        {
             System.out.printf(e.getMessage());
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
         }

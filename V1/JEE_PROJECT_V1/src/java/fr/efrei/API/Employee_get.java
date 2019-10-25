@@ -39,51 +39,54 @@ public class Employee_get extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException
     {
-          
         // Francois's Code
         
         DBaction dba = new DBaction();
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
 
-        ResultSet rs = dba.executeQuery("SELECT * FROM EMPLOYEE");
-        ResultSet rs_adress; 
-        
-
+        // We get all the employees
+        ResultSet rs = dba.executeQuery("SELECT * FROM EMPLOYEE");        
         while(rs.next())
         {
+            // Creating an employee
             Employee emp = new Employee();
+            
+            // Adding all the basic employee's data
             emp.setId(rs.getInt("id"));
-            emp.setFirst_name(rs.getString("fisrt_name"));
+            emp.setFirst_name(rs.getString("first_name"));
             emp.setLast_name(rs.getString("last_name"));
             emp.setHome_phone(rs.getString("home_phone"));
             emp.setCell_phone("cell_phone");
             emp.setWork_phone(rs.getString("work_phone"));
             emp.setEmail("e_mail");
-            employees.add(emp);
+            ArrayList<Adress> adresses = new ArrayList<Adress>();
 
             
-            rs_adress = dba.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = 1");
-            
-            ArrayList<Adress> adresses = new ArrayList<Adress>();
-            
-            while(rs_adress.next()){
+            // We get all the adress of the given employee (we verify the ID)
+            ResultSet rs_adress = dba.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = 1");
+            while(rs_adress.next())
+            {
                 Adress addr = new Adress();
                 addr.setId(rs_adress.getInt("id"));
                 addr.setRue(rs_adress.getString("rue"));
                 addr.setVille("ville");
+                addr.setCodePostal("code_postal");
                 addr.setComplement(rs_adress.getString("complement"));
                 addr.setBatiment(rs_adress.getString("batiment"));
+                
+                // We add the current adress to the list of Adresses
                 adresses.add(addr);
             }
             
+            // We add the Adresses to the current Employee
             emp.setAdresses(adresses);
             
-
+            // We add the current Employee to the list
+            employees.add(emp);
         }
 
         request.setAttribute("empList", employees);
-        request.getRequestDispatcher("WEB-INF/Employee/employee.jsp").forward(request, response);
-        
+        request.getRequestDispatcher("WEB-INF/Employee/employee.jsp").forward(request, response);    
     }
 
 
@@ -98,10 +101,12 @@ public class Employee_get extends HttpServlet
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
+            throws ServletException, IOException
+    {
+        try
+        {
             String value = request.getParameter(FORM_EMPLOYEES_EMPLOYEE);
-            System.out.println(value);
+
             int id = Integer.valueOf(value) ;
             
             
@@ -109,7 +114,9 @@ public class Employee_get extends HttpServlet
             
             request.setAttribute("emp",emp);
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             Logger.getLogger(Employee_get.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -152,7 +159,8 @@ public class Employee_get extends HttpServlet
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+    public String getServletInfo()
+    {
         return "is this magic? yes it is ";
     }// </editor-fold>
 }
