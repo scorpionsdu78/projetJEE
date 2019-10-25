@@ -67,14 +67,11 @@ public class Employee_get extends HttpServlet
             emp.setEmail(rs.getString("e_mail"));
             employees.add(emp);
 
-            //??
+            
+            // We get all the adress of the given employee (we verify the ID)
             psmt = dba.getPreparedStatement("SELECT * FROM ADRESS WHERE \"id_employee\" = 1");
             rs_adress = psmt.executeQuery();
             ArrayList<Adress> adresses = new ArrayList<Adress>();
-
-            
-            // We get all the adress of the given employee (we verify the ID)
-            ResultSet rs_adress = dba.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = 1");
             while(rs_adress.next())
             {
                 Adress addr = new Adress();
