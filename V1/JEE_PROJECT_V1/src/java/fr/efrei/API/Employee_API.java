@@ -9,6 +9,7 @@ import fr.efrei.dbcontroller.DBaction;
 import fr.efrei.jeeproject.Adress;
 import fr.efrei.jeeproject.Constants;
 import fr.efrei.jeeproject.Employee;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,15 +20,17 @@ import java.util.ArrayList;
  */
 public class Employee_API
 {
-    static public ArrayList<Employee> get_employees() throws SQLException
+    static public ArrayList<Employee> get_employees()
+            throws SQLException
     {
         DBaction db = new DBaction();
+        
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
 
-        
+        PreparedStatement psmt = db.getPreparedStatement("SELECT * FROM EMPLOYEE");
 
         // We get all the employees
-        ResultSet rs = db.executeQuery("SELECT * FROM EMPLOYEE");
+        ResultSet rs = psmt.executeQuery();
         while(rs.next())
         {
             // Creating an employee
@@ -35,7 +38,7 @@ public class Employee_API
             
             // Adding all the basic employee's data
             emp.setId(rs.getInt("id"));
-            emp.setFirst_name(rs.getString("fisrt_name"));
+            emp.setFirst_name(rs.getString("first_name"));
             emp.setLast_name(rs.getString("last_name"));
             emp.setHome_phone(rs.getString("home_phone"));
             emp.setCell_phone(rs.getString("cell_phone"));
@@ -45,7 +48,7 @@ public class Employee_API
             
             
             // We get all the adress of the given employee (we verify the ID)
-            ResultSet rs_adress = db.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = " + emp.getId());
+            ResultSet rs_adress = psmt.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = " + emp.getId());
             while( rs_adress.next() )
             {
                 Adress addr = new Adress();
@@ -69,11 +72,15 @@ public class Employee_API
     }
     
     
-    static public Employee get_employee_byID(int id) throws SQLException
+    static public Employee get_employee_byID(int id)
+            throws SQLException
     {
         
         DBaction dba = new DBaction();
-        ResultSet rs = dba.executeQuery("SELECT * FROM EMPLOYEE WHERE \"id\"="+id);
+        
+        PreparedStatement psmt = dba.getPreparedStatement("SELECT * FROM EMPLOYEE WHERE \"id\" = ?");
+        psmt.setInt(1, id);
+        ResultSet rs = psmt.executeQuery();
         ResultSet rsAdress; 
             
         rs.next();
@@ -87,7 +94,9 @@ public class Employee_API
         emp.setWork_phone(rs.getString("work_phone"));
         emp.setEmail(rs.getString("e_mail"));
             
-        rsAdress = dba.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\"="+id);
+        psmt = dba.getPreparedStatement("SELECT * FROM ADRESS WHERE \"id_employee\" = ?");
+        psmt.setInt(1, id);
+        rsAdress = psmt.executeQuery();
             
         ArrayList<Adress> adresses = new ArrayList<Adress>();
             
@@ -106,34 +115,36 @@ public class Employee_API
     }
     
     
-    static public int post_employee(String last_name, String first_name, String home_pho, String mob_pho, String email, String street, String postal, String city) throws SQLException
+    static public int post_employee(String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city)
+            throws SQLException
     {
         DBaction db = new DBaction();
-        db.getPreparedStatement(Constants.INSERT_EMPLOYEE);
         
-        db.setString(1, last_name);
-        db.setString(2, first_name);
-        db.setString(3, home_pho);
-        db.setString(4, mob_pho);
-        db.setString(5, email);
+        PreparedStatement psmt = db.getPreparedStatement(Constants.INSERT_EMPLOYEE);
         
-        ResultSet rs = db.executeUpdate();
+        psmt.setString(1, last_name);
+        psmt.setString(2, first_name);
+        psmt.setString(3, home_pho);
+        psmt.setString(4, mob_pho);
+        psmt.setString(5, work_pho);
+        psmt.setString(6, email);
         
-        if(rs != null)
-        {
+        int i = psmt.executeUpdate();
+        
+        if(i != 0){
+            ResultSet rs = psmt.getGeneratedKeys();
             rs.next();
-            int a = rs.getInt(1);
+            int id = rs.getInt(1);
             
-            db.getPreparedStatement(Constants.INSERT_ADRESS);
-            db.setString(1, street);
-            db.setString(2, postal);
-            db.setString(3, city);
-            db.setInt(4, a);
-            System.out.println("update ready");
-            db.executeUpdate();
-            System.out.println("updated?");
+            psmt = db.getPreparedStatement(Constants.INSERT_ADRESS);
+            psmt.setString(1, street);
+            psmt.setString(2, postal);
+            psmt.setString(3, city);
+            psmt.setInt(4, id);
             
-            return a;
+            psmt.executeUpdate();
+            
+            return id;
         }
         
         

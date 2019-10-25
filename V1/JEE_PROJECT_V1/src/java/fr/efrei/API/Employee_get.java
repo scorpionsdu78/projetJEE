@@ -5,11 +5,13 @@
  */
 package fr.efrei.API;
 
+import com.sun.xml.ws.tx.at.v10.types.PrepareResponse;
 import fr.efrei.dbcontroller.DBaction;
 import fr.efrei.jeeproject.Adress;
 import static fr.efrei.jeeproject.Constants.*;
 import fr.efrei.jeeproject.Employee;
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -43,9 +45,12 @@ public class Employee_get extends HttpServlet
         // Francois's Code
         
         DBaction dba = new DBaction();
+        
+        PreparedStatement psmt = dba.getPreparedStatement("SELECT * FROM EMPLOYEE");
+
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
 
-        ResultSet rs = dba.executeQuery("SELECT * FROM EMPLOYEE");
+        ResultSet rs = psmt.executeQuery();
         ResultSet rs_adress; 
         
 
@@ -56,13 +61,14 @@ public class Employee_get extends HttpServlet
             emp.setFirst_name(rs.getString("fisrt_name"));
             emp.setLast_name(rs.getString("last_name"));
             emp.setHome_phone(rs.getString("home_phone"));
-            emp.setCell_phone("cell_phone");
+            emp.setCell_phone(rs.getString("cell_phone"));
             emp.setWork_phone(rs.getString("work_phone"));
-            emp.setEmail("e_mail");
+            emp.setEmail(rs.getString("e_mail"));
             employees.add(emp);
 
-            
-            rs_adress = dba.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = 1");
+            //??
+            psmt = dba.getPreparedStatement("SELECT * FROM ADRESS WHERE \"id_employee\" = 1");
+            rs_adress = psmt.executeQuery();
             
             ArrayList<Adress> adresses = new ArrayList<Adress>();
             
@@ -70,7 +76,7 @@ public class Employee_get extends HttpServlet
                 Adress addr = new Adress();
                 addr.setId(rs_adress.getInt("id"));
                 addr.setRue(rs_adress.getString("rue"));
-                addr.setVille("ville");
+                addr.setVille(rs_adress.getString("ville"));
                 addr.setComplement(rs_adress.getString("complement"));
                 addr.setBatiment(rs_adress.getString("batiment"));
                 adresses.add(addr);

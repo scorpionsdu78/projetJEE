@@ -1,8 +1,7 @@
 package fr.efrei.dbcontroller;
 
 
-import static fr.efrei.jeeproject.Constants.INSERT_ADRESS;
-import static fr.efrei.jeeproject.Constants.INSERT_EMPLOYEE;
+import static fr.efrei.jeeproject.Constants.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,26 +18,16 @@ import java.util.logging.Logger;
  */
 public class DBaction
 {    
-    Connection conn;
-    Statement stmt;
-    PreparedStatement pstmt;
-    ResultSet rs;
+    private Connection conn;
 
     
     /** Default constructor of the DBaction Class
      * 
      */
-    public DBaction()
+    public DBaction() throws SQLException
     {    
-        try
-        {
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/projet","projet","projet");
-            System.out.println("connection réussie");
-        }
-        catch (SQLException ex)
-        {
-            Logger.getLogger(DBaction.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.conn = DriverManager.getConnection("jdbc:derby://localhost:1527/projet","projet","projet");
+        System.out.println("connection réussie");
     }
     
     
@@ -46,115 +35,17 @@ public class DBaction
      * 
      * @return The Statement created from the database
      */
-    public Statement getPreparedStatement(String query)
+    public PreparedStatement getPreparedStatement(String query)
     {
         try
         {
-            this.pstmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            return conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         }
         catch (SQLException sqle)
         {
             System.out.println(sqle.getMessage());
+            return null;
         }
-        return this.pstmt;
-    }
-    
-    
-    /** Try to prepare a Statement from the database
-     * 
-     * @return The Statement created from the database
-     */
-    public void setString(int index, String value)
-    {
-        try
-        {
-            this.pstmt.setString(index, value);
-        }
-        catch (SQLException sqle)
-        {
-            System.out.println(sqle.getMessage());
-        }
-    }
-    
-    
-    /** Try to prepare a Statement from the database
-     * 
-     * @return The Statement created from the database
-     */
-    public void setInt(int index, int value)
-    {
-        try
-        {
-            this.pstmt.setInt(index, value);
-        }
-        catch (SQLException sqle)
-        {
-            System.out.println(sqle.getMessage());
-        }
-    }
-    
-    
-    /** Try to prepare a Statement from the database
-     * 
-     * @return The Statement created from the database
-     */
-    public ResultSet executeUpdate()
-    {
-        ResultSet rs = null;
-        try
-        {
-            int bool = this.pstmt.executeUpdate();
-            
-            if(bool == 1){
-                rs = this.pstmt.getGeneratedKeys();
-            }
-        }
-        catch (SQLException sqle)
-        {
-            System.out.println(sqle.getMessage());
-        }
-        
-        
-        return rs;
-    }
-    
-    
-    /** Try to create a Statement from the database
-     * 
-     * @return The Statement created from the database
-     */
-    public Statement getStatement()
-    {
-        try
-        {
-            stmt = conn.createStatement();
-        }
-        catch (SQLException sqle)
-        {
-            System.out.println(sqle.getMessage());
-        }
-        return stmt;
-    }
-    
-    
-    /** Returns a ResultSet from the database of a given SQL query
-     * 
-     * @param SQL_QUERY Syntax of the SQL query
-     * @return The ResultSet corresponding to the SQL query
-     */
-    public ResultSet executeQuery(String SQL_QUERY)
-    {
-        try
-        {
-            stmt = getStatement();
-            rs = stmt.executeQuery(SQL_QUERY);
-        }
-        catch (SQLException sqle)
-        {
-            System.out.println(sqle.getMessage());
-        }
-        
-        return rs;
     }
     
     public void postData(String first_name, String last_name, String home_phone, String cell_phone, String work_phone, String email, String rue, String code_postal, String ville){
