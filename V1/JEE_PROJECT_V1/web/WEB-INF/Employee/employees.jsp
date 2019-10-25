@@ -19,7 +19,7 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">Sél</th>
+                                <th scope="col">Sï¿½l</th>
                                 <th scope="col">NAME</th>
                                 <th scope="col">FIRST NAME</th>
                                 <th scope="col">HOME PHONE</th>
@@ -33,7 +33,6 @@
                         </thead>
                         <tbody>
                             <%
-                              
                                 ArrayList<Employee> employees = (ArrayList<Employee>)request.getAttribute("employees");
                                 for(Employee employee : employees)
                                 {
@@ -63,9 +62,9 @@
                                         out.println("                                <td>NA</td>");                                      
                                     }
                                     out.println("                                <td>" + employee.getEmail()+ "</td>");
+                                    */
                                     out.println("                            </tr>");
                                 }
-
                             %>
                         </tbody>
                     </table>

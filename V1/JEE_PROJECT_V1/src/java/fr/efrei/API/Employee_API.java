@@ -18,13 +18,10 @@ import java.util.ArrayList;
  *
  * @author Eddy
  */
-public class Employee_API {
-    
-    
-    
-    static public ArrayList<Employee> get_employees() throws SQLException{
-        // Francois's Code
-        
+public class Employee_API
+{
+    static public ArrayList<Employee> get_employees() throws SQLException
+    {
         DBaction db = new DBaction();
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
 
@@ -42,14 +39,16 @@ public class Employee_API {
             emp.setCell_phone(rs.getString("cell_phone"));
             emp.setWork_phone(rs.getString("work_phone"));
             emp.setEmail(rs.getString("e_mail"));
+            
             employees.add(emp);
 
-            
+            /*
             rs_adress = db.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = " + emp.getId());
             
             ArrayList<Adress> adresses = new ArrayList<Adress>();
             
-            while(rs_adress.next()){
+            while(rs_adress.next())
+            {
                 Adress addr = new Adress();
                 addr.setId(rs_adress.getInt("id"));
                 addr.setRue(rs_adress.getString("rue"));
@@ -60,6 +59,7 @@ public class Employee_API {
             }
             
             emp.setAdresses(adresses);
+            */
         }
         
         return employees;
