@@ -5,10 +5,12 @@
 --%>
 
 <%
-    if(session.getAttribute("role") == null
-            && !request.getRequestURI().equals( "/JEE_PROJECT_V1/WEB-INF/login.jsp" ) )
+    boolean sessionActive = (session.getAttribute("role") != null);
+    boolean isSecured = JSP_TEMPLATE_SECURITY;
+    
+    // rediriger vers le Login
+    if( !sessionActive && !isSecured )
     {
-        // rediriger vers le Login
         response.sendRedirect("login");
     }
 %>

@@ -7,7 +7,6 @@ package fr.efrei.controller;
 
 import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_SINGLE;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
