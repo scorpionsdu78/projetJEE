@@ -20,12 +20,18 @@
                     <hr/>
                     
                     <%
-                    
-                        Employee emp = (Employee)request.getAttribute("emp");
-                        System.out.println(emp);
+                        Employee emp = null;
                         Adress add = null;
-                        if(emp != null && emp.getAdresses()!=null)
-                            add= emp.getAdresses().get(0);
+                        
+                        if(request.getAttribute("emp") != null){
+                            
+                            emp = (Employee)request.getAttribute("emp");
+                            
+                            if(emp != null && emp.getAdresses()!= null){
+                                add = emp.getAdresses().get(0);
+                            }
+                        
+                        }
 
 
                     %>
@@ -42,36 +48,36 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="Employee_prenom" class="col-sm-2 col-form-label" style="text-align: right;">Prï¿½nom</label>
+                            <label for="Employee_prenom" class="col-sm-2 col-form-label" style="text-align: right;">Prénom</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_prenom" id="Employee_prenom" placeholder="Prï¿½nom"<%if(emp!=null){
+                                <input type="text" class="form-control" name="Employee_prenom" id="Employee_prenom" placeholder="Prénom"<%if(emp!=null){
                                     out.print("value="+emp.getFirst_name());
                                 }%>>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="Employee_tel_dom" class="col-sm-2 col-form-label" style="text-align: right;">Tï¿½l dom</label>
+                            <label for="Employee_tel_dom" class="col-sm-2 col-form-label" style="text-align: right;">Tél dom</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_tel_dom" id="Employee_tel_dom" placeholder="Tï¿½l dom"<%if(emp!=null){
+                                <input type="text" class="form-control" name="Employee_tel_dom" id="Employee_tel_dom" placeholder="Tél dom"<%if(emp!=null){
                                     out.print("value="+emp.getHome_phone());
                                 }%>>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="Employee_tel_mob" class="col-sm-2 col-form-label" style="text-align: right;">Tï¿½l mob</label>
+                            <label for="Employee_tel_mob" class="col-sm-2 col-form-label" style="text-align: right;">Tél mob</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_tel_mob" id="Employee_tel_mob" placeholder="Tï¿½l mob"<%if(emp!=null){
+                                <input type="text" class="form-control" name="Employee_tel_mob" id="Employee_tel_mob" placeholder="Tél mob"<%if(emp!=null){
                                     out.print("value="+emp.getCell_phone());
                                 }%>>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="Employee_tel_pro" class="col-sm-2 col-form-label" style="text-align: right;">Tï¿½l pro</label>
+                            <label for="Employee_tel_pro" class="col-sm-2 col-form-label" style="text-align: right;">Tél pro</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_tel_pro" id="Employee_tel_pro" placeholder="Tï¿½l pro"<%if(emp!=null){
+                                <input type="text" class="form-control" name="Employee_tel_pro" id="Employee_tel_pro" placeholder="Tél pro"<%if(emp!=null){
                                     out.print("value="+emp.getWork_phone());
                                 }%>>
                             </div>

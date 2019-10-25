@@ -34,20 +34,21 @@ public class Controller_Employee extends HttpServlet {
             
         if(request.getParameter("radio_employees_v1") == null){
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
+            return;
         }
         
-        else if(request.getParameter("button").equals("Delete")){
-            System.out.println("DELETE");
+        if(request.getParameter("button").equals("Delete")){
             //call the api to delete here
             response.sendRedirect("employees");
+            return;
         }
-        else if(request.getParameter("button").equals("Details")){
-            System.out.println("DETAILS");
+        if(request.getParameter("button").equals("Details")){
             //call the api to get the employee here
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
+            return;
         }
-        else
-            request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
+        
+        request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
