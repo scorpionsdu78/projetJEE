@@ -157,8 +157,10 @@ public class Employee_get extends HttpServlet
             dba.postData(First_name, Last_name, home_tel, mob_tel, pro_tel, email, street, postal, city);
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(Employee_get.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
+        
+        request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
     }
 
     /**

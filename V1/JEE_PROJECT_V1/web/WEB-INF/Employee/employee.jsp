@@ -44,7 +44,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Employee_nom" id="Employee_nom" placeholder="Nom" <%if(emp!=null){
                                     out.print("value="+emp.getLast_name());
-                                }%>>
+                                }%> required>
                             </div>
                         </div>
                             
@@ -54,7 +54,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Employee_prenom" id="Employee_prenom" placeholder="Prénom"<%if(emp!=null){
                                     out.print("value="+emp.getFirst_name());
-                                }%>>
+                                }%> required>
                             </div>
                         </div>
                             
@@ -64,7 +64,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Employee_tel_dom" id="Employee_tel_dom" placeholder="Tél dom"<%if(emp!=null){
                                     out.print("value="+emp.getHome_phone());
-                                }%>>
+                                }%> required>
                             </div>
                         </div>
                             
@@ -74,7 +74,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Employee_tel_mob" id="Employee_tel_mob" placeholder="Tél mob"<%if(emp!=null){
                                     out.print("value="+emp.getCell_phone());
-                                }%>>
+                                }%> required>
                             </div>
                         </div>
                             
@@ -84,7 +84,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Employee_tel_pro" id="Employee_tel_pro" placeholder="Tél pro"<%if(emp!=null){
                                     out.print("value="+emp.getWork_phone());
-                                }%>>
+                                }%> required>
                             </div>
                         </div>
                             
@@ -95,7 +95,7 @@
                                 <input type="text" class="form-control" name="Employee_street" id="Employee_adresse" placeholder="Adresse"<%if(add!=null){
                                     
                                     out.print("value="+add.getRue());
-                                }%>>
+                                }%> required>
                             </div>
                         </div>
                             
@@ -107,7 +107,7 @@
                                     
                                     out.print("value="+add.getCodePostal());
                                     System.out.println("value = "+add.getCodePostal());
-                                }%>>
+                                }%> required>
                             </div>
                         </div>
                             
@@ -118,7 +118,7 @@
                                 <input type="text" class="form-control" name="Employee_ville" id="Employee_ville" placeholder="Ville"<%if(add!=null){
                                     
                                     out.print("value="+add.getVille());
-                                }%>>
+                                }%> required>
                             </div>
                             
                             <label for="Employee_email" class="col-sm-2 col-form-label" style="text-align: right;">Adresse e-mail</label>
@@ -126,7 +126,7 @@
                             <div class="col-sm-3">
                                 <input type="text" class="form-control" name="Employee_email" id="Employee_email" placeholder="Adresse e-mail"<%if(emp!=null){
                                     out.print("value="+emp.getEmail());
-                                }%>>
+                                }%> required>
                             </div>
                         </div>
                         
