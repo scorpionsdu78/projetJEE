@@ -21,6 +21,7 @@ public class DBaction
 {    
     Connection conn;
     Statement stmt;
+    PreparedStatement pstmt;
     ResultSet rs;
 
     
@@ -49,13 +50,55 @@ public class DBaction
     {
         try
         {
-            stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            this.pstmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         }
         catch (SQLException sqle)
         {
             System.out.println(sqle.getMessage());
         }
-        return stmt;
+        return this.pstmt;
+    }
+    
+    
+    /** Try to prepare a Statement from the database
+     * 
+     * @return The Statement created from the database
+     */
+    public void setString(int index, String value)
+    {
+        try
+        {
+            this.pstmt.setString(index, value);
+        }
+        catch (SQLException sqle)
+        {
+            System.out.println(sqle.getMessage());
+        }
+    }
+    
+    
+    /** Try to prepare a Statement from the database
+     * 
+     * @return The Statement created from the database
+     */
+    public ResultSet executeUpdate()
+    {
+        ResultSet rs = null;
+        try
+        {
+            int bool = this.pstmt.executeUpdate();
+            
+            if(bool == 1){
+                rs = this.pstmt.getGeneratedKeys();
+            }
+        }
+        catch (SQLException sqle)
+        {
+            System.out.println(sqle.getMessage());
+        }
+        
+        
+        return rs;
     }
     
     

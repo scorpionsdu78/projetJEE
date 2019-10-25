@@ -25,10 +25,10 @@ public class Employee_API {
     static public ArrayList<Employee> get_employees() throws SQLException{
         // Francois's Code
         
-        DBaction dba = new DBaction();
+        DBaction db = new DBaction();
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
 
-        ResultSet rs = dba.getResultSet("SELECT * FROM EMPLOYEE");
+        ResultSet rs = db.executeQuery("SELECT * FROM EMPLOYEE");
         ResultSet rs_adress; 
         
 
@@ -45,7 +45,7 @@ public class Employee_API {
             employees.add(emp);
 
             
-            rs_adress = dba.getResultSet("SELECT * FROM ADRESS WHERE \"id_employee\" = 1");
+            rs_adress = db.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = 1");
             
             ArrayList<Adress> adresses = new ArrayList<Adress>();
             
@@ -73,10 +73,25 @@ public class Employee_API {
     
     static public int post_employee(String last_name, String first_name, String home_pho, String mob_pho, String email, String street, String postal, String city) throws SQLException{
         DBaction db = new DBaction();
-        Statement pstmt = db.getPreparedStatement(Constants.INSERT_EMPLOYEE);
+        db.getPreparedStatement(Constants.INSERT_EMPLOYEE);
         
-        pstmt.setString(1, first_name);
+        db.setString(1, last_name);
+        db.setString(2, first_name);
+        db.setString(3, home_pho);
+        db.setString(4, mob_pho);
+        db.setString(5, email);
         
-        stmt.
+        ResultSet rs = db.executeUpdate();
+        
+        if(rs != null){
+            rs.next();
+            int a = rs.getInt(1);
+            
+            
+            return a;
+        }
+        
+        
+        return 0;
     }
 }
