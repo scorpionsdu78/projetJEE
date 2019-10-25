@@ -58,10 +58,12 @@ public class Employee_API
                 addr.setCodePostal(rs_adress.getString("code_postal"));
                 addr.setComplement(rs_adress.getString("complement"));
                 addr.setBatiment(rs_adress.getString("batiment"));
+                
+                // We add the current adress to the list of Adresses
                 adresses.add(addr);
             }        
             
-            // We add the Addresses to the current Employee
+            // We add the Adresses to the current Employee
             emp.setAdresses(adresses);
             
             // We add the current Employee to the list

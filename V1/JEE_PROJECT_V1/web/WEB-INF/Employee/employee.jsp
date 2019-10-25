@@ -23,8 +23,9 @@
                         Employee emp = null;
                         Adress add = null;
                         
-                        if(request.getAttribute("emp") != null){
-                            
+                        
+                        if(request.getAttribute("emp") != null)
+                        {
                             emp = (Employee)request.getAttribute("emp");
                             
                             if(emp != null && !emp.getAdresses().isEmpty()){
@@ -33,11 +34,10 @@
                             
                         
                         }
-
-
                     %>
                     
                     <form action="Employee_get" method="POST">
+                        
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_nom" class="col-sm-2 col-form-label" style="text-align: right;">Nom</label>
@@ -47,6 +47,7 @@
                                 }%>>
                             </div>
                         </div>
+                            
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_prenom" class="col-sm-2 col-form-label" style="text-align: right;">Prénom</label>
@@ -56,6 +57,7 @@
                                 }%>>
                             </div>
                         </div>
+                            
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_tel_dom" class="col-sm-2 col-form-label" style="text-align: right;">Tél dom</label>
@@ -65,6 +67,7 @@
                                 }%>>
                             </div>
                         </div>
+                            
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_tel_mob" class="col-sm-2 col-form-label" style="text-align: right;">Tél mob</label>
@@ -74,6 +77,7 @@
                                 }%>>
                             </div>
                         </div>
+                            
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_tel_pro" class="col-sm-2 col-form-label" style="text-align: right;">Tél pro</label>
@@ -83,6 +87,7 @@
                                 }%>>
                             </div>
                         </div>
+                            
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_adresse" class="col-sm-2 col-form-label" style="text-align: right;">Adresse</label>
@@ -93,6 +98,7 @@
                                 }%>>
                             </div>
                         </div>
+                            
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_code_postal" class="col-sm-2 col-form-label" style="text-align: right;">Code postal</label>
@@ -100,9 +106,11 @@
                                 <input type="text" class="form-control" name="Employee_code_postal" id="Employee_code_postal" placeholder="Code postal" <%if(add!=null){
                                     
                                     out.print("value="+add.getCodePostal());
+                                    System.out.println("value = "+add.getCodePostal());
                                 }%>>
                             </div>
                         </div>
+                            
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_ville" class="col-sm-2 col-form-label" style="text-align: right;">Ville</label>
@@ -112,7 +120,9 @@
                                     out.print("value="+add.getVille());
                                 }%>>
                             </div>
+                            
                             <label for="Employee_email" class="col-sm-2 col-form-label" style="text-align: right;">Adresse e-mail</label>
+                            
                             <div class="col-sm-3">
                                 <input type="text" class="form-control" name="Employee_email" id="Employee_email" placeholder="Adresse e-mail"<%if(emp!=null){
                                     out.print("value="+emp.getEmail());
