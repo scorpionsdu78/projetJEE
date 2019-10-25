@@ -45,7 +45,7 @@ public class Employee_get extends HttpServlet
         DBaction dba = new DBaction();
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
 
-        ResultSet rs = dba.getResultSet("SELECT * FROM EMPLOYEE");
+        ResultSet rs = dba.executeQuery("SELECT * FROM EMPLOYEE");
         ResultSet rs_adress; 
         
 
@@ -62,7 +62,7 @@ public class Employee_get extends HttpServlet
             employees.add(emp);
 
             
-            rs_adress = dba.getResultSet("SELECT * FROM ADRESS WHERE \"id_employee\" = 1");
+            rs_adress = dba.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = 1");
             
             ArrayList<Adress> adresses = new ArrayList<Adress>();
             
