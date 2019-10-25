@@ -92,6 +92,7 @@ public class DBaction
             pstmt.executeUpdate();
             
             ResultSet local_rs = pstmt.getGeneratedKeys();
+
             if(local_rs != null){
                 local_rs.next();
                 int a = local_rs.getInt(1);
