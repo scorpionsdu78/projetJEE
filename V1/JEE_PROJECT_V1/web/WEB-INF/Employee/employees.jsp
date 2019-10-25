@@ -38,22 +38,18 @@
                                     out.println("                            <tr>");
                                     out.println("                                <td scope=\"row\"><input type=\"radio\" name=\"radio_employees_v1\" form=\"employee\" value=\"" + employee.getId() + "\"></td>");
                                     out.println("                                <td>" + employee.getLast_name() + "</td>");
+                                    out.println("                                <td>" + employee.getFirst_name()+ "</td>");
+                                    out.println("                                <td>" + employee.getHome_phone()+ "</td>");
+                                    out.println("                                <td>" + employee.getCell_phone()+ "</td>");
+                                    out.println("                                <td>" + employee.getWork_phone()+ "</td>");
+                                    out.println("                                <td>" + employee.getAdresses().get(0).getRue() + "</td>");
+                                    out.println("                                <td>" + employee.getAdresses().get(0).getVille() + "</td>");
+                                    out.println("                                <td>" + employee.getAdresses().get(0).getCodePostal() + "</td>");
+                                    out.println("                                <td>" + employee.getEmail()+ "</td>");
                                     out.println("                            </tr>");
                                 }
 
                             %>
-                            <tr>
-                                <td scope="row"><input type="radio" name="radio_employees_v1" form="employee" value="3"></td>
-                                <td>NAME</td>
-                                <td>FIRST NAME</td>
-                                <td>HOME PHONE</td>
-                                <td>MOBILE PHONE</td>
-                                <td>WORK PHONE</td>
-                                <td>ADRESS</td>
-                                <td>POSTAL CODE</td>
-                                <td>CITY</td>
-                                <td>EMAIL</td>
-                            </tr>
                         </tbody>
                     </table>
 
