@@ -33,35 +33,37 @@
                         </thead>
                         <tbody>
                             <%
-                                ArrayList<Employee> employees = (ArrayList<Employee>)request.getAttribute("employees");
-                                for(Employee employee : employees)
-                                {
-                                    out.println("                            <tr>");
-                                    out.println("                                <td scope=\"row\"><input type=\"radio\" name=\"radio_employees_v1\" form=\"employee\" value=\"" + employee.getId() + "\"></td>");
-                                    out.println("                                <td>" + employee.getLast_name() + "</td>");
-                                    out.println("                                <td>" + employee.getFirst_name()+ "</td>");
-                                    out.println("                                <td>" + employee.getHome_phone()+ "</td>");
-                                    out.println("                                <td>" + employee.getCell_phone()+ "</td>");
-                                    out.println("                                <td>" + employee.getWork_phone()+ "</td>");
-                                    
-                                    
-                                    if(  !employee.getAdresses().isEmpty() )
+                                if(request.getAttribute("employees") != null){
+                                    ArrayList<Employee> employees = (ArrayList<Employee>)request.getAttribute("employees");
+                                    for(Employee employee : employees)
                                     {
-                                       Adress add = employee.getAdresses().get(0);
-                                        
-                                        out.println("                                <td>" + add.getRue() + "</td>");
-                                        out.println("                                <td>" + add.getCodePostal() +  "</td>");
-                                        out.println("                                <td>" + add.getVille() +  "</td>");
+                                        out.println("                            <tr>");
+                                        out.println("                                <td scope=\"row\"><input type=\"radio\" name=\"radio_employees_v1\" form=\"employee\" value=\"" + employee.getId() + "\"></td>");
+                                        out.println("                                <td>" + employee.getLast_name() + "</td>");
+                                        out.println("                                <td>" + employee.getFirst_name()+ "</td>");
+                                        out.println("                                <td>" + employee.getHome_phone()+ "</td>");
+                                        out.println("                                <td>" + employee.getCell_phone()+ "</td>");
+                                        out.println("                                <td>" + employee.getWork_phone()+ "</td>");
+
+
+                                        if(  !employee.getAdresses().isEmpty() )
+                                        {
+                                           Adress add = employee.getAdresses().get(0);
+
+                                            out.println("                                <td>" + add.getRue() + "</td>");
+                                            out.println("                                <td>" + add.getCodePostal() +  "</td>");
+                                            out.println("                                <td>" + add.getVille() +  "</td>");
+                                        }
+                                        else
+                                        {
+                                            out.println("                                <td>NA</td>");
+                                            out.println("                                <td>NA</td>");
+                                            out.println("                                <td>NA</td>");                                      
+                                        }
+
+                                        out.println("                                <td>" + employee.getEmail()+ "</td>");
+                                        out.println("                            </tr>");
                                     }
-                                    else
-                                    {
-                                        out.println("                                <td>NA</td>");
-                                        out.println("                                <td>NA</td>");
-                                        out.println("                                <td>NA</td>");                                      
-                                    }
-                                    
-                                    out.println("                                <td>" + employee.getEmail()+ "</td>");
-                                    out.println("                            </tr>");
                                 }
                             %>
                         </tbody>
