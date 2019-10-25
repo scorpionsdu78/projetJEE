@@ -82,7 +82,7 @@ public class DBaction
     public void postData(String first_name, String last_name, String home_phone, String cell_phone, String work_phone, String email){
         
         try {
-            PreparedStatement pstmt = conn.prepareStatement(INSERT_EMPLOYEE);
+            PreparedStatement pstmt = conn.prepareStatement(INSERT_EMPLOYEE, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, first_name);
             pstmt.setString(2, last_name);
             pstmt.setString(3, home_phone);
@@ -93,6 +93,7 @@ public class DBaction
             
             ResultSet local_rs = pstmt.getGeneratedKeys();
             if(local_rs !=null){
+                local_rs.next();
                 int a = local_rs.getInt(1);
                 System.out.println(a);
             }
