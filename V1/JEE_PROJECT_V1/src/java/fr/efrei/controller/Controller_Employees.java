@@ -5,9 +5,13 @@
  */
 package fr.efrei.controller;
 
+import fr.efrei.API.Employee_API;
+import fr.efrei.jeeproject.Employee;
 import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_ALL;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +36,14 @@ public class Controller_Employees extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
+        try{
+            ArrayList<Employee> employees = Employee_API.get_employees();
+            request.setAttribute("employees", employees);
+            request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
+        }catch(SQLException e){
+            System.out.printf(e.getMessage());
+            request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
