@@ -5,7 +5,6 @@
  */
 package fr.efrei.controller;
 
-import static fr.efrei.jeeproject.Constants.JSP_PAGE_LOGIN;
 import static fr.efrei.jeeproject.Constants.JSP_PAGE_LOGOUT;
 import java.io.IOException;
 import javax.servlet.ServletException;
