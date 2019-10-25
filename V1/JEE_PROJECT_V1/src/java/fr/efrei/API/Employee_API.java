@@ -39,13 +39,13 @@ public class Employee_API {
             emp.setFirst_name(rs.getString("fisrt_name"));
             emp.setLast_name(rs.getString("last_name"));
             emp.setHome_phone(rs.getString("home_phone"));
-            emp.setCell_phone("cell_phone");
+            emp.setCell_phone(rs.getString("cell_phone"));
             emp.setWork_phone(rs.getString("work_phone"));
-            emp.setEmail("e_mail");
+            emp.setEmail(rs.getString("e_mail"));
             employees.add(emp);
 
             
-            rs_adress = db.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = 1");
+            rs_adress = db.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = " + emp.getId());
             
             ArrayList<Adress> adresses = new ArrayList<Adress>();
             
@@ -53,7 +53,7 @@ public class Employee_API {
                 Adress addr = new Adress();
                 addr.setId(rs_adress.getInt("id"));
                 addr.setRue(rs_adress.getString("rue"));
-                addr.setVille("ville");
+                addr.setVille(rs.getString("ville"));
                 addr.setComplement(rs_adress.getString("complement"));
                 addr.setBatiment(rs_adress.getString("batiment"));
                 adresses.add(addr);
@@ -87,6 +87,14 @@ public class Employee_API {
             rs.next();
             int a = rs.getInt(1);
             
+            db.getPreparedStatement(Constants.INSERT_ADRESS);
+            db.setString(1, street);
+            db.setString(2, postal);
+            db.setString(3, city);
+            db.setInt(4, a);
+            System.out.println("update ready");
+            db.executeUpdate();
+            System.out.println("updated?");
             
             return a;
         }
