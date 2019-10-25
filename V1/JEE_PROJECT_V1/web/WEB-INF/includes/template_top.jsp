@@ -8,10 +8,22 @@
     boolean sessionActive = (session.getAttribute("role") != null);
     boolean isSecured = JSP_TEMPLATE_SECURITY;
     
-    // rediriger vers le Login
+    System.out.println( request.getRequestURI());
+    System.out.println( request.getRequestURI().equals("/JEE_PROJECT_V1/WEB-INF/login.jsp") );
+    System.out.println( "\n");
+    
+    // If we have no session and we are not in a secured page 
+    // --> LOGIN
     if( !sessionActive && !isSecured )
     {
         response.sendRedirect("login");
+    }    
+    
+    // If we have a session and we want to access the Login 
+    // --> EMPLOYEES
+    if( sessionActive && request.getRequestURI().equals("/JEE_PROJECT_V1/WEB-INF/login.jsp"))
+    {
+        response.sendRedirect("employees");
     }
 %>
 
