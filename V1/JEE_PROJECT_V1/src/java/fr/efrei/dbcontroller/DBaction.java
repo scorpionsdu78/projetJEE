@@ -81,6 +81,23 @@ public class DBaction
      * 
      * @return The Statement created from the database
      */
+    public void setInt(int index, int value)
+    {
+        try
+        {
+            this.pstmt.setInt(index, value);
+        }
+        catch (SQLException sqle)
+        {
+            System.out.println(sqle.getMessage());
+        }
+    }
+    
+    
+    /** Try to prepare a Statement from the database
+     * 
+     * @return The Statement created from the database
+     */
     public ResultSet executeUpdate()
     {
         ResultSet rs = null;
@@ -127,9 +144,9 @@ public class DBaction
      */
     public ResultSet executeQuery(String SQL_QUERY)
     {
-        stmt = getStatement();
         try
         {
+            stmt = getStatement();
             rs = stmt.executeQuery(SQL_QUERY);
         }
         catch (SQLException sqle)
