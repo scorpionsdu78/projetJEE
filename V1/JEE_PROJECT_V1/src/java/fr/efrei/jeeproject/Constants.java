@@ -25,6 +25,10 @@ public class Constants
     public static final String FORM_EMPLOYEE_POSTAL = "Employee_code_postal";
     public static final String FORM_EMPLOYEE_CITY = "Employee_ville";
     
+    
+    // Form employess 
+    public static final String FORM_EMPLOYEES_EMPLOYEE = "radio_employees_v1";
+    
     // QUERY SQL
     public static final String INSERT_EMPLOYEE = "INSERT INTO EMPLOYEE(\"fisrt_name\",\"last_name\",\"home_phone\",\"cell_phone\",\"work_phone\",\"e_mail\") VALUES(?,?,?,?,?,?)";
     public static final String INSERT_ADRESS = "INSERT INTO ADRESS(\"rue\",\"code_postal\",\"ville\",\"id_employee\") VALUES(?,?,?,?)";
