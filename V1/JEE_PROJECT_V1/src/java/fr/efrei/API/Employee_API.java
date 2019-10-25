@@ -47,8 +47,11 @@ public class Employee_API
             ArrayList<Adress> adresses = new ArrayList<Adress>();
             
             
+            psmt = db.getPreparedStatement("SELECT * FROM ADRESS WHERE \"id_employee\" = ?");
+            psmt.setInt(1, emp.getId());
+        
             // We get all the adress of the given employee (we verify the ID)
-            ResultSet rs_adress = psmt.executeQuery("SELECT * FROM ADRESS WHERE \"id_employee\" = " + emp.getId());
+            ResultSet rs_adress = psmt.executeQuery();
             while( rs_adress.next() )
             {
                 Adress addr = new Adress();
@@ -89,7 +92,7 @@ public class Employee_API
             
         Employee emp = new Employee();
         emp.setId(rs.getInt("id"));
-        emp.setFirst_name(rs.getString("fisrt_name"));
+        emp.setFirst_name(rs.getString("first_name"));
         emp.setLast_name(rs.getString("last_name"));
         emp.setHome_phone(rs.getString("home_phone"));
         emp.setCell_phone(rs.getString("cell_phone"));
@@ -106,6 +109,7 @@ public class Employee_API
             Adress addr = new Adress();
             addr.setId(rsAdress.getInt("id"));
             addr.setRue(rsAdress.getString("rue"));
+            addr.setCodePostal(rsAdress.getString("code_postal"));
             addr.setVille(rsAdress.getString("ville"));
             addr.setComplement(rsAdress.getString("complement"));
             addr.setBatiment(rsAdress.getString("batiment"));

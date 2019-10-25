@@ -120,7 +120,7 @@ public class Employee_get extends HttpServlet
             
             Employee emp = Employee_API.get_employee_byID(id);
             
-            request.setAttribute("emp",emp);
+            request.setAttribute("employee",emp);
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
         }
         catch (SQLException ex)
@@ -156,11 +156,13 @@ public class Employee_get extends HttpServlet
             DBaction dba = new DBaction();
             dba.postData(First_name, Last_name, home_tel, mob_tel, pro_tel, email, street, postal, city);
             processRequest(request, response);
+            return;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         
         request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
+        return;
     }
 
     /**

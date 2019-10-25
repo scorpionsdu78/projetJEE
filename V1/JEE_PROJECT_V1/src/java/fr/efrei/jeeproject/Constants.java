@@ -30,7 +30,7 @@ public class Constants
     public static final String FORM_EMPLOYEES_EMPLOYEE = "radio_employees_v1";
     
     // QUERY SQL
-    public static final String INSERT_EMPLOYEE = "INSERT INTO EMPLOYEE(\"fisrt_name\",\"last_name\",\"home_phone\",\"cell_phone\",\"work_phone\",\"e_mail\") VALUES(?,?,?,?,?,?)";
+    public static final String INSERT_EMPLOYEE = "INSERT INTO EMPLOYEE(\"first_name\",\"last_name\",\"home_phone\",\"cell_phone\",\"work_phone\",\"e_mail\") VALUES(?,?,?,?,?,?)";
     public static final String INSERT_ADRESS = "INSERT INTO ADRESS(\"rue\",\"code_postal\",\"ville\",\"id_employee\") VALUES(?,?,?,?)";
     // JSP File's location
     public static final String JSP_PAGE_LOGIN = "WEB-INF/login.jsp";
