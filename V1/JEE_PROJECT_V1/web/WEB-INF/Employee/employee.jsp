@@ -36,8 +36,15 @@
                         }
                     %>
                     
-                    <form action="Employee_get" method="POST">
+                    <%
+                        if(emp == null){
+                            out.print(" <form action=\"Employee_get\" method=\"POST\">");
+                        }else{
+                            out.print( "<form action=\"Controller_Employee_put\" method=\"POST\">");
+                        }
                         
+                    
+                     %>  
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_nom" class="col-sm-2 col-form-label" style="text-align: right;">Nom</label>
@@ -129,6 +136,14 @@
                             </div>
                         </div>
                         
+                        <%if(emp!=null){
+                            out.print("<input type=\"hidden\" id=\"empID\" name=\"empID\" value="+emp.getId()+">" );
+                        }%> 
+                        
+                        <%if(add!=null){
+                            out.print("<input type=\"hidden\" id=\"addID\" name=\"addID\" value="+add.getId()+">" );
+                        }%> 
+                            
                         <hr/>
                         
                         <div class="col-sm-11">

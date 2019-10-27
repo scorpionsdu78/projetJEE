@@ -24,7 +24,8 @@ public class Constants
     public static final String FORM_EMPLOYEE_STREET = "Employee_street";
     public static final String FORM_EMPLOYEE_POSTAL = "Employee_code_postal";
     public static final String FORM_EMPLOYEE_CITY = "Employee_ville";
-    
+    public static final String FORM_EMPLOYEE_ID = "empID";
+    public static final String FORM_EMPLOYEE_AID = "addID";
     
     // Form employess 
     public static final String FORM_EMPLOYEES_EMPLOYEE = "radio_employees_v1";
@@ -32,6 +33,9 @@ public class Constants
     // QUERY SQL
     public static final String INSERT_EMPLOYEE = "INSERT INTO EMPLOYEE(\"first_name\",\"last_name\",\"home_phone\",\"cell_phone\",\"work_phone\",\"e_mail\") VALUES(?,?,?,?,?,?)";
     public static final String INSERT_ADRESS = "INSERT INTO ADRESS(\"rue\",\"code_postal\",\"ville\",\"id_employee\") VALUES(?,?,?,?)";
+    public static final String UPDATE_EMPLOYEE ="UPDATE EMPLOYEE SET \"first_name\"=?, \"last_name\"=?, \"home_phone\"=?, \"cell_phone\"=?, \"work_phone\"=?, \"e_mail\"=? where \"id\"=?";
+    public static final String UPDATE_ADRESS = "UPDATE ADRESS SET \"rue\"=?, \"code_postal\"=?, \"ville\"=? where \"id\"=? ";
+    
     // JSP File's location
     public static final String JSP_PAGE_LOGIN = "WEB-INF/login.jsp";
     public static final String JSP_PAGE_LOGOUT = "WEB-INF/logout.jsp";

@@ -159,12 +159,13 @@ public class Employee_API
         return 0;
     }
     
-    static public int putEmployee(int id, String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city){
+    static public int putEmployee(int id, String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city, int idadd){
         
         DBaction db;
         try {
             db = new DBaction();
             PreparedStatement psmt = db.getPreparedStatement(Constants.UPDATE_EMPLOYEE);
+            PreparedStatement psmt2 = db.getPreparedStatement(Constants.UPDATE_ADRESS);
             
             psmt.setString(1, last_name);
             psmt.setString(2, first_name);
@@ -176,6 +177,14 @@ public class Employee_API
             psmt.setInt(7, id);
             
             psmt.executeUpdate();
+            
+            psmt2.setString(1, street);
+            psmt2.setString(2, postal);
+            psmt2.setString(3, city);
+            
+            psmt2.setInt(4, idadd);
+            
+            psmt2.executeUpdate();
             
             return 0;
                     
