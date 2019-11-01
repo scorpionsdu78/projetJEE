@@ -44,6 +44,7 @@ public class Controller_Employee extends HttpServlet
         if(request.getParameter("button").equals("Delete"))
         {
             //call the api to delete here
+            Employee_API.delete(Integer.valueOf(request.getParameter("radio_employees_v1")));
             response.sendRedirect("employees");
             return;
         }

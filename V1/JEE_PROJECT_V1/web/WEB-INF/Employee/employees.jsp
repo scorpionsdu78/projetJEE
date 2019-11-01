@@ -78,7 +78,7 @@
                     
                     <div>
                         
-                        <form class="d-inline" action="Employee_get" method="GET" id="employee">
+                        <form class="d-inline" action="employee" method="GET" id="employee">
                             <input type="radio" name="radio_employees_v1" hidden required>
                             <input type="submit" class="btn btn-primary" name="button" value="Delete">
                             <input type="submit" class="btn btn-primary" name="button" value="Details">

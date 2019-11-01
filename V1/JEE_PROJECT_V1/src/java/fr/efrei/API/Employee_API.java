@@ -8,6 +8,8 @@ package fr.efrei.API;
 import fr.efrei.dbcontroller.DBaction;
 import fr.efrei.jeeproject.Adress;
 import fr.efrei.jeeproject.Constants;
+import static fr.efrei.jeeproject.Constants.DELETE_ADRESS;
+import static fr.efrei.jeeproject.Constants.DELETE_EMPLOYEE;
 import fr.efrei.jeeproject.Employee;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -186,11 +188,33 @@ public class Employee_API
             
             psmt2.executeUpdate();
             
-            return 0;
+            return 1;
                     
         } catch (SQLException ex) {
             Logger.getLogger(Employee_API.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
+    }
+    
+    static public void delete(int id){
+        try {
+            DBaction dba = new DBaction();
+            PreparedStatement delete_adress = dba.getPreparedStatement(DELETE_ADRESS);
+            PreparedStatement delete_employee = dba.getPreparedStatement(DELETE_EMPLOYEE);
+            
+            ResultSet rsAdress; 
+            rsAdress = dba.getPreparedStatement("SELECT * FROM ADRESS WHERE \"id_employee\" = "+id).executeQuery();
+            
+            while(rsAdress.next()){
+                delete_adress.setInt(1,rsAdress.getInt(1));
+                delete_adress.executeUpdate();
+            }
+            
+            delete_employee.setInt(1, id);
+            delete_employee.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Employee_API.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
