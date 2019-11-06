@@ -36,16 +36,29 @@ public class Controller_Employees extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
+        if(request.getSession().getAttribute("JSP_TEMPLATE_SQL_ERROR") != null){
+            request.setAttribute("JSP_TEMPLATE_SQL_ERROR", request.getSession().getAttribute("JSP_TEMPLATE_SQL_ERROR"));
+            request.getSession().removeAttribute("JSP_TEMPLATE_SQL_ERROR");
+        }
+        
+        if(request.getSession().getAttribute("highlight_ID") != null){
+            request.setAttribute("highlight_ID", request.getSession().getAttribute("highlight_ID"));
+            request.getSession().removeAttribute("highlight_ID");
+        }
+        
         try
         {
-            ArrayList<Employee> employees = Employee_API.get_employees();
+            ArrayList<Employee> employees = Employee_API.GET();
             request.setAttribute("employees", employees);
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
+            return;
         }
         catch(SQLException e)
         {
-            System.out.printf(e.getMessage());
+            System.out.println(e.getMessage());
+            request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
+            return;
         }
     }
 

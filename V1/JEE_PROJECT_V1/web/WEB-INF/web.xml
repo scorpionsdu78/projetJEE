@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-   
     <session-config>
         <session-timeout>
             30
@@ -71,22 +70,12 @@
     </servlet-mapping>
     <!-- End Employees -->
     <servlet>
-        <servlet-name>Employee_get</servlet-name>
-        <servlet-class>fr.efrei.API.Employee_get</servlet-class>
+        <servlet-name>Controller_Employee_put</servlet-name>
+        <servlet-class>fr.efrei.controller.Controller_Employee_PUT</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Employee_get</servlet-name>
-        <url-pattern>/Employee_get</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>Controller_Employee_put</servlet-name>
-        <servlet-class>fr.efrei.controller.Controller_Employee_put</servlet-class>
-    </servlet>
-     <servlet-mapping>
         <servlet-name>Controller_Employee_put</servlet-name>
         <url-pattern>/Controller_Employee_put</url-pattern>
     </servlet-mapping>
-    
     <!-- End servlets config -->
 </web-app>

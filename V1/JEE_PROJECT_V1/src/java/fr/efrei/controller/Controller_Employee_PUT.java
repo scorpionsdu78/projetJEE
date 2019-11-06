@@ -11,17 +11,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Eddy
+ * @author francois
  */
-@WebServlet(name = "Controller_POST_Employee", urlPatterns = {"/Controller_POST_Employee"})
-public class Controller_POST_Employee extends HttpServlet {
+public class Controller_Employee_PUT extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,28 +32,40 @@ public class Controller_POST_Employee extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         
+        /* TODO output your page here. You may use following sample code. */
+        String last_name = request.getParameter(FORM_EMPLOYEE_LAST_NAME);
+        String first_name = request.getParameter(FORM_EMPLOYEE_FIRST_NAME);
+        String home_tel = request.getParameter(FORM_EMPLOYEE_HOME_PHO);
+        String mob_tel = request.getParameter(FORM_EMPLOYEE_MOB_PHO);
+        String pro_tel = request.getParameter(FORM_EMPLOYEE_PRO_PHO);
+        String email = request.getParameter(FORM_EMPLOYEE_EMAIL);
+        String street = request.getParameter(FORM_EMPLOYEE_STREET);
+        String postal = request.getParameter(FORM_EMPLOYEE_POSTAL);
+        String city = request.getParameter(FORM_EMPLOYEE_CITY);
+        int id = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_ID));
+        int idadd = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_AID));
+        
+        
+        System.out.println(last_name + first_name + home_tel + mob_tel + pro_tel + email + id);
+
         try{
-            String last_name = request.getParameter(FORM_EMPLOYEE_LAST_NAME);
-            String first_name = request.getParameter(FORM_EMPLOYEE_FIRST_NAME);
-            String home_tel = request.getParameter(FORM_EMPLOYEE_HOME_PHO);
-            String mob_tel = request.getParameter(FORM_EMPLOYEE_MOB_PHO);
-            String pro_tel = request.getParameter(FORM_EMPLOYEE_PRO_PHO);
-            String email = request.getParameter(FORM_EMPLOYEE_EMAIL);
-            String street = request.getParameter(FORM_EMPLOYEE_STREET);
-            String postal = request.getParameter(FORM_EMPLOYEE_POSTAL);
-            String city = request.getParameter(FORM_EMPLOYEE_CITY);
-            
-            int id = Employee_API.post_employee(last_name, first_name, home_tel, mob_tel, pro_tel, email, street, postal, city);
-            
-            request.setAttribute("new_employee_ID", id);
-            request.getRequestDispatcher("employees").forward(request, response);
-            return;
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-            request.getRequestDispatcher("employees").forward(request, response);
+            Employee_API.PUT(id,last_name,first_name, home_tel,  mob_tel,  pro_tel,  email, street,  postal,  city, idadd);
+
+            request.getSession().setAttribute("highlight_ID", id);
+            response.sendRedirect("employees");
             return;
         }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+            response.sendRedirect("employees");
+            return;
+        }
+
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -96,5 +106,7 @@ public class Controller_POST_Employee extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+   
 
 }

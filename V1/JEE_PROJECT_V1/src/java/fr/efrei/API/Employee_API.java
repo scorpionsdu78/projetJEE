@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  */
 public class Employee_API
 {
-    static public ArrayList<Employee> get_employees()
+    static public ArrayList<Employee> GET()
             throws SQLException
     {
         DBaction db = new DBaction();
@@ -81,7 +81,7 @@ public class Employee_API
     }
     
     
-    static public Employee get_employee_byID(int id)
+    static public Employee GET(int id)
             throws SQLException
     {
         
@@ -125,7 +125,7 @@ public class Employee_API
     }
     
     
-    static public int post_employee(String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city)
+    static public int POST(String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city)
             throws SQLException
     {
         DBaction db = new DBaction();
@@ -161,60 +161,50 @@ public class Employee_API
         return 0;
     }
     
-    static public int putEmployee(int id, String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city, int idadd){
+    static public void PUT(int id, String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city, int idadd)
+        throws SQLException
+    {
         
-        DBaction db;
-        try {
-            db = new DBaction();
-            PreparedStatement psmt = db.getPreparedStatement(Constants.UPDATE_EMPLOYEE);
-            PreparedStatement psmt2 = db.getPreparedStatement(Constants.UPDATE_ADRESS);
-            
-            psmt.setString(1, last_name);
-            psmt.setString(2, first_name);
-            psmt.setString(3, home_pho);
-            psmt.setString(4, mob_pho);
-            psmt.setString(5, work_pho);
-            psmt.setString(6, email);
-            
-            psmt.setInt(7, id);
-            
-            psmt.executeUpdate();
-            
-            psmt2.setString(1, street);
-            psmt2.setString(2, postal);
-            psmt2.setString(3, city);
-            
-            psmt2.setInt(4, idadd);
-            
-            psmt2.executeUpdate();
-            
-            return 1;
-                    
-        } catch (SQLException ex) {
-            Logger.getLogger(Employee_API.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+        DBaction db = new DBaction();
+        PreparedStatement psmt = db.getPreparedStatement(Constants.UPDATE_EMPLOYEE);
+        PreparedStatement psmt2 = db.getPreparedStatement(Constants.UPDATE_ADRESS);
+
+        psmt.setString(1, last_name);
+        psmt.setString(2, first_name);
+        psmt.setString(3, home_pho);
+        psmt.setString(4, mob_pho);
+        psmt.setString(5, work_pho);
+        psmt.setString(6, email);
+
+        psmt.setInt(7, id);
+
+        psmt.executeUpdate();
+
+        psmt2.setString(1, street);
+        psmt2.setString(2, postal);
+        psmt2.setString(3, city);
+
+        psmt2.setInt(4, idadd);
+
+        psmt2.executeUpdate();
     }
     
-    static public void delete(int id){
-        try {
-            DBaction dba = new DBaction();
-            PreparedStatement delete_adress = dba.getPreparedStatement(DELETE_ADRESS);
-            PreparedStatement delete_employee = dba.getPreparedStatement(DELETE_EMPLOYEE);
-            
-            ResultSet rsAdress; 
-            rsAdress = dba.getPreparedStatement("SELECT * FROM ADRESS WHERE \"id_employee\" = "+id).executeQuery();
-            
-            while(rsAdress.next()){
-                delete_adress.setInt(1,rsAdress.getInt(1));
-                delete_adress.executeUpdate();
-            }
-            
-            delete_employee.setInt(1, id);
-            delete_employee.executeUpdate();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(Employee_API.class.getName()).log(Level.SEVERE, null, ex);
+    static public void DELETE(int id)
+        throws SQLException
+    {
+        DBaction dba = new DBaction();
+        PreparedStatement delete_adress = dba.getPreparedStatement(DELETE_ADRESS);
+        PreparedStatement delete_employee = dba.getPreparedStatement(DELETE_EMPLOYEE);
+
+        ResultSet rsAdress; 
+        rsAdress = dba.getPreparedStatement("SELECT * FROM ADRESS WHERE \"id_employee\" = "+id).executeQuery();
+
+        while(rsAdress.next()){
+            delete_adress.setInt(1,rsAdress.getInt(1));
+            delete_adress.executeUpdate();
         }
+
+        delete_employee.setInt(1, id);
+        delete_employee.executeUpdate();
     }
 }

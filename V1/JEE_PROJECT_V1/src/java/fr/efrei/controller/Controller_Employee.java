@@ -44,14 +44,14 @@ public class Controller_Employee extends HttpServlet
         if(request.getParameter("button").equals("Delete"))
         {
             //call the api to delete here
-            Employee_API.delete(Integer.valueOf(request.getParameter("radio_employees_v1")));
+            Employee_API.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
             response.sendRedirect("employees");
             return;
         }
         if(request.getParameter("button").equals("Details"))
         {
             try{//call the api to get the employee here
-                Employee employee = Employee_API.get_employee_byID((Integer.valueOf(request.getParameter("radio_employees_v1"))));
+                Employee employee = Employee_API.GET((Integer.valueOf(request.getParameter("radio_employees_v1"))));
                 request.setAttribute("employee", employee);
             }catch(SQLException e){
                 System.out.println(e.getMessage());

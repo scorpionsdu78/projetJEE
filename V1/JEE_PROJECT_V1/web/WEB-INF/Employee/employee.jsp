@@ -7,7 +7,7 @@
 <%@page import="fr.efrei.jeeproject.Adress"%>
 <%@page import="fr.efrei.jeeproject.Employee"%>
 <% String JSP_TEMPLATE_TITLE = "Employee"; %>
-<% boolean JSP_TEMPLATE_SECURITY = false; %>
+<% boolean JSP_TEMPLATE_SECURITY = true; %>
 
 <%@include file="../includes/template_top.jsp" %>
 
@@ -38,7 +38,7 @@
                     
                     <%
                         if(emp == null){
-                            out.print(" <form action=\"Employee_get\" method=\"POST\">");
+                            out.print(" <form action=\"Controller_POST_Employee\" method=\"POST\">");
                         }else{
                             out.print( "<form action=\"Controller_Employee_put\" method=\"POST\">");
                         }

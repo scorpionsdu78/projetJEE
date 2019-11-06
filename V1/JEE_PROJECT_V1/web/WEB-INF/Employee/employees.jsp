@@ -7,8 +7,9 @@
 <%@page import="fr.efrei.jeeproject.Adress"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="fr.efrei.jeeproject.Employee"%>
-<% String JSP_TEMPLATE_TITLE = "Employee list"; %>
-<% boolean JSP_TEMPLATE_SECURITY = false; %>
+
+<% String JSP_TEMPLATE_TITLE = "Employees list"; %>
+<% boolean JSP_TEMPLATE_SECURITY = true; %>
 
 <%@include file="../includes/template_top.jsp" %>
 
@@ -37,7 +38,14 @@
                                     ArrayList<Employee> employees = (ArrayList<Employee>)request.getAttribute("employees");
                                     for(Employee employee : employees)
                                     {
-                                        out.println("                            <tr>");
+                                        out.println("                            <tr style=\"cursor: pointer;");
+                                        try{
+                                            if(request.getAttribute("highlight_ID").equals(employee.getId()))
+                                            out.println(" border-left: 2px solid red; border-right: 2px solid red;");
+                                        }catch(NullPointerException e){
+                                        }
+                                        out.println("\">");
+
                                         out.println("                                <td scope=\"row\"><input type=\"radio\" name=\"radio_employees_v1\" form=\"employee\" value=\"" + employee.getId() + "\"></td>");
                                         out.println("                                <td>" + employee.getLast_name() + "</td>");
                                         out.println("                                <td>" + employee.getFirst_name()+ "</td>");
@@ -94,6 +102,14 @@
             </div>
                         
             <%@include file="../Misc/frozen_2.jsp" %>
+            
+            <script>
+                
+                $('table tbody tr').click(function(){
+                    $(this).find('input[type=radio]').prop('checked', true);
+                });
+              
+            </script>
                                     
         </div>
 <%@include file="../includes/template_bot.jsp" %>
