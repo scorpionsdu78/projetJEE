@@ -147,13 +147,18 @@
                         }%> 
                             
                         <hr/>
-                        
-                        <div class="col-sm-11">
-                            <div class="float-right">
-                                <input type="submit" class="btn btn-primary" value="Save">
-                                <a class="btn btn-danger" href="employees">Cancel</a>
-                            </div>
-                        </div>
+                        <%
+                            // If the user is an ADMIN, he can access the BUTTONS
+                            if( session.getAttribute("role").equals( "admin") )
+                            {
+                                out.println("<div class=\"col-sm-11\">");
+                                out.println("   <div class=\"float-right\">");
+                                out.println("       <input type=\"submit\" class=\"btn btn-primary\" value=\"Save\">");
+                                out.println("       <a class=\"btn btn-danger\" href=\"employees\">Cancel</a>");
+                                out.println("   </div>");
+                                out.println("</div>");
+                            }
+                        %>
                         
                     </form>
                     
