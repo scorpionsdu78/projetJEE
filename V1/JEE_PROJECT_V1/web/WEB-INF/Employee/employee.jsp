@@ -28,18 +28,20 @@
                         {
                             emp = (Employee)request.getAttribute("employee");
                             
-                            if(emp != null && !emp.getAdresses().isEmpty()){
+                            if(emp != null && !emp.getAdresses().isEmpty())
+                            {
                                 add = emp.getAdresses().get(0);
                             }
-                            
-                        
                         }
                     %>
                     
                     <%
-                        if(emp == null){
+                        if(emp == null)
+                        {
                             out.print(" <form action=\"Controller_POST_Employee\" method=\"POST\">");
-                        }else{
+                        }
+                        else
+                        {
                             out.print( "<form action=\"Controller_Employee_put\" method=\"POST\">");
                         }
                         

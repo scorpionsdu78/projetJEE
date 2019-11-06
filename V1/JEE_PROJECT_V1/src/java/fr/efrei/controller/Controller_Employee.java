@@ -46,11 +46,24 @@ public class Controller_Employee extends HttpServlet
         
         if(request.getParameter("button").equals("Delete"))
         {
-            try {
+
+            try
+            {
+                // if the user is an employee and not an admin
+                // REDIRECT to the main page
+                String role = (String)request.getSession().getAttribute("role");
+                if( role.equals( "employee" ) )
+                {
+                    response.sendRedirect("employees");
+                    return;
+                }
+                    
                 //call the api to delete here
                 Employee_API.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
-            } catch (SQLException ex) {
-                Logger.getLogger(Controller_Employee.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            catch(SQLException e)
+            {
+                System.out.println(e.getMessage());
             }
             response.sendRedirect("employees");
             return;

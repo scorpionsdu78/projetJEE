@@ -34,15 +34,19 @@
                         </thead>
                         <tbody>
                             <%
-                                if(request.getAttribute("employees") != null){
+                                if(request.getAttribute("employees") != null)
+                                {
                                     ArrayList<Employee> employees = (ArrayList<Employee>)request.getAttribute("employees");
                                     for(Employee employee : employees)
                                     {
                                         out.println("                            <tr style=\"cursor: pointer;");
-                                        try{
+                                        try
+                                        {
                                             if(request.getAttribute("highlight_ID").equals(employee.getId()))
-                                            out.println(" border-left: 2px solid red; border-right: 2px solid red;");
-                                        }catch(NullPointerException e){
+                                                out.println(" border-left: 2px solid red; border-right: 2px solid red;");
+                                        }
+                                        catch(NullPointerException e)
+                                        {
                                         }
                                         out.println("\">");
 
@@ -85,14 +89,23 @@
                     <hr/>
                     
                     <div>
-                        
                         <form class="d-inline" action="employee" method="GET" id="employee">
                             <input type="radio" name="radio_employees_v1" hidden required>
-                            <input type="submit" class="btn btn-primary" name="button" value="Delete">
+                            <%
+                                // If the user is an ADMIN, he can access the DELETE BUTTON
+                                if( session.getAttribute("role").equals( "admin") )
+                                        out.println("<input type=\"submit\" class=\"btn btn-primary\" name=\"button\" value=\"Delete\">");
+                            %>
                             <input type="submit" class="btn btn-primary" name="button" value="Details">
                         </form>
-
-                        <a class="btn btn-primary" href="employee">Add</a>
+                            
+                            
+                        <%
+                            // If the user is an ADMIN, he can access the ADD BUTTON
+                            
+                            if( session.getAttribute("role").equals( "admin") )
+                                    out.println("<a class=\"btn btn-primary\" href=\"employee\">Add</a>");
+                        %>
                         
                     </div>
                     
@@ -105,7 +118,8 @@
             
             <script>
                 
-                $('table tbody tr').click(function(){
+                $('table tbody tr').click(function()
+                {
                     $(this).find('input[type=radio]').prop('checked', true);
                 });
               
