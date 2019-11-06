@@ -43,8 +43,16 @@ public class Controller_Employee extends HttpServlet
         
         if(request.getParameter("button").equals("Delete"))
         {
-            //call the api to delete here
-            Employee_API.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
+            try
+            {
+                //call the api to delete here
+                Employee_API.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
+            }
+            catch(SQLException e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Bonjour : je suis une erreur. Je m'appelle Jean-Michel Erreur.");
+            }
             response.sendRedirect("employees");
             return;
         }
