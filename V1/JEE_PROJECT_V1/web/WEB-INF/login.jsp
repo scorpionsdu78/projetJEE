@@ -43,10 +43,10 @@
 
                             <form action="login" method="post">
                               <div class="form-group">
-                                  <input type="text" class="form-control" name="Login_v1" placeholder="Login" required>
+                                  <input type="text" class="form-control" name="<% out.print(Constants.FORM_LOGIN_USERNAME); %>" placeholder="Login" required>
                               </div>
                               <div class="form-group">
-                                  <input type="password" class="form-control" name="Password_v1" placeholder="Password" required>
+                                  <input type="password" class="form-control" name="<% out.print(Constants.FORM_LOGIN_PASSWORD); %>" placeholder="Password" required>
                               </div>
                               <button type="submit" class="btn btn-primary">Login</button>
                             </form>

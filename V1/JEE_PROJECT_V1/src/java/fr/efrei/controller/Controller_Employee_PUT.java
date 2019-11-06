@@ -32,7 +32,13 @@ public class Controller_Employee_PUT extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        
+        //Admin privilege is required
+        if(request.getSession().getAttribute("role") != null && !request.getSession().getAttribute("role").equals("admin")){
+            request.getSession().setAttribute("JSP_TEMPLATE_SQL_ERROR", "You don't have the permission to be here !");
+            response.sendRedirect("employees");
+            return;
+        }
         
         /* TODO output your page here. You may use following sample code. */
         String last_name = request.getParameter(FORM_EMPLOYEE_LAST_NAME);
@@ -48,8 +54,6 @@ public class Controller_Employee_PUT extends HttpServlet {
         int idadd = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_AID));
         
         
-        System.out.println(last_name + first_name + home_tel + mob_tel + pro_tel + email + id);
-
         try{
             Employee_API.PUT(id,last_name,first_name, home_tel,  mob_tel,  pro_tel,  email, street,  postal,  city, idadd);
 
@@ -60,6 +64,7 @@ public class Controller_Employee_PUT extends HttpServlet {
         catch(SQLException e)
         {
             System.out.println(e.getMessage());
+            request.getSession().setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
             response.sendRedirect("employees");
             return;
         }

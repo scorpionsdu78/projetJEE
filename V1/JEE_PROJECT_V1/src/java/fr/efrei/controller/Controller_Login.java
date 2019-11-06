@@ -29,15 +29,15 @@ public class Controller_Login extends HttpServlet
             throws ServletException, IOException
     {
         // We verify that the user has entered input ( != null )
-        if(request.getParameter(FORM_FIELD_LOGIN) == null || request.getParameter(FORM_FIELD_PWD) == null)
+        if(request.getParameter(FORM_LOGIN_USERNAME) == null || request.getParameter(FORM_LOGIN_PASSWORD) == null)
         {
             request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
             return;
         }
         
         // Data entered by the user
-        String inputLogin = request.getParameter(FORM_FIELD_LOGIN);
-        String inputPwd = request.getParameter(FORM_FIELD_PWD);
+        String inputLogin = request.getParameter(FORM_LOGIN_USERNAME);
+        String inputPwd = request.getParameter(FORM_LOGIN_PASSWORD);
         
         
         

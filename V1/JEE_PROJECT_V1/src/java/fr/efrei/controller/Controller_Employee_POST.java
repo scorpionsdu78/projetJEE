@@ -34,6 +34,12 @@ public class Controller_Employee_POST extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //Admin privilege is required
+        if(request.getSession().getAttribute("role") != null && !request.getSession().getAttribute("role").equals("admin")){
+            request.getSession().setAttribute("JSP_TEMPLATE_SQL_ERROR", "You don't have the permission to be here !");
+            response.sendRedirect("employees");
+            return;
+        }
         
         try{
             String last_name = request.getParameter(FORM_EMPLOYEE_LAST_NAME);

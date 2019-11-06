@@ -43,7 +43,7 @@
                                         try
                                         {
                                             if(request.getAttribute("highlight_ID").equals(employee.getId()))
-                                                out.println(" border-left: 2px solid red; border-right: 2px solid red;");
+                                                out.println(" border-left: 4px solid CornflowerBlue ; border-right: 2px solid CornflowerBlue;");
                                         }
                                         catch(NullPointerException e)
                                         {
