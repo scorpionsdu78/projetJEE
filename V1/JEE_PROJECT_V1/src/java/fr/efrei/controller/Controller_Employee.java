@@ -10,6 +10,8 @@ import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_SINGLE;
 import fr.efrei.jeeproject.Employee;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,6 +33,7 @@ public class Controller_Employee extends HttpServlet
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
@@ -43,8 +46,12 @@ public class Controller_Employee extends HttpServlet
         
         if(request.getParameter("button").equals("Delete"))
         {
-            //call the api to delete here
-            Employee_API.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
+            try {
+                //call the api to delete here
+                Employee_API.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
+            } catch (SQLException ex) {
+                Logger.getLogger(Controller_Employee.class.getName()).log(Level.SEVERE, null, ex);
+            }
             response.sendRedirect("employees");
             return;
         }
