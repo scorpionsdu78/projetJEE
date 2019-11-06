@@ -45,13 +45,21 @@ public class Controller_Employee extends HttpServlet
         {
             try
             {
+                // if the user is an employee and not an admin
+                // REDIRECT to the main page
+                String role = (String)request.getSession().getAttribute("role");
+                if( role.equals( "employee" ) )
+                {
+                    response.sendRedirect("employees");
+                    return;
+                }
+                    
                 //call the api to delete here
                 Employee_API.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
             }
             catch(SQLException e)
             {
                 System.out.println(e.getMessage());
-                System.out.println("Bonjour : je suis une erreur. Je m'appelle Jean-Michel Erreur.");
             }
             response.sendRedirect("employees");
             return;
