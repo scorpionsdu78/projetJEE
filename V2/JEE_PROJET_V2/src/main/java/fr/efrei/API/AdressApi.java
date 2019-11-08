@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Adress.findByComplement", query = "SELECT a FROM Adress a WHERE a.complement = :complement")
     , @NamedQuery(name = "Adress.findByBatiment", query = "SELECT a FROM Adress a WHERE a.batiment = :batiment")
     , @NamedQuery(name = "Adress.findByIdEmployee", query = "SELECT a FROM Adress a WHERE a.idEmployee = :idEmployee")})
-public class Adress implements Serializable {
+public class AdressApi implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -69,14 +69,14 @@ public class Adress implements Serializable {
     @Column(name = "id_employee")
     private int idEmployee;
 
-    public Adress() {
+    public AdressApi() {
     }
 
-    public Adress(Integer id) {
+    public AdressApi(Integer id) {
         this.id = id;
     }
 
-    public Adress(Integer id, String rue, String codePostal, String ville, int idEmployee) {
+    public AdressApi(Integer id, String rue, String codePostal, String ville, int idEmployee) {
         this.id = id;
         this.rue = rue;
         this.codePostal = codePostal;
@@ -150,10 +150,10 @@ public class Adress implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Adress)) {
+        if (!(object instanceof AdressApi)) {
             return false;
         }
-        Adress other = (Adress) object;
+        AdressApi other = (AdressApi) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

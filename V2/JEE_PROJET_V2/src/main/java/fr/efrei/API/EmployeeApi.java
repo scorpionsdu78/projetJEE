@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Employee.findByCellPhone", query = "SELECT e FROM Employee e WHERE e.cellPhone = :cellPhone")
     , @NamedQuery(name = "Employee.findByWorkPhone", query = "SELECT e FROM Employee e WHERE e.workPhone = :workPhone")
     , @NamedQuery(name = "Employee.findByEMail", query = "SELECT e FROM Employee e WHERE e.eMail = :eMail")})
-public class Employee implements Serializable {
+public class EmployeeApi implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -69,14 +69,14 @@ public class Employee implements Serializable {
     @Column(name = "e_mail")
     private String eMail;
 
-    public Employee() {
+    public EmployeeApi() {
     }
 
-    public Employee(Integer id) {
+    public EmployeeApi(Integer id) {
         this.id = id;
     }
 
-    public Employee(Integer id, String firstName, String lastName, String homePhone) {
+    public EmployeeApi(Integer id, String firstName, String lastName, String homePhone) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -149,10 +149,10 @@ public class Employee implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Employee)) {
+        if (!(object instanceof EmployeeApi)) {
             return false;
         }
-        Employee other = (Employee) object;
+        EmployeeApi other = (EmployeeApi) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
