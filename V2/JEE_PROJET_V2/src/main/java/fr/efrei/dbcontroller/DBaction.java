@@ -26,7 +26,12 @@ public class DBaction
      */
     public DBaction() throws SQLException
     {    
-        this.conn = DriverManager.getConnection("jdbc:derby://localhost:1527/projet","projet","projet");
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DBaction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee?serverTimezone=UTC", "root", "");
         System.out.println("connection réussie");
     }
     
