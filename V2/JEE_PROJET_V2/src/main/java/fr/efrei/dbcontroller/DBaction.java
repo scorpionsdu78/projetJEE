@@ -23,10 +23,12 @@ public class DBaction
     
     /** Default constructor of the DBaction Class
      * 
+     * @throws java.sql.SQLException
      */
     public DBaction() throws SQLException
     {    
-        this.conn = DriverManager.getConnection("jdbc:derby://localhost:1527/projet","projet","projet");
+       
+        this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee","projet","project");
         System.out.println("connection réussie");
     }
     
