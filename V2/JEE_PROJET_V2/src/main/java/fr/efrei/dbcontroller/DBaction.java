@@ -23,6 +23,7 @@ public class DBaction
     
     /** Default constructor of the DBaction Class
      * 
+     * @throws java.sql.SQLException
      */
     public DBaction() throws SQLException
     {    

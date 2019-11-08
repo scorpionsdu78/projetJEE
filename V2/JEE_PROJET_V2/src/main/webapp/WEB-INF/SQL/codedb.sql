@@ -1,15 +1,14 @@
-CREATE TABLE "EMPLOYEE"
+CREATE TABLE  EMPLOYEE 
 (
- "id" int NOT NULL GENERATED ALWAYS AS IDENTITY
-        (START WITH 1, INCREMENT BY 1) ,
- "first_name" varchar(45) NOT NULL ,
- "last_name"  varchar(45) NOT NULL ,
- "home_phone" varchar(45) NOT NULL ,
- "cell_phone" varchar(45),
- "work_phone" varchar(45),
- "e_mail"     varchar(45),
+  id INT NOT NULL AUTO_INCREMENT,
+  first_name  varchar(45) NOT NULL ,
+  last_name   varchar(45) NOT NULL ,
+  home_phone  varchar(45) NOT NULL ,
+  cell_phone  varchar(45),
+  work_phone  varchar(45),
+  e_mail      varchar(45),
 
-PRIMARY KEY ("id")
+PRIMARY KEY ( id )
 );
 
 
@@ -17,20 +16,20 @@ PRIMARY KEY ("id")
 
 
 
--- ************************************** "adress"
+-- **************************************  adress 
 
-CREATE TABLE "ADRESS"
+CREATE TABLE  ADRESS 
 (
- "id"          int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) ,
- "rue"         varchar(45) NOT NULL ,
- "code_postal" varchar(45) NOT NULL ,
- "ville"       varchar(45) NOT NULL ,
- "complement"  varchar(45)  ,
- "batiment"    varchar(45) ,
- "id_employee" int NOT NULL,
+  id INT NOT NULL AUTO_INCREMENT,
+  rue          varchar(45) NOT NULL ,
+  code_postal  varchar(45) NOT NULL ,
+  ville        varchar(45) NOT NULL ,
+  complement   varchar(45)  ,
+  batiment     varchar(45) ,
+  id_employee  int NOT NULL,
 
-PRIMARY KEY ("id"),
-FOREIGN KEY ("id_employee") REFERENCES "EMPLOYEE" ("id")
+PRIMARY KEY ( id ),
+FOREIGN KEY ( id_employee ) REFERENCES  EMPLOYEE  ( id )
 );
 
 
@@ -38,5 +37,5 @@ FOREIGN KEY ("id_employee") REFERENCES "EMPLOYEE" ("id")
 -- ***************************************************;
 
 
--- ************************************** "adress_employee"
+-- **************************************  adress_employee 
 
