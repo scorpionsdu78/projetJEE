@@ -97,7 +97,7 @@
                                         out.print(" disabled");
                                     }
                                     
-                                %> required pattern="(0[0-9]{9}|\+[0-9]{11})">
+                                %> required pattern="(0[0-9]( [0-9]{2}){4}|\+[0-9]{2} [0-9]( [0-9]{2}){4})">
                             </div>
                         </div>
                             
@@ -115,7 +115,7 @@
                                         out.print(" disabled");
                                     }
                                     
-                                %> required pattern="(0[0-9]{9}|\+[0-9]{11})">
+                                %> required pattern="(0[0-9]( [0-9]{2}){4}|\+[0-9]{2} [0-9]( [0-9]{2}){4})">
                             </div>
                         </div>
                             
@@ -133,7 +133,7 @@
                                         out.print(" disabled");
                                     }
                                     
-                                %> required pattern="(0[0-9]{9}|\+[0-9]{11})">
+                                %> required pattern="(0[0-9]( [0-9]{2}){4}|\+[0-9]{2} [0-9]( [0-9]{2}){4})">
                             </div>
                         </div>
                             

@@ -13,6 +13,7 @@
     if( !sessionActive && JSP_TEMPLATE_SECURITY )
     {
         response.sendRedirect("login");
+        return;
     }    
     
     // If we have a session and we want to access the Login 
@@ -20,6 +21,7 @@
     if( sessionActive && request.getRequestURI().equals("/JEE_PROJECT_V1/WEB-INF/login.jsp"))
     {
         response.sendRedirect("employees");
+        return;
     }
 %>
 
