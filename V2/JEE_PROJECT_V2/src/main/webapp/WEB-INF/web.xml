@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>login</welcome-file>
+    </welcome-file-list>
+    <!-- Admin params -->
+    <context-param>
+        <param-name>Admin_Login</param-name>
+        <param-value>admin</param-value>
+    </context-param>
+    <context-param>
+        <param-name>Admin_Pwd</param-name>
+        <param-value>admin</param-value>
+    </context-param>
+    <!-- End admin params -->
+    <!-- Employees params -->
+    <context-param>
+        <param-name>Employee_Login</param-name>
+        <param-value>empl</param-value>
+    </context-param>
+    <context-param>
+        <param-name>Employee_Pwd</param-name>
+        <param-value>empl</param-value>
+    </context-param>
+    <!-- End employees params -->
+    <!-- Servlets config -->
+    <!-- Login -->
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>fr.efrei.controller.Controller_Login</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <!-- End Login -->
+    <!-- Logout -->
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>fr.efrei.controller.Controller_Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <!-- End Logout -->
+    <!-- Employee -->
+    <servlet>
+        <servlet-name>Employee</servlet-name>
+        <servlet-class>fr.efrei.controller.Controller_Employee</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Employee</servlet-name>
+        <url-pattern>/employee</url-pattern>
+    </servlet-mapping>
+    <!-- End Employee -->
+    <!-- Employees -->
+    <servlet>
+        <servlet-name>Employees</servlet-name>
+        <servlet-class>fr.efrei.controller.Controller_Employees</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Employees</servlet-name>
+        <url-pattern>/employees</url-pattern>
+    </servlet-mapping>
+    <!-- End Employees -->
+    <servlet>
+        <servlet-name>Controller_Employee_put</servlet-name>
+        <servlet-class>fr.efrei.controller.Controller_Employee_PUT</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Controller_Employee_put</servlet-name>
+        <url-pattern>/Controller_Employee_put</url-pattern>
+    </servlet-mapping>
+    <!-- End servlets config -->
+</web-app>
