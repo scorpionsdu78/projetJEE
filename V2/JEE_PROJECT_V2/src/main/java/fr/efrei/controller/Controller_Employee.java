@@ -10,8 +10,6 @@ import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_SINGLE;
 import fr.efrei.jeeproject.Employee;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Eddy
  */
-@WebServlet(name = "Controller_Employee", urlPatterns = {"/Controller_Employee"})
+@WebServlet(name = "Controller_Employee")
 public class Controller_Employee extends HttpServlet
 {
     /**
@@ -64,6 +62,7 @@ public class Controller_Employee extends HttpServlet
             catch(SQLException e)
             {
                 System.out.println(e.getMessage());
+                request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
             }
             response.sendRedirect("employees");
             return;
@@ -75,6 +74,7 @@ public class Controller_Employee extends HttpServlet
                 request.setAttribute("employee", employee);
             }catch(SQLException e){
                 System.out.println(e.getMessage());
+                request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
             }
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
             return;

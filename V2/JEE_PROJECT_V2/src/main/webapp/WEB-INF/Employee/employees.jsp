@@ -4,12 +4,14 @@
     Author     : Eddy
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@page import="fr.efrei.jeeproject.Adress"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="fr.efrei.jeeproject.Employee"%>
 
-<% String JSP_TEMPLATE_TITLE = "Employees list"; %>
-<% boolean JSP_TEMPLATE_SECURITY = true; %>
+<c:set var="JSP_TEMPLATE_TITLE" value="Employees list" scope="page" />
+<c:set var="JSP_TEMPLATE_SECURITY" value="true" scope="page" />
 
 <%@include file="../includes/template_top.jsp" %>
 

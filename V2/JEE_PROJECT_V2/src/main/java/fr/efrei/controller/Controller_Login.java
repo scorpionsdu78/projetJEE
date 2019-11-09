@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Eddy
  */
-@WebServlet(urlPatterns = {"/Controller_Login"})
+@WebServlet(name = "Controller_Logout")
 public class Controller_Login extends HttpServlet
 {
     /**
@@ -34,7 +34,6 @@ public class Controller_Login extends HttpServlet
             request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
             return;
         }
-        
         // Data entered by the user
         String inputLogin = request.getParameter(FORM_LOGIN_USERNAME);
         String inputPwd = request.getParameter(FORM_LOGIN_PASSWORD);

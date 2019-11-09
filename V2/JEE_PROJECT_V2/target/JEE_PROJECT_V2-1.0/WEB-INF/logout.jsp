@@ -4,10 +4,12 @@
     Author     : Hugues
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@page import="java.sql.ResultSet"%>
 
-<% String JSP_TEMPLATE_TITLE = "Logout"; %>
-<% boolean JSP_TEMPLATE_SECURITY = false; %>
+<c:set var="JSP_TEMPLATE_TITLE" value="Logout" scope="page" />
+<c:set var="JSP_TEMPLATE_SECURITY" value="false" scope="page" />
 <%@include file="includes/template_top.jsp" %>
 
         <div class="container" style="padding-top: 4vh">

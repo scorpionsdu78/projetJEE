@@ -6,6 +6,7 @@
 
 <%@page import="fr.efrei.jeeproject.Adress"%>
 <%@page import="fr.efrei.jeeproject.Employee"%>
+
 <% String JSP_TEMPLATE_TITLE = "Employee"; %>
 <% boolean JSP_TEMPLATE_SECURITY = true; %>
 

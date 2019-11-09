@@ -50,8 +50,17 @@ public class Controller_Employee_PUT extends HttpServlet {
         String street = request.getParameter(FORM_EMPLOYEE_STREET);
         String postal = request.getParameter(FORM_EMPLOYEE_POSTAL);
         String city = request.getParameter(FORM_EMPLOYEE_CITY);
-        int id = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_ID));
-        int idadd = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_AID));
+        int id = 0;
+        int idadd = 0;
+        try{
+            id = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_ID));
+            idadd = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_AID));
+        }catch(NumberFormatException e){
+            System.out.printf(e.getMessage());
+            
+            response.sendRedirect("employees");
+            return;
+        }
         
         
         try{

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Hugues
  */
-@WebServlet(urlPatterns = {"/Controller_Logout"})
+@WebServlet(name = "Controller_Logout")
 public class Controller_Logout extends HttpServlet
 {
      /**

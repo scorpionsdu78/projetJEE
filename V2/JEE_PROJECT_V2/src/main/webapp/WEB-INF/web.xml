@@ -70,12 +70,20 @@
     </servlet-mapping>
     <!-- End Employees -->
     <servlet>
-        <servlet-name>Controller_Employee_put</servlet-name>
+        <servlet-name>Controller_Employee_PUT</servlet-name>
         <servlet-class>fr.efrei.controller.Controller_Employee_PUT</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Controller_Employee_put</servlet-name>
-        <url-pattern>/Controller_Employee_put</url-pattern>
+        <servlet-name>Controller_Employee_PUT</servlet-name>
+        <url-pattern>/Controller_Employee_PUT</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Controller_Employee_POST</servlet-name>
+        <servlet-class>fr.efrei.controller.Controller_Employee_POST</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Controller_Employee_POST</servlet-name>
+        <url-pattern>/Controller_Employee_POST</url-pattern>
     </servlet-mapping>
     <!-- End servlets config -->
 </web-app>

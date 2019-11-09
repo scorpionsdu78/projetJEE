@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Eddy
  */
-@WebServlet(name = "Controller_POST_Employee", urlPatterns = {"/Controller_POST_Employee"})
+@WebServlet(name = "Controller_Employee_POST")
 public class Controller_Employee_POST extends HttpServlet {
 
     /**
