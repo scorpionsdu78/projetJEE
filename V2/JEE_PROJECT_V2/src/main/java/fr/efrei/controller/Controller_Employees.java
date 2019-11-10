@@ -6,21 +6,24 @@
 package fr.efrei.controller;
 
 import fr.efrei.API.Employee_API;
-import static fr.efrei.jeeproject.Constants.*;
+import fr.efrei.jeeproject.Employee;
+import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_ALL;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author francois
+ * @author Eddy
  */
-public class Controller_Employee_PUT extends HttpServlet {
-
+@WebServlet(name = "Controller_Employees")
+public class Controller_Employees extends HttpServlet
+{
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,55 +34,32 @@ public class Controller_Employee_PUT extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        //Admin privilege is required
-        if(request.getSession().getAttribute("role") != null && !request.getSession().getAttribute("role").equals("admin")){
-            request.getSession().setAttribute("JSP_TEMPLATE_SQL_ERROR", "You don't have the permission to be here !");
-            response.sendRedirect("employees");
-            return;
+            throws ServletException, IOException
+    {
+        if(request.getSession().getAttribute("JSP_TEMPLATE_SQL_ERROR") != null){
+            request.setAttribute("JSP_TEMPLATE_SQL_ERROR", request.getSession().getAttribute("JSP_TEMPLATE_SQL_ERROR"));
+            request.getSession().removeAttribute("JSP_TEMPLATE_SQL_ERROR");
         }
         
-        /* TODO output your page here. You may use following sample code. */
-        String last_name = request.getParameter(FORM_EMPLOYEE_LAST_NAME);
-        String first_name = request.getParameter(FORM_EMPLOYEE_FIRST_NAME);
-        String home_tel = request.getParameter(FORM_EMPLOYEE_HOME_PHO);
-        String mob_tel = request.getParameter(FORM_EMPLOYEE_MOB_PHO);
-        String pro_tel = request.getParameter(FORM_EMPLOYEE_PRO_PHO);
-        String email = request.getParameter(FORM_EMPLOYEE_EMAIL);
-        String street = request.getParameter(FORM_EMPLOYEE_STREET);
-        String postal = request.getParameter(FORM_EMPLOYEE_POSTAL);
-        String city = request.getParameter(FORM_EMPLOYEE_CITY);
-        int id = 0;
-        int idadd = 0;
-        try{
-            id = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_ID));
-            idadd = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_AID));
-        }catch(NumberFormatException e){
-            System.out.printf(e.getMessage());
-            
-            response.sendRedirect("employees");
-            return;
+        if(request.getSession().getAttribute("highlight_ID") != null){
+            request.setAttribute("highlight_ID", request.getSession().getAttribute("highlight_ID"));
+            request.getSession().removeAttribute("highlight_ID");
         }
         
-        
-        try{
-            Employee_API.PUT(id,last_name,first_name, home_tel,  mob_tel,  pro_tel,  email, street,  postal,  city, idadd);
-
-            request.getSession().setAttribute("highlight_ID", id);
-            response.sendRedirect("employees");
+        try
+        {
+            ArrayList<Employee> employees = Employee_API.GET();
+            request.setAttribute("employees", employees);
+            request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
             return;
         }
         catch(SQLException e)
         {
             System.out.println(e.getMessage());
-            request.getSession().setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
-            response.sendRedirect("employees");
+            request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
+            request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
             return;
         }
-
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -120,7 +100,5 @@ public class Controller_Employee_PUT extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-   
 
 }

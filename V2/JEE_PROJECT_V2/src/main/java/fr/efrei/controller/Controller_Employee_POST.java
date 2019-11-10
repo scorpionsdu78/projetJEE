@@ -11,15 +11,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author francois
+ * @author Eddy
  */
-public class Controller_Employee_PUT extends HttpServlet {
+@WebServlet(name = "Controller_Employee_POST")
+public class Controller_Employee_POST extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +34,6 @@ public class Controller_Employee_PUT extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         //Admin privilege is required
         if(request.getSession().getAttribute("role") != null && !request.getSession().getAttribute("role").equals("admin")){
             request.getSession().setAttribute("JSP_TEMPLATE_SQL_ERROR", "You don't have the permission to be here !");
@@ -40,46 +41,28 @@ public class Controller_Employee_PUT extends HttpServlet {
             return;
         }
         
-        /* TODO output your page here. You may use following sample code. */
-        String last_name = request.getParameter(FORM_EMPLOYEE_LAST_NAME);
-        String first_name = request.getParameter(FORM_EMPLOYEE_FIRST_NAME);
-        String home_tel = request.getParameter(FORM_EMPLOYEE_HOME_PHO);
-        String mob_tel = request.getParameter(FORM_EMPLOYEE_MOB_PHO);
-        String pro_tel = request.getParameter(FORM_EMPLOYEE_PRO_PHO);
-        String email = request.getParameter(FORM_EMPLOYEE_EMAIL);
-        String street = request.getParameter(FORM_EMPLOYEE_STREET);
-        String postal = request.getParameter(FORM_EMPLOYEE_POSTAL);
-        String city = request.getParameter(FORM_EMPLOYEE_CITY);
-        int id = 0;
-        int idadd = 0;
         try{
-            id = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_ID));
-            idadd = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_AID));
-        }catch(NumberFormatException e){
-            System.out.printf(e.getMessage());
+            String last_name = request.getParameter(FORM_EMPLOYEE_LAST_NAME);
+            String first_name = request.getParameter(FORM_EMPLOYEE_FIRST_NAME);
+            String home_tel = request.getParameter(FORM_EMPLOYEE_HOME_PHO);
+            String mob_tel = request.getParameter(FORM_EMPLOYEE_MOB_PHO);
+            String pro_tel = request.getParameter(FORM_EMPLOYEE_PRO_PHO);
+            String email = request.getParameter(FORM_EMPLOYEE_EMAIL);
+            String street = request.getParameter(FORM_EMPLOYEE_STREET);
+            String postal = request.getParameter(FORM_EMPLOYEE_POSTAL);
+            String city = request.getParameter(FORM_EMPLOYEE_CITY);
             
-            response.sendRedirect("employees");
-            return;
-        }
-        
-        
-        try{
-            Employee_API.PUT(id,last_name,first_name, home_tel,  mob_tel,  pro_tel,  email, street,  postal,  city, idadd);
-
+            int id = Employee_API.POST(last_name, first_name, home_tel, mob_tel, pro_tel, email, street, postal, city);
+            
             request.getSession().setAttribute("highlight_ID", id);
             response.sendRedirect("employees");
             return;
-        }
-        catch(SQLException e)
-        {
+        }catch(SQLException e){
             System.out.println(e.getMessage());
             request.getSession().setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
             response.sendRedirect("employees");
             return;
         }
-
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -120,7 +103,5 @@ public class Controller_Employee_PUT extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-   
 
 }
