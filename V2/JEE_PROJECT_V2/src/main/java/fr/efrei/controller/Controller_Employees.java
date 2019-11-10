@@ -50,6 +50,7 @@ public class Controller_Employees extends HttpServlet
         {
             ArrayList<Employee> employees = Employee_API.GET();
             request.setAttribute("employees", employees);
+            
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
             return;
         }

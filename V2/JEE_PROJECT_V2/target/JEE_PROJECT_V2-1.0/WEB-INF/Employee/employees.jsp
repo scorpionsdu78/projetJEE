@@ -35,51 +35,49 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <%
-                                if(request.getAttribute("employees") != null)
-                                {
-                                    ArrayList<Employee> employees = (ArrayList<Employee>)request.getAttribute("employees");
-                                    for(Employee employee : employees)
-                                    {
-                                        out.println("                            <tr style=\"cursor: pointer;");
-                                        try
-                                        {
-                                            if(request.getAttribute("highlight_ID").equals(employee.getId()))
-                                                out.println(" border-left: 4px solid CornflowerBlue ; border-right: 2px solid CornflowerBlue;");
-                                        }
-                                        catch(NullPointerException e)
-                                        {
-                                        }
-                                        out.println("\">");
+                            <c:if test="${not empty employees}">
+                                
+                                <c:forEach var="employee" items="${employees}">
+                                    
+                            <tr style="cursor: pointer;<c:if test="${highlight_ID == employee.id}"> border-left: 4px solid CornflowerBlue ; border-right: 2px solid CornflowerBlue;</c:if>">
+                                <td scope="row"><input type="radio" name="radio_employees_v1" form="employee" value="${employee.id}"></td>
+                                <td> ${employee.last_name} </td>
+                                <td> ${employee.first_name} </td>
+                                <td> ${employee.home_phone} </td>
+                                <td> ${employee.cell_phone} </td>
+                                <td> ${employee.work_phone} </td>
+                                    
+                                    
+                                    <c:forEach items="employee.adresses" var="adress_" begin="1" end="1">
+                                        <c:set var="adress" value="${adress_}" scope="page" />
+                                    </c:forEach>
+                                    
+                                    <c:choose>
 
-                                        out.println("                                <td scope=\"row\"><input type=\"radio\" name=\"radio_employees_v1\" form=\"employee\" value=\"" + employee.getId() + "\"></td>");
-                                        out.println("                                <td>" + employee.getLast_name() + "</td>");
-                                        out.println("                                <td>" + employee.getFirst_name()+ "</td>");
-                                        out.println("                                <td>" + employee.getHome_phone()+ "</td>");
-                                        out.println("                                <td>" + employee.getCell_phone()+ "</td>");
-                                        out.println("                                <td>" + employee.getWork_phone()+ "</td>");
+                                        <c:when test="${not empty adress}">
 
+                                <td> ${adress.rue} </td>
+                                <td> ${adress.codePostal} </td>
+                                <td> ${adress.ville} </td>
+                                    
+                                        </c:when>
 
-                                        if(  !employee.getAdresses().isEmpty() )
-                                        {
-                                           Adress add = employee.getAdresses().get(0);
+                                        <c:otherwise>
 
-                                            out.println("                                <td>" + add.getRue() + "</td>");
-                                            out.println("                                <td>" + add.getCodePostal() +  "</td>");
-                                            out.println("                                <td>" + add.getVille() +  "</td>");
-                                        }
-                                        else
-                                        {
-                                            out.println("                                <td>NA</td>");
-                                            out.println("                                <td>NA</td>");
-                                            out.println("                                <td>NA</td>");                                      
-                                        }
+                                <td>NA</td>
+                                <td>NA</td>
+                                <td>NA</td>
 
-                                        out.println("                                <td>" + employee.getEmail()+ "</td>");
-                                        out.println("                            </tr>");
-                                    }
-                                }
-                            %>
+                                        </c:otherwise>
+
+                                    </c:choose>
+
+                                <td> ${employee.email} </td>
+                            </tr>
+                            
+                                </c:forEach>
+                                
+                            </c:if>
                         </tbody>
                     </table>
 
