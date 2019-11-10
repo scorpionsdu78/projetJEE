@@ -6,6 +6,7 @@
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="fr.efrei.dbcontroller.DBaction"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 
 <% String JSP_TEMPLATE_TITLE = "Login"; %>
 <% boolean JSP_TEMPLATE_SECURITY = false; %>
@@ -18,22 +19,15 @@
                 <div class="col-lg-5 col-md-8 col-sm-12" style="margin: auto;">
                                 
                     <%-- Displaying the Error Message if there is one --%>
+                    <c:if test="${errKey != null}"> 
                     <div style="color:red; text-align: center">
                         <label>
-                            <small>
-                                <%
-                                    if(request.getAttribute("errKey") != null)
-                                    {
-                                        out.println( request.getAttribute("errKey") );
-                                    }
-                                    else
-                                    {
-                                        out.println( " " );
-                                    }
-                                %>
+                            <small> 
+                                ${errKey}  
                             </small>
                         </label>
                     </div>
+                    </c:if>
             
                     <div class="card">
                         <div class="card-header">

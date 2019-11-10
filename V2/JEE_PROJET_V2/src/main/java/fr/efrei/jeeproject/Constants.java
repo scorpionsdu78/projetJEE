@@ -31,12 +31,12 @@ public class Constants
     public static final String FORM_EMPLOYEES_EMPLOYEE = "radio_employees_v1";
     
     // QUERY SQL
-    public static final String INSERT_EMPLOYEE = "INSERT INTO EMPLOYEE(\"last_name\",\"first_name\",\"home_phone\",\"cell_phone\",\"work_phone\",\"e_mail\") VALUES(?,?,?,?,?,?)";
-    public static final String INSERT_ADRESS = "INSERT INTO ADRESS(\"rue\",\"code_postal\",\"ville\",\"id_employee\") VALUES(?,?,?,?)";
-    public static final String UPDATE_EMPLOYEE ="UPDATE EMPLOYEE SET \"last_name\"=?, \"first_name\"=?, \"home_phone\"=?, \"cell_phone\"=?, \"work_phone\"=?, \"e_mail\"=? where \"id\"=?";
-    public static final String UPDATE_ADRESS = "UPDATE ADRESS SET \"rue\"=?, \"code_postal\"=?, \"ville\"=? where \"id\"=? ";
-    public static final String DELETE_ADRESS = "DELETE FROM ADRESS WHERE \"id\"=?";
-    public static final String DELETE_EMPLOYEE = "DELETE FROM EMPLOYEE WHERE \"id\"=?";
+    public static final String INSERT_EMPLOYEE = "INSERT INTO EMPLOYEE(last_name, first_name, home_phone, cell_phone, work_phone, e_mail) VALUES(?,?,?,?,?,?)";
+    public static final String INSERT_ADRESS = "INSERT INTO ADRESS(rue, code_postal, ville, id_employee) VALUES(?,?,?,?)";
+    public static final String UPDATE_EMPLOYEE ="UPDATE EMPLOYEE SET last_name=?, first_name=?, home_phone=?, cell_phone=?, work_phone=?, e_mail=? where id=?";
+    public static final String UPDATE_ADRESS = "UPDATE ADRESS SET rue=?, code_postal=?, ville=? where id=? ";
+    public static final String DELETE_ADRESS = "DELETE FROM ADRESS WHERE id=?";
+    public static final String DELETE_EMPLOYEE = "DELETE FROM EMPLOYEE WHERE id=?";
     
     // JSP File's location
     public static final String JSP_PAGE_LOGIN = "WEB-INF/login.jsp";
