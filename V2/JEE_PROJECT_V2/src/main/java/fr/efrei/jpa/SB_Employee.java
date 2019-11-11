@@ -7,6 +7,7 @@ package fr.efrei.jpa;
 
 import fr.efrei.API.AdressApi;
 import fr.efrei.API.EmployeeApi;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -31,7 +32,7 @@ public class SB_Employee
      * @return all the Employees from the Database
      */
     public List<EmployeeApi> GET()
-    {   
+    {
         // We manage our Entity Managers
         emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
         em = emf.createEntityManager();
@@ -48,7 +49,7 @@ public class SB_Employee
         
         // If the list is empty, display an error message
         if(returnList == null)
-            System.out.println("ERROR IN SB_EMPLOYEE");
+            System.out.println("ERROR IN SB_EMPLOYEE (get all)");
         
         
         // Return the list
@@ -63,15 +64,29 @@ public class SB_Employee
      * @param id ID of the Employee we search
      * @return The Employee from the database corresponding to a given ID
      */
-    public EmployeeApi GET(int id){
-        
+    public EmployeeApi GET(int id)
+    {
+        // We manage our Entity Managers
         emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
-        
         em = emf.createEntityManager();
         
+        
+        // We do our SQL query
         TypedQuery<EmployeeApi> q = em.createNamedQuery("EmployeeApi.findById", EmployeeApi.class);
         
-        return q.getResultList().get(0);
+        
+        // We initialize a list at null, then fill it with the query's results
+        List<EmployeeApi> returnList = null;
+        returnList = q.getResultList();
+        
+        
+        // If the list is empty, display an error message
+        if(returnList == null)
+            System.out.println("ERROR IN SB_EMPLOYEE (get by ID)");
+        
+        
+        // We return the FIRST element of the query
+        return returnList.get(0);
     }
     
     
@@ -85,6 +100,8 @@ public class SB_Employee
      * @param mob_pho his Mobile phone
      * @param work_pho his Work phone
      * @param email his Email
+     * 
+     * @return the new Employee
      */
     public EmployeeApi POST(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email){
         return new EmployeeApi(first_name, last_name, home_pho, mob_pho, work_pho, email);
