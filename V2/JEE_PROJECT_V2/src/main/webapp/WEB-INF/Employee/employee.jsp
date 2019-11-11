@@ -29,9 +29,7 @@
                         </c:when>
                                 
                         <c:otherwise>
-                            <c:forEach items="employee.adresses" var="adress_" begin="1" end="1">
-                                <c:set var="adress" value="${adress_}" scope="page" />
-                            </c:forEach>
+                            <c:set var="adress" value="${employee.adresses[0]}" scope="page" />
                     <form action="Controller_Employee_PUT" method="POST">                            
                         </c:otherwise>
                                 
