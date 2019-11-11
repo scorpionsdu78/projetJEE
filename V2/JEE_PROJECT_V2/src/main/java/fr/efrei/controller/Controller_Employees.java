@@ -6,6 +6,7 @@
 package fr.efrei.controller;
 
 import fr.efrei.API.Employee_API;
+import fr.efrei.jeeproject.Adress;
 import fr.efrei.jeeproject.Employee;
 import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_ALL;
 import fr.efrei.jpa.getData;
@@ -53,6 +54,12 @@ public class Controller_Employees extends HttpServlet
             getData getter = new getData();
             ArrayList<Employee> employees = new ArrayList<Employee>();
             employees.addAll(getter.listEmployee());
+            /*for(int i = 0; i<employees.size();i++){
+                Employee emp = employees.get(i);
+                ArrayList<Adress> add = new ArrayList<Adress>();
+                add.addAll(getter.listAdresse(emp.getId()));
+                emp.setAdresses(add);
+            }*/
             request.setAttribute("employees", employees);
             
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
