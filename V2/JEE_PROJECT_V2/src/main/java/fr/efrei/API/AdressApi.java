@@ -27,14 +27,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "adress")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Adress.findAll", query = "SELECT a FROM Adress a")
-    , @NamedQuery(name = "Adress.findById", query = "SELECT a FROM Adress a WHERE a.id = :id")
-    , @NamedQuery(name = "Adress.findByRue", query = "SELECT a FROM Adress a WHERE a.rue = :rue")
-    , @NamedQuery(name = "Adress.findByCodePostal", query = "SELECT a FROM Adress a WHERE a.codePostal = :codePostal")
-    , @NamedQuery(name = "Adress.findByVille", query = "SELECT a FROM Adress a WHERE a.ville = :ville")
-    , @NamedQuery(name = "Adress.findByComplement", query = "SELECT a FROM Adress a WHERE a.complement = :complement")
-    , @NamedQuery(name = "Adress.findByBatiment", query = "SELECT a FROM Adress a WHERE a.batiment = :batiment")
-    , @NamedQuery(name = "Adress.findByIdEmployee", query = "SELECT a FROM Adress a WHERE a.idEmployee = :idEmployee")})
+    @NamedQuery(name = "AdressApi.findAll", query = "SELECT a FROM AdressApi a")
+    , @NamedQuery(name = "AdressApi.findById", query = "SELECT a FROM AdressApi a WHERE a.id = :id")
+    , @NamedQuery(name = "AdressApi.findByRue", query = "SELECT a FROM AdressApi a WHERE a.rue = :rue")
+    , @NamedQuery(name = "AdressApi.findByCodePostal", query = "SELECT a FROM AdressApi a WHERE a.codePostal = :codePostal")
+    , @NamedQuery(name = "AdressApi.findByVille", query = "SELECT a FROM AdressApi a WHERE a.ville = :ville")
+    , @NamedQuery(name = "AdressApi.findByComplement", query = "SELECT a FROM AdressApi a WHERE a.complement = :complement")
+    , @NamedQuery(name = "AdressApi.findByBatiment", query = "SELECT a FROM AdressApi a WHERE a.batiment = :batiment")
+    , @NamedQuery(name = "AdressApi.findByIdEmployee", query = "SELECT a FROM AdressApi a WHERE a.idEmployee = :idEmployee")})
 public class AdressApi implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -162,7 +162,7 @@ public class AdressApi implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.efrei.API.Adress[ id=" + id + " ]";
+        return "fr.efrei.API.AdressApi[ id=" + id + " ]";
     }
     
 }

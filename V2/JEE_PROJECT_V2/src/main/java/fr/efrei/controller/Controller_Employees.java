@@ -8,6 +8,7 @@ package fr.efrei.controller;
 import fr.efrei.API.Employee_API;
 import fr.efrei.jeeproject.Employee;
 import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_ALL;
+import fr.efrei.jpa.getData;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -48,13 +49,16 @@ public class Controller_Employees extends HttpServlet
         
         try
         {
-            ArrayList<Employee> employees = Employee_API.GET();
+            
+            getData getter = new getData();
+            ArrayList<Employee> employees = new ArrayList<Employee>();
+            employees.addAll(getter.listEmployee());
             request.setAttribute("employees", employees);
             
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
             return;
         }
-        catch(SQLException e)
+        catch(Exception e)
         {
             System.out.println(e.getMessage());
             request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());

@@ -27,14 +27,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "employee")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e")
-    , @NamedQuery(name = "Employee.findById", query = "SELECT e FROM Employee e WHERE e.id = :id")
-    , @NamedQuery(name = "Employee.findByFirstName", query = "SELECT e FROM Employee e WHERE e.firstName = :firstName")
-    , @NamedQuery(name = "Employee.findByLastName", query = "SELECT e FROM Employee e WHERE e.lastName = :lastName")
-    , @NamedQuery(name = "Employee.findByHomePhone", query = "SELECT e FROM Employee e WHERE e.homePhone = :homePhone")
-    , @NamedQuery(name = "Employee.findByCellPhone", query = "SELECT e FROM Employee e WHERE e.cellPhone = :cellPhone")
-    , @NamedQuery(name = "Employee.findByWorkPhone", query = "SELECT e FROM Employee e WHERE e.workPhone = :workPhone")
-    , @NamedQuery(name = "Employee.findByEMail", query = "SELECT e FROM Employee e WHERE e.eMail = :eMail")})
+    @NamedQuery(name = "EmployeeApi.findAll", query = "SELECT e FROM EmployeeApi e")
+    , @NamedQuery(name = "EmployeeApi.findById", query = "SELECT e FROM EmployeeApi e WHERE e.id = :id")
+    , @NamedQuery(name = "EmployeeApi.findByFirstName", query = "SELECT e FROM EmployeeApi e WHERE e.firstName = :firstName")
+    , @NamedQuery(name = "EmployeeApi.findByLastName", query = "SELECT e FROM EmployeeApi e WHERE e.lastName = :lastName")
+    , @NamedQuery(name = "EmployeeApi.findByHomePhone", query = "SELECT e FROM EmployeeApi e WHERE e.homePhone = :homePhone")
+    , @NamedQuery(name = "EmployeeApi.findByCellPhone", query = "SELECT e FROM EmployeeApi e WHERE e.cellPhone = :cellPhone")
+    , @NamedQuery(name = "EmployeeApi.findByWorkPhone", query = "SELECT e FROM EmployeeApi e WHERE e.workPhone = :workPhone")
+    , @NamedQuery(name = "EmployeeApi.findByEMail", query = "SELECT e FROM EmployeeApi e WHERE e.eMail = :eMail")})
 public class EmployeeApi implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -161,7 +161,7 @@ public class EmployeeApi implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.efrei.API.Employee[ id=" + id + " ]";
+        return "fr.efrei.API.EmployeeApi[ id=" + id + " ]";
     }
     
 }
