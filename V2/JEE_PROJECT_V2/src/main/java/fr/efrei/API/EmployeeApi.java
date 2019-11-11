@@ -29,12 +29,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "EmployeeApi.findAll", query = "SELECT e FROM EmployeeApi e")
     , @NamedQuery(name = "EmployeeApi.findById", query = "SELECT e FROM EmployeeApi e WHERE e.id = :id")
-    , @NamedQuery(name = "EmployeeApi.findByFirstName", query = "SELECT e FROM EmployeeApi e WHERE e.firstName = :firstName")
-    , @NamedQuery(name = "EmployeeApi.findByLastName", query = "SELECT e FROM EmployeeApi e WHERE e.lastName = :lastName")
-    , @NamedQuery(name = "EmployeeApi.findByHomePhone", query = "SELECT e FROM EmployeeApi e WHERE e.homePhone = :homePhone")
-    , @NamedQuery(name = "EmployeeApi.findByCellPhone", query = "SELECT e FROM EmployeeApi e WHERE e.cellPhone = :cellPhone")
-    , @NamedQuery(name = "EmployeeApi.findByWorkPhone", query = "SELECT e FROM EmployeeApi e WHERE e.workPhone = :workPhone")
-    , @NamedQuery(name = "EmployeeApi.findByEMail", query = "SELECT e FROM EmployeeApi e WHERE e.eMail = :eMail")})
+    , @NamedQuery(name = "EmployeeApi.findByFirst_name", query = "SELECT e FROM EmployeeApi e WHERE e.first_name = :first_name")
+    , @NamedQuery(name = "EmployeeApi.findByLast_name", query = "SELECT e FROM EmployeeApi e WHERE e.last_name = :last_name")
+    , @NamedQuery(name = "EmployeeApi.findByHome_phone", query = "SELECT e FROM EmployeeApi e WHERE e.home_phone = :home_phone")
+    , @NamedQuery(name = "EmployeeApi.findByCell_phone", query = "SELECT e FROM EmployeeApi e WHERE e.cell_phone = :cell_phone")
+    , @NamedQuery(name = "EmployeeApi.findByWork_phone", query = "SELECT e FROM EmployeeApi e WHERE e.work_phone = :work_phone")
+    , @NamedQuery(name = "EmployeeApi.findByEmail", query = "SELECT e FROM EmployeeApi e WHERE e.email = :email")})
 public class EmployeeApi implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,27 +47,27 @@ public class EmployeeApi implements Serializable {
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "first_name")
-    private String firstName;
+    private String first_name;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "last_name")
-    private String lastName;
+    private String last_name;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "home_phone")
-    private String homePhone;
+    private String home_phone;
     @Size(max = 45)
     @Column(name = "cell_phone")
-    private String cellPhone;
+    private String cell_phone;
     @Size(max = 45)
     @Column(name = "work_phone")
-    private String workPhone;
+    private String work_phone;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 45)
     @Column(name = "e_mail")
-    private String eMail;
+    private String email;
 
     public EmployeeApi() {
     }
@@ -76,11 +76,11 @@ public class EmployeeApi implements Serializable {
         this.id = id;
     }
 
-    public EmployeeApi(Integer id, String firstName, String lastName, String homePhone) {
+    public EmployeeApi(Integer id, String first_name, String last_name, String home_phone) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.homePhone = homePhone;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.home_phone = home_phone;
     }
 
     public Integer getId() {
@@ -92,51 +92,51 @@ public class EmployeeApi implements Serializable {
     }
 
     public String getFirst_name() {
-        return firstName;
+        return first_name;
     }
 
-    public void setFirst_name(String firstName) {
-        this.firstName = firstName;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
     public String getLast_name() {
-        return lastName;
+        return last_name;
     }
 
-    public void setLast_name(String lastName) {
-        this.lastName = lastName;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getHome_phone() {
-        return homePhone;
+        return home_phone;
     }
 
-    public void setHome_phone(String homePhone) {
-        this.homePhone = homePhone;
+    public void setHome_phone(String home_phone) {
+        this.home_phone = home_phone;
     }
 
     public String getCell_phone() {
-        return cellPhone;
+        return cell_phone;
     }
 
-    public void setCell_phone(String cellPhone) {
-        this.cellPhone = cellPhone;
+    public void setCell_phone(String cell_phone) {
+        this.cell_phone = cell_phone;
     }
 
     public String getWork_phone() {
-        return workPhone;
+        return work_phone;
     }
 
-    public void setWork_phone(String workPhone) {
-        this.workPhone = workPhone;
+    public void setWork_phone(String work_phone) {
+        this.work_phone = work_phone;
     }
 
-    public String getEMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
