@@ -86,6 +86,15 @@ public class EmployeeApi implements Serializable
         this.home_phone = home_phone;
         this.email = email;
     }
+    
+    public EmployeeApi(String first_name, String last_name, String home_phone, String cell_phone, String work_phone, String email) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.home_phone = home_phone;
+        this.cell_phone = cell_phone;
+        this.work_phone = work_phone;
+        this.email = email;
+    }
 
     public Integer getId() {
         return id;
