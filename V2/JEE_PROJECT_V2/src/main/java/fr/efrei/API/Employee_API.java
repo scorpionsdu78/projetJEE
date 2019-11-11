@@ -15,8 +15,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -31,6 +35,7 @@ public class Employee_API
         
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
 
+        
         PreparedStatement psmt = db.getPreparedStatement("SELECT * FROM EMPLOYEE");
 
         // We get all the employees
@@ -71,7 +76,6 @@ public class Employee_API
             }        
             
             // We add the Adresses to the current Employee
-            emp.setAdresses(adresses);
             
             // We add the current Employee to the list
             employees.add(emp);
@@ -86,6 +90,8 @@ public class Employee_API
     {
         
         DBaction dba = new DBaction();
+        
+
         
         PreparedStatement psmt = dba.getPreparedStatement("SELECT * FROM EMPLOYEE WHERE \"id\" = ?");
         psmt.setInt(1, id);
@@ -120,7 +126,6 @@ public class Employee_API
             adresses.add(addr);
         }
 
-        emp.setAdresses(adresses);
         return emp;
     }
     

@@ -5,7 +5,6 @@
  */
 package fr.efrei.jpa;
 
-import fr.efrei.API.AdressApi;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -47,27 +46,6 @@ public class getData {
         return l;
     }
     
-    public List listAdresse(int id){
-        List l = null;
-        
-        m = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
-        System.out.println("factory created");
-        
-        em = m.createEntityManager();
-        System.out.println("entity manager created");
-        
-        Query q = em.createQuery("SELECT a FROM AdressApi a WHERE a.idEmployee = "+id);
-        System.out.println("query created");
-        
-        l = q.getResultList();
-        System.out.println("result list getted");
-        
-        if(l == null){
-            System.out.println("error");
-            return null;
-        }
-        
-        return l;
-    }
+    
     
 }
