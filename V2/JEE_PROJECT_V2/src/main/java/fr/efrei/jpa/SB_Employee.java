@@ -25,6 +25,10 @@ public class SB_Employee
     EntityManager em;
     EntityManagerFactory emf;
     
+    /** GET all the Employees from the Database
+     * 
+     * @return all the Employees from the Database
+     */
     public List<EmployeeApi> GET()
     {   
         // We manage our Entity Managers
@@ -51,6 +55,13 @@ public class SB_Employee
     }
     
     
+    
+        
+    /** Get  the Employee from the database corresponding to a given ID
+     * 
+     * @param id ID of the Employee we search
+     * @return The Employee from the database corresponding to a given ID
+     */
     public EmployeeApi GET(int id){
         
         emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
@@ -63,7 +74,24 @@ public class SB_Employee
     }
     
     
-    public void PUT(int id, String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, int idadd, String street, String postal, String city){
+    
+    
+    /** Modifies a given Employee from the database
+     * 
+     * @param id ID of the Employee we want to modify
+     * @param last_name new Last name
+     * @param first_name new First name
+     * @param home_pho new Home phone
+     * @param mob_pho new Mobile phone
+     * @param work_pho new Work phone
+     * @param email new Email
+     * @param ID_Adress ID of the adress to modify
+     * @param street new adress's street
+     * @param postal new adress's postal code
+     * @param city new adress's city
+     */
+    public void PUT(int id, String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, int ID_Adress, String street, String postal, String city)
+    {
         EmployeeApi employee = GET(id);
         
         if(last_name != null)
@@ -91,6 +119,6 @@ public class SB_Employee
 
         
         SB_Adress sb_adress = new SB_Adress();
-        sb_adress.PUT(idadd, street, postal, city);
+        sb_adress.PUT(ID_Adress, street, postal, city);
     }    
 }
