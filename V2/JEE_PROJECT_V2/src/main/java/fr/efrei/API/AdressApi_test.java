@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "AdressApi.findAll", query = "SELECT a FROM AdressApi a")
     , @NamedQuery(name = "AdressApi.findById", query = "SELECT a FROM AdressApi a WHERE a.id = :id")
     , @NamedQuery(name = "AdressApi.findById_employee", query = "SELECT a FROM AdressApi a WHERE a.id_employee = :id_employee")})
-public class AdressApi implements Serializable {
+public class AdressApi_test implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -79,14 +79,14 @@ public class AdressApi implements Serializable {
     @PrimaryKeyJoinColumn(name="id_employee", referencedColumnName="id")
     private EmployeeApi employee;
 
-    public AdressApi() {
+    public AdressApi_test() {
     }
 
-    public AdressApi(Integer id) {
+    public AdressApi_test(Integer id) {
         this.id = id;
     }
 
-    public AdressApi(Integer id, String rue, String code_postal, String ville, int id_employee) {
+    public AdressApi_test(Integer id, String rue, String code_postal, String ville, int id_employee) {
         this.id = id;
         this.rue = rue;
         this.code_postal = code_postal;
@@ -169,10 +169,10 @@ public class AdressApi implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AdressApi)) {
+        if (!(object instanceof AdressApi_test)) {
             return false;
         }
-        AdressApi other = (AdressApi) object;
+        AdressApi_test other = (AdressApi_test) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

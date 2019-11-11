@@ -22,10 +22,6 @@ public class Employee {
         return id;
     }
 
-    public ArrayList<Adress> getAdresses() {
-        return adresses;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -78,6 +74,10 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public ArrayList<Adress> getAdresses() {
+        return adresses;
     }
     
     public void setAdresses(ArrayList<Adress> _adress){
