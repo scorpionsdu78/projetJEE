@@ -66,29 +66,29 @@ public class SB_Employee
     public void PUT(int id, String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, int idadd, String street, String postal, String city){
         EmployeeApi employee = GET(id);
         
-        if(last_name != null){
+        if(last_name != null)
             employee.setLast_name(last_name);
-        }
+
         
-        if(first_name != null){
+        if(first_name != null)
             employee.setFirst_name(first_name);
-        }
+
         
-        if(home_pho != null){
+        if(home_pho != null)
             employee.setHome_phone(home_pho);
-        }
+
         
-        if(mob_pho != null){
+        if(mob_pho != null)
             employee.setCell_phone(mob_pho);
-        }
+
         
-        if(work_pho != null){
+        if(work_pho != null)
             employee.setWork_phone(work_pho);
-        }
+
         
-        if(email != null){
+        if(email != null)
             employee.setEmail(email);
-        }
+
         
         SB_Adress sb_adress = new SB_Adress();
         sb_adress.PUT(idadd, street, postal, city);
