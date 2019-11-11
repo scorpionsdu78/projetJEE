@@ -55,7 +55,7 @@
                                         <c:when test="${not empty adress}">
 
                                 <td> ${adress.rue} </td>
-                                <td> ${adress.codePostal} </td>
+                                <td> ${adress.code_postal} </td>
                                 <td> ${adress.ville} </td>
                                     
                                         </c:when>

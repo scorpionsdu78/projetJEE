@@ -5,6 +5,7 @@
  */
 package fr.efrei.controller;
 
+import fr.efrei.API.EmployeeApi;
 import fr.efrei.API.Employee_API;
 import fr.efrei.jeeproject.Adress;
 import fr.efrei.jeeproject.Employee;
@@ -52,8 +53,11 @@ public class Controller_Employees extends HttpServlet
         {
             
             getData getter = new getData();
-            ArrayList<Employee> employees = new ArrayList<Employee>();
+            System.out.println("HERE 1");
+            ArrayList<EmployeeApi> employees = new ArrayList<EmployeeApi>();
+            System.out.println("HERE 2");
             employees.addAll(getter.listEmployee());
+            System.out.println("HERE 3");
             /*for(int i = 0; i<employees.size();i++){
                 Employee emp = employees.get(i);
                 ArrayList<Adress> add = new ArrayList<Adress>();

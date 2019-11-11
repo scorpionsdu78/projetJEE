@@ -9,12 +9,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -76,8 +78,12 @@ public class EmployeeApi implements Serializable {
     private String email;
    
     
-    @OneToMany(mappedBy="employee", targetEntity=AdressApi.class, fetch = FetchType.EAGER)
-    private ArrayList<AdressApi> adresses;  
+    @OneToMany(
+        cascade = CascadeType.ALL,
+        orphanRemoval = false
+    )
+    @JoinColumn(name="id_employee", referencedColumnName="id")
+    private List<AdressApi> adresses = new ArrayList<>(); 
 
    
     
@@ -153,7 +159,7 @@ public class EmployeeApi implements Serializable {
         this.email = email;
     }
 
-    public ArrayList<AdressApi> getAdresses() {
+    public List<AdressApi> getAdresses() {
         return adresses;
     }
     

@@ -73,11 +73,6 @@ public class AdressApi implements Serializable {
     @Column(name = "id_employee")
     private int id_employee;
     
-    
-    @ManyToOne(optional=false)
-    @Id
-    @PrimaryKeyJoinColumn(name="id_employee", referencedColumnName="id")
-    private EmployeeApi employee;
 
     public AdressApi() {
     }
@@ -148,15 +143,6 @@ public class AdressApi implements Serializable {
 
     public void setId_employee(int id_employee) {
         this.id_employee = id_employee;
-    }
-
-    public EmployeeApi getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(EmployeeApi employee) {
-        this.employee = employee;
-        this.id_employee = employee.getId();
     }
 
     @Override
