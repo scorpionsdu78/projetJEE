@@ -5,9 +5,11 @@
  */
 package fr.efrei.controller;
 
+import fr.efrei.API.EmployeeApi;
 import fr.efrei.API.Employee_API;
 import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_SINGLE;
 import fr.efrei.jeeproject.Employee;
+import fr.efrei.jpa.SB_Employee;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
@@ -70,12 +72,19 @@ public class Controller_Employee extends HttpServlet
         if(request.getParameter("button").equals("Details"))
         {
             try{//call the api to get the employee here
-                Employee employee = Employee_API.GET((Integer.valueOf(request.getParameter("radio_employees_v1"))));
+                SB_Employee getter = new SB_Employee();
+                System.out.println(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                
+                EmployeeApi employee = getter.GET(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                
+                System.out.println(employee.getId());
+                
                 request.setAttribute("employee", employee);
-            }catch(SQLException e){
+            }catch(Exception e){
                 System.out.println(e.getMessage());
                 request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
             }
+            
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
             return;
         }

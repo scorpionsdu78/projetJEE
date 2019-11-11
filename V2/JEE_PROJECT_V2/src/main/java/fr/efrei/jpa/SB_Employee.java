@@ -71,6 +71,9 @@ public class SB_Employee
         
         TypedQuery<EmployeeApi> q = em.createNamedQuery("EmployeeApi.findById", EmployeeApi.class);
         
+        System.out.println("test");
+        System.out.println(q.getResultList().get(0).getId());
+        
         return q.getResultList().get(0);
     }
     
@@ -131,4 +134,6 @@ public class SB_Employee
             employee.setEmail(email);
         
     }
+    
+    
 }
