@@ -6,6 +6,8 @@
 package fr.efrei.API;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -90,14 +93,12 @@ public class EmployeeApi implements Serializable {
         this.id = id;
     }
 
-    public EmployeeApi(Integer id, String first_name, String last_name, String home_phone, String rue, String code_postal, String ville) {
+    public EmployeeApi(Integer id, String first_name, String last_name, String home_phone, String email) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.home_phone = home_phone;
-        this.rue = rue;
-        this.code_postal = code_postal;
-        this.ville = ville;
+        this.email = email;
     }
 
     public Integer getId() {
