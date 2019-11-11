@@ -91,43 +91,43 @@ public class EmployeeApi implements Serializable {
         this.id = id;
     }
 
-    public String getFirstName() {
+    public String getFirst_name() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirst_name(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public String getLast_name() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLast_name(String lastName) {
         this.lastName = lastName;
     }
 
-    public String getHomePhone() {
+    public String getHome_phone() {
         return homePhone;
     }
 
-    public void setHomePhone(String homePhone) {
+    public void setHome_phone(String homePhone) {
         this.homePhone = homePhone;
     }
 
-    public String getCellPhone() {
+    public String getCell_phone() {
         return cellPhone;
     }
 
-    public void setCellPhone(String cellPhone) {
+    public void setCell_phone(String cellPhone) {
         this.cellPhone = cellPhone;
     }
 
-    public String getWorkPhone() {
+    public String getWork_phone() {
         return workPhone;
     }
 
-    public void setWorkPhone(String workPhone) {
+    public void setWork_phone(String workPhone) {
         this.workPhone = workPhone;
     }
 
