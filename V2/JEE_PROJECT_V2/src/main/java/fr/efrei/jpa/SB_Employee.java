@@ -18,7 +18,7 @@ import javax.persistence.Query;
  * @author francois
  */
 @Stateless
-public class getData {
+public class SB_Employee {
 
     @PersistenceContext
     EntityManager em;

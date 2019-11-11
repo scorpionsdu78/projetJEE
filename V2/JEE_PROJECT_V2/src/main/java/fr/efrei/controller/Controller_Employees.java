@@ -10,7 +10,7 @@ import fr.efrei.API.Employee_API;
 import fr.efrei.jeeproject.Adress;
 import fr.efrei.jeeproject.Employee;
 import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_ALL;
-import fr.efrei.jpa.getData;
+import fr.efrei.jpa.SB_Employee;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public class Controller_Employees extends HttpServlet
         try
         {
             
-            getData getter = new getData();
+            SB_Employee getter = new SB_Employee();
             ArrayList<EmployeeApi> employees = new ArrayList<EmployeeApi>();
             employees.addAll(getter.listEmployee());
             
