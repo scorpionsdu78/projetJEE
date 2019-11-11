@@ -52,16 +52,16 @@ public class SB_Adress {
     public void PUT(int id, String street, String postal, String city){
         AdressApi adress = GET(id);
         
-        if(street != null){
+        if(street != null)
             adress.setRue(street);
-        }
+
         
-        if(postal != null){
+        if(postal != null)
             adress.setCode_postal(postal);
-        }
+
         
-        if(city != null){
+        if(city != null)
             adress.setVille(city);
-        }
+
     }
 }
