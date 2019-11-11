@@ -80,12 +80,7 @@ public class EmployeeApi implements Serializable
     public EmployeeApi() {
     }
 
-    public EmployeeApi(Integer id) {
-        this.id = id;
-    }
-
-    public EmployeeApi(Integer id, String first_name, String last_name, String home_phone, String email) {
-        this.id = id;
+    public EmployeeApi(String first_name, String last_name, String home_phone, String email) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.home_phone = home_phone;

@@ -76,9 +76,6 @@ public class AdressApi implements Serializable {
 
     public AdressApi() {
     }
-    public AdressApi(Integer id) {
-        this.id = id;
-    }
 
     public AdressApi(String rue, String code_postal, String ville, int id_employee) {
         this.rue = rue;

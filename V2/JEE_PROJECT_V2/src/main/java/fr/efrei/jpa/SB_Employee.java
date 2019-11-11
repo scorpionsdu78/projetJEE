@@ -71,23 +71,23 @@ public class SB_Employee
         }
         
         if(first_name != null){
-            employee.setLast_name(first_name);
+            employee.setFirst_name(first_name);
         }
         
         if(home_pho != null){
-            employee.setLast_name(home_pho);
+            employee.setHome_phone(home_pho);
         }
         
         if(mob_pho != null){
-            employee.setLast_name(mob_pho);
+            employee.setCell_phone(mob_pho);
         }
         
         if(work_pho != null){
-            employee.setLast_name(work_pho);
+            employee.setWork_phone(work_pho);
         }
         
         if(email != null){
-            employee.setLast_name(email);
+            employee.setEmail(email);
         }
         
         SB_Adress sb_adress = new SB_Adress();
