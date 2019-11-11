@@ -77,6 +77,22 @@ public class SB_Employee
     
     
     
+    /** Adds a new Employee to the database
+     * 
+     * @param first_name his First name
+     * @param last_name his Last name
+     * @param home_pho his Home phone
+     * @param mob_pho his Mobile phone
+     * @param work_pho his Work phone
+     * @param email his Email
+     */
+    public EmployeeApi POST(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email){
+        return new EmployeeApi(first_name, last_name, home_pho, mob_pho, work_pho, email);
+    }
+    
+    
+    
+    
     /** Modifies a given Employee from the database
      * 
      * @param id ID of the Employee we want to modify
@@ -113,23 +129,6 @@ public class SB_Employee
         
         if(email != null)
             employee.setEmail(email);
-        }
-    }
-    
-    
-    
-    
-    /** Adds a new Employee to the database
-     * 
-     * @param first_name his First name
-     * @param last_name his Last name
-     * @param home_pho his Home phone
-     * @param mob_pho his Mobile phone
-     * @param work_pho his Work phone
-     * @param email his Email
-     */
-    public EmployeeApi POST(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email)
-    {
-        return new EmployeeApi(first_name, last_name, home_pho, mob_pho, work_pho, email);
+        
     }
 }
