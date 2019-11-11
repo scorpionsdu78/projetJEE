@@ -54,7 +54,7 @@ public class Controller_Employees extends HttpServlet
             
             SB_Employee getter = new SB_Employee();
             ArrayList<EmployeeApi> employees = new ArrayList<EmployeeApi>();
-            employees.addAll(getter.listEmployee());
+            employees.addAll(getter.GET());
             
             request.setAttribute("employees", employees);
             

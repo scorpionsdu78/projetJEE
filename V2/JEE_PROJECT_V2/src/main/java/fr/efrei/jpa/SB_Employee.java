@@ -5,6 +5,7 @@
  */
 package fr.efrei.jpa;
 
+import fr.efrei.API.EmployeeApi;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -18,34 +19,34 @@ import javax.persistence.Query;
  * @author francois
  */
 @Stateless
-public class SB_Employee {
-
+public class SB_Employee
+{
     @PersistenceContext
     EntityManager em;
-    EntityManagerFactory m;
+    EntityManagerFactory emf;
     
-    public List listEmployee(){
-        List l=null;
+    public List GET()
+    {   
+        // We manage our Entity Managers
+        emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
+        em = emf.createEntityManager();
         
-        m = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
-        System.out.println("factory created");
         
-        em = m.createEntityManager();
-        System.out.println("entity manager created");
+        // We do our SQL query
+        Query q = em.createNamedQuery("EmployeeApi.findAll", EmployeeApi.class);
         
-        Query q = em.createQuery("SELECT e FROM EmployeeApi e");
-        System.out.println("query created");
         
-        l = q.getResultList();
-        System.out.println("result list getted");
+        // We initialize a list at null, then fill it with the query's results
+        List returnList = null;
+        returnList = q.getResultList();
         
-        if(l == null){
-            System.out.println("error");
-        }
         
-        return l;
+        // If the list is empty, display an error message
+        if(returnList == null)
+            System.out.println("ERROR IN SB_EMPLOYEE");
+        
+        
+        // Return the list
+        return returnList;
     }
-    
-    
-    
 }
