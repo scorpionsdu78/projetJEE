@@ -5,9 +5,7 @@
  */
 package fr.efrei.jpa;
 
-import fr.efrei.API.AdressApi;
 import fr.efrei.API.EmployeeApi;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -127,26 +125,20 @@ public class SB_Employee
         if(last_name != null)
             employee.setLast_name(last_name);
 
-        
         if(first_name != null)
             employee.setFirst_name(first_name);
-
         
         if(home_pho != null)
             employee.setHome_phone(home_pho);
 
-        
         if(mob_pho != null)
             employee.setCell_phone(mob_pho);
 
-        
         if(work_pho != null)
             employee.setWork_phone(work_pho);
-
         
         if(email != null)
             employee.setEmail(email);
-        
     }
     
     
