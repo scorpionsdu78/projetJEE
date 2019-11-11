@@ -54,12 +54,7 @@ public class Controller_Employees extends HttpServlet
             getData getter = new getData();
             ArrayList<Employee> employees = new ArrayList<Employee>();
             employees.addAll(getter.listEmployee());
-            /*for(int i = 0; i<employees.size();i++){
-                Employee emp = employees.get(i);
-                ArrayList<Adress> add = new ArrayList<Adress>();
-                add.addAll(getter.listAdresse(emp.getId()));
-                emp.setAdresses(add);
-            }*/
+            
             request.setAttribute("employees", employees);
             
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);

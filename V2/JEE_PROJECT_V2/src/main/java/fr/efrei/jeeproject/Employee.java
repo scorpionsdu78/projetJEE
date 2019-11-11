@@ -16,7 +16,34 @@ public class Employee {
     private String cell_phone;
     private String work_phone;
     private String email;
-    private ArrayList<Adress> adresses;
+    private String rue;
+    private String codePostal;
+    private String ville;
+
+    public String getRue() {
+        return rue;
+    }
+
+    public void setRue(String rue) {
+        this.rue = rue;
+    }
+
+    public String getCodePostal() {
+        return codePostal;
+    }
+
+    public void setCodePostal(String codePostal) {
+        this.codePostal = codePostal;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+    
 
     public int getId() {
         return id;
@@ -76,12 +103,5 @@ public class Employee {
         this.email = email;
     }
 
-    public ArrayList<Adress> getAdresses() {
-        return adresses;
-    }
-    
-    public void setAdresses(ArrayList<Adress> _adress){
-        this.adresses = _adress;
-    }
     
 }
