@@ -28,19 +28,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "employee")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e")
-    , @NamedQuery(name = "Employee.findById", query = "SELECT e FROM Employee e WHERE e.id = :id")
-    , @NamedQuery(name = "Employee.findByFirstName", query = "SELECT e FROM Employee e WHERE e.firstName = :firstName")
-    , @NamedQuery(name = "Employee.findByLastName", query = "SELECT e FROM Employee e WHERE e.lastName = :lastName")
-    , @NamedQuery(name = "Employee.findByHomePhone", query = "SELECT e FROM Employee e WHERE e.homePhone = :homePhone")
-    , @NamedQuery(name = "Employee.findByCellPhone", query = "SELECT e FROM Employee e WHERE e.cellPhone = :cellPhone")
-    , @NamedQuery(name = "Employee.findByWorkPhone", query = "SELECT e FROM Employee e WHERE e.workPhone = :workPhone")
-    , @NamedQuery(name = "Employee.findByEMail", query = "SELECT e FROM Employee e WHERE e.eMail = :eMail")
-    , @NamedQuery(name = "Employee.findByRue", query = "SELECT e FROM Employee e WHERE e.rue = :rue")
-    , @NamedQuery(name = "Employee.findByCodePostal", query = "SELECT e FROM Employee e WHERE e.codePostal = :codePostal")
-    , @NamedQuery(name = "Employee.findByVille", query = "SELECT e FROM Employee e WHERE e.ville = :ville")
-    , @NamedQuery(name = "Employee.findByComplement", query = "SELECT e FROM Employee e WHERE e.complement = :complement")
-    , @NamedQuery(name = "Employee.findByBatiment", query = "SELECT e FROM Employee e WHERE e.batiment = :batiment")})
+    @NamedQuery(name = "EmployeeApi.findAll", query = "SELECT e FROM EmployeeApi e")
+    , @NamedQuery(name = "EmployeeApi.findById", query = "SELECT e FROM EmployeeApi e WHERE e.id = :id")})
 public class EmployeeApi implements Serializable
 {
     private static final long serialVersionUID = 1L;
