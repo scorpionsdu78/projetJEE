@@ -48,6 +48,18 @@ services/Register my SQL server...
 ```
 
 
+For the first attempt of our V2 :
+```
+In the branch V2_copy you'll find our first attempt on the V2.
+In this project, the dtabase had TWO tables - employee and adress - and a employee could have morethan one adress (theoricly, the V1 too).
+
+This version was almost completly finished, the two Entity EmployeeApi and AdressApi were link together on OneToMany in cascade and everyrthing was working just fine on the GET, the PUT and the DELETE methodes until we implement the POST method.
+The problem was that the new EmployeeApi didn't 'update' itself with the database to get the new adresses. We debug the program with our professor for more than an hour before we sitch to the current version our the V2.
+
+The original code of this attempt is still accesible in the branch 'V2_copy'. The V2 has is own codedb.sql for setting-up the database.
+```
+
+
 
 ## Concerning the Servlets
 We are aware that the subject specifically said "Unique Servlet".
