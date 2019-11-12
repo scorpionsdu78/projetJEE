@@ -1,6 +1,6 @@
 # Project Java : JEE
 
-This Project consists of the "Design and build of an Employees Management Application".
+Design and build of an Employees Management Application.
 
 
 
@@ -71,5 +71,5 @@ Note : we are currently in our 4th year, in a Software Engineering cursus.
 
 ## Acknowledgments
 
-* Inspiration
-* etc
+* NetBeans isn't very compliant, at time --> choose a better IDE
+* other stuff ?
