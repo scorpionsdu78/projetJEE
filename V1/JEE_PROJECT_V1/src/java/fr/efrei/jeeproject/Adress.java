@@ -5,12 +5,12 @@
  */
 package fr.efrei.jeeproject;
 
-/**
+/** Class representing an Adress instance from the database
  *
  * @author francois
  */
-public class Adress {
-    
+public class Adress
+{    
     private int id;
     private String rue;
     private String codePostal;
@@ -65,7 +65,4 @@ public class Adress {
     public void setBatiment(String batiment) {
         this.batiment = batiment;
     }
-    
-    
-    
 }

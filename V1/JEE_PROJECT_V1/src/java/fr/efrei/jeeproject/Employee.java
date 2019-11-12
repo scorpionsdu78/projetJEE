@@ -3,12 +3,12 @@ package fr.efrei.jeeproject;
 import java.util.ArrayList;
 
 
-/** This Class is the representation of an Employee
+/** Class representing an Employee instance from the database
  *
  * @author Eddy
  */
-
-public class Employee {
+public class Employee
+{
     private int id;
     private String first_name;
     private String last_name;
@@ -83,5 +83,4 @@ public class Employee {
     public void setAdresses(ArrayList<Adress> _adress){
         this.adresses = _adress;
     }
-    
 }
