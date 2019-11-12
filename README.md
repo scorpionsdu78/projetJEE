@@ -49,6 +49,21 @@ services/Register my SQL server...
 
 
 
+## Concerning the Servlets
+We are aware that the subject specifically said "Unique Servlet".
+Yet, we deployed many of them in each versions.
+
+We felt that it was more convenient and more secure to have several files doing the job, instead of a big one doing all at once.
+Hence, we have 5 servlets for our V1, and 3 for our V2 (we enhanced our handling of servlet, so we reduced their number).
+
+For instance, we have a dedicated servlet doing the transition from the Login.jsp to the Employees.jsp page,
+or a dedicated servlet doing the operations in the Logout.jsp page.
+
+
+It felt more natural, despite of the directive.
+
+
+
 ## Built With
 
 * [Netbeans 8.2](https://netbeans.org/downloads/8.2/) - The Java IDE we used
@@ -72,4 +87,4 @@ Note : we are currently in our 4th year, in a Software Engineering cursus.
 ## Acknowledgments
 
 * NetBeans isn't very compliant, at time --> choose a better IDE
-* other stuff ?
+* There are some features of JavaDB that made the project way harder than it should be, hence we prefered to use SQL database
