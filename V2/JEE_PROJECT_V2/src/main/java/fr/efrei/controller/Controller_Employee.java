@@ -58,7 +58,6 @@ public class Controller_Employee extends HttpServlet
         
         if(request.getParameter("button").equals("Delete"))
         {
-                System.out.println("1HERE");
 
             try
             {
@@ -71,16 +70,11 @@ public class Controller_Employee extends HttpServlet
                     return;
                 }
                     
-                //call the api to delete here
-
-                System.out.println("jvou nik " + Integer.valueOf(request.getParameter("radio_employees_v1")));
-                
+                //call the api to delete here                
                 sB_Employee.Delete(Integer.valueOf(request.getParameter("radio_employees_v1")));
-                System.out.println("2HERE");
             }
             catch(Exception e)
             {
-                System.out.println("1.IN CATCH : " + e.getClass());
                 System.out.println(e.getMessage());
                 request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
             }

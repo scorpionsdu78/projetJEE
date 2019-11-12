@@ -37,7 +37,6 @@ public class SB_Employee
      */
     public List<EmployeeApi> Get()
     {       
-        
         // We do our SQL query
         TypedQuery<EmployeeApi> q = em.createNamedQuery("EmployeeApi.findAll", EmployeeApi.class);
         
@@ -91,10 +90,14 @@ public class SB_Employee
      * @param work_pho his Work phone
      * @param email his Email
      * 
-     * @return the new Employee
+     * @return the id of new Employee
      */
-    public EmployeeApi Post(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email){
-        return new EmployeeApi(first_name, last_name, home_pho, mob_pho, work_pho, email);
+    public Integer Post(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email){
+        EmployeeApi employee = new EmployeeApi(first_name, last_name, home_pho, mob_pho, work_pho, email);
+        em.persist(employee);
+        
+        
+        return  employee.getId();
     }
     
     
@@ -133,12 +136,9 @@ public class SB_Employee
             employee.setEmail(email);
     }
     
-    public void Delete(int id){
+    public void Delete(int id){        
+        EmployeeApi emp = em.find(EmployeeApi.class, id);  
         
-        System.out.println("bjr : " + id);
-        
-        EmployeeApi emp = em.find(EmployeeApi.class, id);                
-        em.remove(emp);
-        
+        em.remove(emp);        
     }
 }

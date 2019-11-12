@@ -21,21 +21,17 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class SB_Adress
 {
-    @PersistenceContext
+    
+    @PersistenceContext(unitName="se.m1_JEE_PROJECT_V2_war_1.0PU")
     private EntityManager em;
-    private EntityManagerFactory emf;
+    
     
     /** Get all the Adresses from the Database
      * 
      * @return all the Adresses from the Database
      */
     public List<AdressApi> Get()
-    {    
-        // We manage our Entity Managers
-        emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
-        em = emf.createEntityManager();
-        
-        
+    {         
         // We do our SQL query
         TypedQuery q = em.createNamedQuery("AdressApi.findAll", AdressApi.class);
         
@@ -64,11 +60,6 @@ public class SB_Adress
      */
     public AdressApi Get(int id)
     {
-        // We manage our Entity Managers
-        emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
-        em = emf.createEntityManager();
-        
-        
         // We do our SQL query
         TypedQuery<AdressApi> q = em.createNamedQuery("AdressApi.findById", AdressApi.class);
         q.setParameter("id", id);
@@ -97,10 +88,14 @@ public class SB_Adress
      * @param postal his Postal Code
      * @param city his City
      * @param id_employee the Employee's ID
-     * @return The new Adress
+     * @return The id of the new Adress
      */
-    public AdressApi Post(String street, String postal, String city, int id_employee){
-        return new AdressApi(street, postal, city, id_employee);
+    public Integer Post(String street, String postal, String city, int id_employee){
+        AdressApi adress = new AdressApi(street, postal, city, id_employee);
+        em.persist(adress);
+        
+        
+        return adress.getId();
     }
     
     
