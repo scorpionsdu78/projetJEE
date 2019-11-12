@@ -22,14 +22,16 @@
                     
                     <hr/>
                         
+                    
+                    <form action="employee" method="POST">
                     <c:choose>
                         
                         <c:when test="${empty employee}">
-                    <form action="Controller_Employee_POST" method="POST">
+                            <input type="hidden" name="method" value="POST" />
                         </c:when>
                                 
                         <c:otherwise>
-                    <form action="Controller_Employee_PUT" method="POST">                            
+                            <input type="hidden" name="method" value="PUT" />                          
                         </c:otherwise>
                                 
                     </c:choose>
