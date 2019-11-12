@@ -1,87 +1,75 @@
-# Project Title
+# Project Java : JEE
 
-One Paragraph of project description goes here
+This Project consists of the "Design and build of an Employees Management Application".
+
+
+
+### The structure of the project
+The project consists of 2 Versions of the same website : each uses a different set of technologies.
+
+The website contains these pages :
+* Login - Connect to website (creates a session)
+* Logout - Delete the Session
+* Employees - The main page ; It displays all the employees.
+* Employee - The detail page ; All the data concerning a given Employee are displayed.
+
+Note that you can connect to the website whether as an ADMIN or an EMPLOYEE, the Admin having dedicated rights. Most notably, you can ADD, DELETE and MODIFY employees.
+
+
 
 ## Getting Started
+The programmation is fully completed, but we have a small requirement : creating the database.
+Don't worry ! We got you covered.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
+For the V1 :
 ```
-Give examples
-```
+You'll need to create a JavaDB database.
+Here are the file to help you create & fill the database.
+Creating the Database : projetJEE\V1\JEE_PROJECT_V1\web\WEB-INF\SQL\codedb.sql
+Filling the Database : projetJEE\V1\JEE_PROJECT_V1\web\WEB-INF\SQL\remplissage.sql
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
+You'll need to create the database within the project, thanks to the service/database window.
 ```
 
-And repeat
 
+For the V2 :
 ```
-until finished
-```
+You'll need to create an SQL database.
+Here are the file to help you create & fill the database.
+Creating the Database : projetJEE\V2\JEE_PROJECT_V2\web\WEB-INF\SQL\codedb.sql
+Filling the Database : projetJEE\V2\JEE_PROJECT_V2\web\WEB-INF\SQL\remplissage.sql
 
-End with an example of getting some data out of the system or using it for a little demo
+You'll need to open phpMyAdmin (and, notably, also open Wamp / Wamp / whatever you use).
+Create a new database, and giving any name you want.
+Now, how to create the table with the sql code we provided you, then fill it.
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+Next, in the project, you'll just have to link the database to the project with :
+services/Register my SQL server...
 ```
 
-### And coding style tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Netbeans 8.2](https://netbeans.org/downloads/8.2/) - The Java IDE we used
+* [PhpMyAdmin 4.8.5](https://https://www.phpmyadmin.net) - The SQL database we used for the V2
+  
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+It was made by the following Efrei Paris students :
+* **BEGEOT Hugues** - [his Git repository](https://github.com/opsilonn)
+* **BONI François** - [his Git repository](https://github.com/scorpionsdu78)
+* **DULCHE Eddy** - [his Git repository](https://github.com/DulcheE)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/scorpionsdu78/projetJEE/contributors) who participated in this project.
 
-## License
+Note : we are currently in our 4th year, in a Software Engineering cursus.
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
 * Inspiration
 * etc
