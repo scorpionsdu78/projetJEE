@@ -41,14 +41,21 @@
                         </div>
                         <div class="card-body">
 
+                            <%-- LOGIN FORM --%>
                             <form action="login" method="post">
-                              <div class="form-group">
-                                  <input type="text" class="form-control" name="<% out.print(Constants.FORM_LOGIN_USERNAME); %>" placeholder="Login" required>
-                              </div>
-                              <div class="form-group">
-                                  <input type="password" class="form-control" name="<% out.print(Constants.FORM_LOGIN_PASSWORD); %>" placeholder="Password" required>
-                              </div>
+                            
+                                <%-- LOGIN FIELD --%>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="<% out.print(Constants.FORM_LOGIN_USERNAME); %>" placeholder="Login" required>
+                                </div>
+                                
+                                <%-- PASSWORD FIELD --%>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="<% out.print(Constants.FORM_LOGIN_PASSWORD); %>" placeholder="Password" required>
+                                </div>
+                                
                               <button type="submit" class="btn btn-primary">Login</button>
+                              
                             </form>
 
                         </div>            

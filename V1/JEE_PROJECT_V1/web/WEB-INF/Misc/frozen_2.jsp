@@ -3,7 +3,6 @@
     Created on : 25 oct. 2019, 14:44:33
     Author     : Eddy
 --%>
-
 <style>
     .non-active {    
         pointer-events: none;

@@ -102,7 +102,6 @@
                             
                         <%
                             // If the user is an ADMIN, he can access the ADD BUTTON
-                            
                             if( session.getAttribute("role").equals( "admin") )
                                     out.println("<a class=\"btn btn-primary\" href=\"employee\">Add</a>");
                         %>
