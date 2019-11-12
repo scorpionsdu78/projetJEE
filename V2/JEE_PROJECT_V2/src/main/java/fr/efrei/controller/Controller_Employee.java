@@ -53,12 +53,15 @@ public class Controller_Employee extends HttpServlet
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException
+    {
         if(request.getParameter("radio_employees_v1") == null)
         {
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
             return;
         }
+        
+        
         
         if(request.getParameter("button").equals("Delete"))
         {
@@ -84,12 +87,25 @@ public class Controller_Employee extends HttpServlet
             response.sendRedirect("employees");
             return;
         }
+        
+        
         if(request.getParameter("button").equals("Details"))
         {
             try
             {
                 //call the api to get the employee here
                 EmployeeApi employee = sB_Employee.Get(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                                
+                
+                // If the return employee is null :
+                // - I'm an Admin : this is normal, you'll get to the ADD page
+                // - I'm an Employee : this is NOT normal, you go back to the main page
+                if(employee == null && request.getSession().getAttribute("role").equals("employee"))
+                {
+                    response.sendRedirect("employees");
+                    return;
+                }
+                
                 
                 request.setAttribute("employee", employee);
             }

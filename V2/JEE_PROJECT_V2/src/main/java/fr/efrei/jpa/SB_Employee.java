@@ -58,7 +58,6 @@ public class SB_Employee
      */
     public EmployeeApi Get(int id)
     {
-        
         // We initialize a list at null, then fill it with the query's results
         EmployeeApi returnEmployee = em.find(EmployeeApi.class, id);   
         
