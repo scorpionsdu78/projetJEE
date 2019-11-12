@@ -12,7 +12,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -120,15 +119,12 @@ public class SB_Adress
         
         if(street != null)
             adress.setRue(street);
-
         
         if(postal != null)
             adress.setCode_postal(postal);
-
         
         if(city != null)
             adress.setVille(city);
-
     }
     
     
