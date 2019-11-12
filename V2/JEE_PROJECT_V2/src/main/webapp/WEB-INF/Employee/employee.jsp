@@ -52,9 +52,9 @@
                             
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="<%=Constants.FORM_EMPLOYEE_FIRST_NAME%>" class="col-sm-2 col-form-label" style="text-align: right;">Prï¿½nom</label>
+                            <label for="<%=Constants.FORM_EMPLOYEE_FIRST_NAME%>" class="col-sm-2 col-form-label" style="text-align: right;">Prénom</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_FIRST_NAME%>" id="<%=Constants.FORM_EMPLOYEE_FIRST_NAME%>" placeholder="Prï¿½nom"
+                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_FIRST_NAME%>" id="<%=Constants.FORM_EMPLOYEE_FIRST_NAME%>" placeholder="Prénom"
                                        <c:if test="${not empty employee}">
                                     value="${employee.first_name}"
                                        </c:if>
@@ -67,9 +67,9 @@
                             
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="<%=Constants.FORM_EMPLOYEE_HOME_PHO%>" class="col-sm-2 col-form-label" style="text-align: right;">Tï¿½l dom</label>
+                            <label for="<%=Constants.FORM_EMPLOYEE_HOME_PHO%>" class="col-sm-2 col-form-label" style="text-align: right;">Tél dom</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_HOME_PHO%>" id="<%=Constants.FORM_EMPLOYEE_HOME_PHO%>" placeholder="Tï¿½l dom"
+                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_HOME_PHO%>" id="<%=Constants.FORM_EMPLOYEE_HOME_PHO%>" placeholder="Tél dom"
                                        <c:if test="${not empty employee}">
                                     value="${employee.home_phone}"
                                        </c:if>
@@ -82,9 +82,9 @@
                             
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="<%=Constants.FORM_EMPLOYEE_MOB_PHO%>" class="col-sm-2 col-form-label" style="text-align: right;">Tï¿½l mob</label>
+                            <label for="<%=Constants.FORM_EMPLOYEE_MOB_PHO%>" class="col-sm-2 col-form-label" style="text-align: right;">Tél mob</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_MOB_PHO%>" id="<%=Constants.FORM_EMPLOYEE_MOB_PHO%>" placeholder="Tï¿½l mob"
+                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_MOB_PHO%>" id="<%=Constants.FORM_EMPLOYEE_MOB_PHO%>" placeholder="Tél mob"
                                        <c:if test="${not empty employee}">
                                     value="${employee.cell_phone}"
                                        </c:if>
@@ -97,9 +97,9 @@
                             
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="<%=Constants.FORM_EMPLOYEE_PRO_PHO%>" class="col-sm-2 col-form-label" style="text-align: right;">Tï¿½l pro</label>
+                            <label for="<%=Constants.FORM_EMPLOYEE_PRO_PHO%>" class="col-sm-2 col-form-label" style="text-align: right;">Tél pro</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_PRO_PHO%>" id="<%=Constants.FORM_EMPLOYEE_PRO_PHO%>" placeholder="Tï¿½l pro"
+                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_PRO_PHO%>" id="<%=Constants.FORM_EMPLOYEE_PRO_PHO%>" placeholder="Tél pro"
                                        <c:if test="${not empty employee}">
                                     value="${employee.work_phone}"
                                        </c:if>

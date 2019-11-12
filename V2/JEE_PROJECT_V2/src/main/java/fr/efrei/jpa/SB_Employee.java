@@ -27,9 +27,7 @@ public class SB_Employee
 {
     
     @PersistenceContext(unitName="se.m1_JEE_PROJECT_V2_war_1.0PU")
-
     private EntityManager em;
-    private EntityManagerFactory emf;
 
   
     
@@ -38,11 +36,7 @@ public class SB_Employee
      * @return all the Employees from the Database
      */
     public List<EmployeeApi> Get()
-    {
-        // We manage our Entity Managers
-        emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
-        em = emf.createEntityManager();
-        
+    {       
         
         // We do our SQL query
         TypedQuery<EmployeeApi> q = em.createNamedQuery("EmployeeApi.findAll", EmployeeApi.class);
@@ -71,18 +65,9 @@ public class SB_Employee
      */
     public EmployeeApi Get(int id)
     {
-        // We manage our Entity Managers
-        emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
-        em = emf.createEntityManager();
-        
-        
-        // We do our SQL query
-        TypedQuery<EmployeeApi> q = em.createNamedQuery("EmployeeApi.findById", EmployeeApi.class);
-        q.setParameter("id", id);
         
         // We initialize a list at null, then fill it with the query's results
-        EmployeeApi returnEmployee = null;        
-        returnEmployee = q.getSingleResult();
+        EmployeeApi returnEmployee = em.find(EmployeeApi.class, id);   
         
         
         // If the list is empty, display an error message
@@ -150,11 +135,10 @@ public class SB_Employee
     
     public void Delete(int id){
         
-        EmployeeApi e = Get(id);
-        EmployeeApi emp = em.find(EmployeeApi.class, e.getId());                
-        em.remove(emp);
+        System.out.println("bjr : " + id);
         
-  
+        EmployeeApi emp = em.find(EmployeeApi.class, id);                
+        em.remove(emp);
         
     }
 }

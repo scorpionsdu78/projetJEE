@@ -73,12 +73,7 @@ public class Controller_Employee extends HttpServlet
                     
                 //call the api to delete here
 
-                System.out.println(Integer.valueOf(request.getParameter("radio_employees_v1")));
-                EmployeeApi employee = sB_Employee.Get(Integer.valueOf(request.getParameter("radio_employees_v1")));
-                
-                for(AdressApi adress : employee.getAdresses()){
-                    sB_Employee.Delete(adress.getId());
-                }
+                System.out.println("jvou nik " + Integer.valueOf(request.getParameter("radio_employees_v1")));
                 
                 sB_Employee.Delete(Integer.valueOf(request.getParameter("radio_employees_v1")));
                 System.out.println("2HERE");
