@@ -6,6 +6,9 @@ package fr.efrei.jeeproject;
  */
 public class Constants
 {
+    //Theme constants
+    public static final String THEME_COLOR = "indianred";
+    
     // Error Messages
     public static final String ERR_MESSAGE_INVALID = "Connection failed ! Verify your login / password and try again !";
 

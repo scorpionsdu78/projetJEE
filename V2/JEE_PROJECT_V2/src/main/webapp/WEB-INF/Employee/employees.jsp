@@ -35,7 +35,7 @@
                                 
                                 <c:forEach var="employee" items="${employees}">
                                     
-                            <tr style="cursor: pointer;<c:if test="${highlight_ID == employee.id}"> border-left: 4px solid CornflowerBlue ; border-right: 2px solid CornflowerBlue;</c:if>">
+                            <tr style="cursor: pointer;<c:if test="${highlight_ID == employee.id}"> border-left: 4px solid <%=Constants.THEME_COLOR%> ; border-right: 2px solid <%=Constants.THEME_COLOR%>;</c:if>">
                                 <td scope="row"><input type="radio" name="radio_employees_v1" form="employee" value="${employee.id}"></td>
                                 <td> ${employee.last_name} </td>
                                 <td> ${employee.first_name} </td>
@@ -59,7 +59,7 @@
             <div class="row">
                 <div class="col">
                     
-                    <hr/>
+                    <hr class="theme"/>
                     
                     <div>
                         <form class="d-inline" action="employee" method="GET" id="employee">
@@ -80,7 +80,7 @@
                         
                     </div>
                     
-                    <hr/>
+                    <hr class="theme"/>
                     
                 </div>
             </div>

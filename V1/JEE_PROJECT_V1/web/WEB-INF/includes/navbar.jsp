@@ -49,7 +49,7 @@
                     {
                         out.println("        <ul class=\"navbar-nav\">");
                         out.println("            <li class=\"nav-item\">");
-                        out.println("                <a class=\"btn btn-light\" href=\"login\" style=\"color: black; font-size: 8px; font-size: 1.2vw;\">");
+                        out.println("                <a class=\"btn btn-light\" href=\"login\" style=\"color: " + Constants.THEME_COLOR + "; font-size: 8px; font-size: 1.2vw;\">");
                         out.println("                    Log in");
                         out.println("                    <span style=\"");
                         out.println("                        background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F16%2F16036.png&f=1&nofb=1');");

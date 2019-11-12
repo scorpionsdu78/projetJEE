@@ -18,7 +18,7 @@
                     
                     <h1>Details of employee :</h1>
                     
-                    <hr/>
+                    <hr class="theme"/>
                         
                     
                     <form action="employee" method="POST">
@@ -172,7 +172,7 @@
                         <input type="hidden" id="<%=Constants.FORM_EMPLOYEE_ID%>" name="<%=Constants.FORM_EMPLOYEE_ID%>" value="${employee.id}">
                         </c:if>
                             
-                        <hr/>
+                        <hr class="theme"/>
                         
                         <c:if test="${role == 'admin'}">
                         <div class="col-sm-11">
