@@ -9,7 +9,7 @@ CREATE TABLE  EMPLOYEE
   e_mail      varchar(45),
   rue          varchar(45) NOT NULL ,
   code_postal  varchar(45) NOT NULL ,
-  ville        varchar(45) NOT NULL 
+  ville        varchar(45) NOT NULL ,
 
 PRIMARY KEY ( id )
 );
