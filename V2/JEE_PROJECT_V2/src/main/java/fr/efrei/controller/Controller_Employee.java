@@ -14,6 +14,7 @@ import fr.efrei.jpa.delete;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,8 +28,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Controller_Employee")
 public class Controller_Employee extends HttpServlet
 {
+
+    @EJB
+    private SB_Employee sB_Employee;
+    
+    
+    
+    
+    
+    
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * Processes requests for both HTTP <code>Get</code> and <code>Post</code>
      * methods.
      *
      * @param request servlet request
@@ -64,13 +74,13 @@ public class Controller_Employee extends HttpServlet
                 //call the api to delete here
 
                 System.out.println(Integer.valueOf(request.getParameter("radio_employees_v1")));
-                EmployeeApi employee = SB_Employee.GET(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                EmployeeApi employee = sB_Employee.Get(Integer.valueOf(request.getParameter("radio_employees_v1")));
                 
                 for(AdressApi adress : employee.getAdresses()){
-                    SB_Adress.DELETE(adress.getId());
+                    sB_Employee.Delete(adress.getId());
                 }
                 
-                SB_Employee.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                sB_Employee.Delete(Integer.valueOf(request.getParameter("radio_employees_v1")));
                 System.out.println("2HERE");
             }
             catch(Exception e)
@@ -86,7 +96,7 @@ public class Controller_Employee extends HttpServlet
         {
             try{
                 //call the api to get the employee here
-                EmployeeApi employee = (EmployeeApi)SB_Employee.GET(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                EmployeeApi employee = sB_Employee.Get(Integer.valueOf(request.getParameter("radio_employees_v1")));
                 
                 request.setAttribute("employee", employee);
             }catch(Exception e){
@@ -103,7 +113,7 @@ public class Controller_Employee extends HttpServlet
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP <code>Get</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -117,7 +127,7 @@ public class Controller_Employee extends HttpServlet
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP <code>Post</code> method.
      *
      * @param request servlet request
      * @param response servlet response

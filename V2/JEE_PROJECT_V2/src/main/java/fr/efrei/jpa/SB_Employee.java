@@ -17,12 +17,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
-import javax.transaction.UserTransaction;
 
 /**
  *
@@ -31,18 +25,19 @@ import javax.transaction.UserTransaction;
 @Stateless
 public class SB_Employee
 {
-    @PersistenceContext
-    private static EntityManager em;
-    private static EntityManagerFactory emf;
-
-    @Resource
-    private static UserTransaction uTx;
     
-    /** GET all the Employees from the Database
+    @PersistenceContext(unitName="se.m1_JEE_PROJECT_V2_war_1.0PU")
+
+    private EntityManager em;
+    private EntityManagerFactory emf;
+
+  
+    
+    /** Get all the Employees from the Database
      * 
      * @return all the Employees from the Database
      */
-    public static List<EmployeeApi> GET()
+    public List<EmployeeApi> Get()
     {
         // We manage our Entity Managers
         emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
@@ -74,7 +69,7 @@ public class SB_Employee
      * @param id ID of the Employee we search
      * @return The Employee from the database corresponding to a given ID
      */
-    public static EmployeeApi GET(int id)
+    public EmployeeApi Get(int id)
     {
         // We manage our Entity Managers
         emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
@@ -113,7 +108,7 @@ public class SB_Employee
      * 
      * @return the new Employee
      */
-    public static EmployeeApi POST(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email){
+    public EmployeeApi Post(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email){
         return new EmployeeApi(first_name, last_name, home_pho, mob_pho, work_pho, email);
     }
     
@@ -130,9 +125,9 @@ public class SB_Employee
      * @param work_pho new Work phone
      * @param email new Email
      */
-    public static void PUT(int id, String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email)
+    public void Put(int id, String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email)
     {
-        EmployeeApi employee = GET(id);
+        EmployeeApi employee = Get(id);
         
         if(last_name != null)
             employee.setLast_name(last_name);
@@ -153,40 +148,13 @@ public class SB_Employee
             employee.setEmail(email);
     }
     
-    public void DELETE(int id){
+    public void Delete(int id){
         
-        emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
-        em = emf.createEntityManager();
+        EmployeeApi e = Get(id);
+        EmployeeApi emp = em.find(EmployeeApi.class, e.getId());                
+        em.remove(emp);
         
-        
-        
-        
-        EmployeeApi employee;
-        TypedQuery<EmployeeApi> q = em.createNamedQuery("EmployeeApi.findById", EmployeeApi.class);
-        q.setParameter("id", id);
-        
-        // We initialize a list at null, then fill it with the query's results
-        List<EmployeeApi> returnList = null;
-        returnList = q.getResultList();
-        
-        
-        // If the list is empty, display an error message
-        if(returnList == null)
-            System.out.println("ERROR IN SB_EMPLOYEE (get by ID)");
-        
-        
-        // We return the FIRST element of the query
-        employee= returnList.get(0);        
-        if(employee != null){
-            System.out.println("\n\n\nemployee a delete: " + employee+"\n\n\n");
-        }else{
-            System.out.println("\n\n\nunable to get the employee to delete\n\n\n");
-        }
-        
-        em.remove(employee.getAdresses().get(0));
-        em.remove(employee);
-        
-        
+  
         
     }
 }

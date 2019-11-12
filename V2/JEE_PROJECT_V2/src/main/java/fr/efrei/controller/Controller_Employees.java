@@ -14,6 +14,7 @@ import fr.efrei.jpa.SB_Employee;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,8 +28,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Controller_Employees")
 public class Controller_Employees extends HttpServlet
 {
+
+    @EJB
+    private SB_Employee sB_Employee;
+    
+    
+    
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * Processes requests for both HTTP <code>Get</code> and <code>Post</code>
      * methods.
      *
      * @param request servlet request
@@ -52,7 +59,7 @@ public class Controller_Employees extends HttpServlet
         try
         {
             
-            ArrayList<EmployeeApi> employees = new ArrayList(SB_Employee.GET());
+            ArrayList<EmployeeApi> employees = new ArrayList(sB_Employee.Get());
             
             request.setAttribute("employees", employees);
             
@@ -70,7 +77,7 @@ public class Controller_Employees extends HttpServlet
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP <code>Get</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -84,7 +91,7 @@ public class Controller_Employees extends HttpServlet
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP <code>Post</code> method.
      *
      * @param request servlet request
      * @param response servlet response

@@ -22,14 +22,14 @@ import javax.persistence.TypedQuery;
 public class SB_Adress
 {
     @PersistenceContext
-    private static EntityManager em;
-    private static EntityManagerFactory emf;
+    private EntityManager em;
+    private EntityManagerFactory emf;
     
-    /** GET all the Adresses from the Database
+    /** Get all the Adresses from the Database
      * 
      * @return all the Adresses from the Database
      */
-    public static List<AdressApi> GET()
+    public List<AdressApi> Get()
     {    
         // We manage our Entity Managers
         emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
@@ -62,7 +62,7 @@ public class SB_Adress
      * @param id ID of the Adress we search
      * @return The Adress from the database corresponding to a given ID
      */
-    public static AdressApi GET(int id)
+    public AdressApi Get(int id)
     {
         // We manage our Entity Managers
         emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
@@ -99,7 +99,7 @@ public class SB_Adress
      * @param id_employee the Employee's ID
      * @return The new Adress
      */
-    public static AdressApi POST(String street, String postal, String city, int id_employee){
+    public AdressApi Post(String street, String postal, String city, int id_employee){
         return new AdressApi(street, postal, city, id_employee);
     }
     
@@ -113,9 +113,9 @@ public class SB_Adress
      * @param postal new Postal Code
      * @param city new City
      */
-    public static void PUT(int id, String street, String postal, String city)
+    public void Put(int id, String street, String postal, String city)
     {
-        AdressApi adress = GET(id);
+        AdressApi adress = Get(id);
         
         if(street != null)
             adress.setRue(street);
@@ -130,13 +130,13 @@ public class SB_Adress
     
     
         
-    /** DELETE the Employee from the database corresponding to a given ID
+    /** Delete the Employee from the database corresponding to a given ID
      * 
      * @param id ID of the Employee we search
      */
-    public static void DELETE(int id)
+    public void Delete(int id)
     {
-        AdressApi adress = GET(id);
+        AdressApi adress = Get(id);
         
         em.remove(adress);
     }
