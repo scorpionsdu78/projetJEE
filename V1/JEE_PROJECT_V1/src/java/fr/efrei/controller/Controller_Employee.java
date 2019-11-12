@@ -35,11 +35,22 @@ public class Controller_Employee extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
+        // The user is not supposed to be here
         if(request.getParameter("radio_employees_v1") == null)
         {
-            request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
+            // The user is an ADMIN : he will add a new employee
+            if(request.getSession().getAttribute("role").equals("admin"))
+                request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
+            
+            
+            // The user is an EMPLOYEE : he will go back to employees.jsp
+            else
+                response.sendRedirect("employees");
+            
+            
             return;
         }
+        
         
         
         if(request.getParameter("button").equals("Delete"))
