@@ -22,14 +22,14 @@ import javax.persistence.TypedQuery;
 public class SB_Adress
 {
     @PersistenceContext
-    EntityManager em;
-    EntityManagerFactory emf;
+    private static EntityManager em;
+    private static EntityManagerFactory emf;
     
     /** GET all the Adresses from the Database
      * 
      * @return all the Adresses from the Database
      */
-    public List<AdressApi> GET()
+    public static List<AdressApi> GET()
     {    
         // We manage our Entity Managers
         emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
@@ -62,7 +62,7 @@ public class SB_Adress
      * @param id ID of the Adress we search
      * @return The Adress from the database corresponding to a given ID
      */
-    public AdressApi GET(int id)
+    public static AdressApi GET(int id)
     {
         // We manage our Entity Managers
         emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
@@ -71,6 +71,7 @@ public class SB_Adress
         
         // We do our SQL query
         TypedQuery<AdressApi> q = em.createNamedQuery("AdressApi.findById", AdressApi.class);
+        q.setParameter("id", id);
         
         
         // We initialize a list at null, then fill it with the query's results
@@ -98,7 +99,7 @@ public class SB_Adress
      * @param id_employee the Employee's ID
      * @return The new Adress
      */
-    public AdressApi POST(String street, String postal, String city, int id_employee){
+    public static AdressApi POST(String street, String postal, String city, int id_employee){
         return new AdressApi(street, postal, city, id_employee);
     }
     
@@ -112,7 +113,7 @@ public class SB_Adress
      * @param postal new Postal Code
      * @param city new City
      */
-    public void PUT(int id, String street, String postal, String city)
+    public static void PUT(int id, String street, String postal, String city)
     {
         AdressApi adress = GET(id);
         
@@ -124,5 +125,19 @@ public class SB_Adress
         
         if(city != null)
             adress.setVille(city);
+    }
+    
+    
+    
+        
+    /** DELETE the Employee from the database corresponding to a given ID
+     * 
+     * @param id ID of the Employee we search
+     */
+    public static void DELETE(int id)
+    {
+        AdressApi adress = GET(id);
+        
+        em.remove(adress);
     }
 }

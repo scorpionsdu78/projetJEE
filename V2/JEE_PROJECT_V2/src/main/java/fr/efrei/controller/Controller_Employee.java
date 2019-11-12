@@ -5,12 +5,13 @@
  */
 package fr.efrei.controller;
 
+import fr.efrei.API.AdressApi;
 import fr.efrei.API.EmployeeApi;
-import fr.efrei.API.Employee_API;
-import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_SINGLE;
-import fr.efrei.jeeproject.Employee;
+import static fr.efrei.jeeproject.Constants.*;
+import fr.efrei.jpa.SB_Adress;
 import fr.efrei.jpa.SB_Employee;
 import fr.efrei.jpa.delete;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
@@ -47,6 +48,7 @@ public class Controller_Employee extends HttpServlet
         
         if(request.getParameter("button").equals("Delete"))
         {
+                System.out.println("1HERE");
 
             try
             {
@@ -60,14 +62,20 @@ public class Controller_Employee extends HttpServlet
                 }
                     
                 //call the api to delete here
-                System.out.println("trying to delete");
-                delete deleter = new delete();
-                deleter.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
+
+                System.out.println(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                EmployeeApi employee = SB_Employee.GET(Integer.valueOf(request.getParameter("radio_employees_v1")));
                 
-                //Employee_API.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                for(AdressApi adress : employee.getAdresses()){
+                    SB_Adress.DELETE(adress.getId());
+                }
+                
+                SB_Employee.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                System.out.println("2HERE");
             }
             catch(Exception e)
             {
+                System.out.println("1.IN CATCH : " + e.getClass());
                 System.out.println(e.getMessage());
                 request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
             }
@@ -76,13 +84,9 @@ public class Controller_Employee extends HttpServlet
         }
         if(request.getParameter("button").equals("Details"))
         {
-            try{//call the api to get the employee here
-                SB_Employee getter = new SB_Employee();
-                System.out.println(Integer.valueOf(request.getParameter("radio_employees_v1")));
-                
-                EmployeeApi employee = getter.GET(Integer.valueOf(request.getParameter("radio_employees_v1")));
-                
-                System.out.println(employee.getId());
+            try{
+                //call the api to get the employee here
+                EmployeeApi employee = (EmployeeApi)SB_Employee.GET(Integer.valueOf(request.getParameter("radio_employees_v1")));
                 
                 request.setAttribute("employee", employee);
             }catch(Exception e){

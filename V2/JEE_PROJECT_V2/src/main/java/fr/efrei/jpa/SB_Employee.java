@@ -7,13 +7,22 @@ package fr.efrei.jpa;
 
 import fr.efrei.API.EmployeeApi;
 import java.util.List;
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
 /**
  *
@@ -23,14 +32,17 @@ import javax.persistence.TypedQuery;
 public class SB_Employee
 {
     @PersistenceContext
-    EntityManager em;
-    EntityManagerFactory emf;
+    private static EntityManager em;
+    private static EntityManagerFactory emf;
+
+    @Resource
+    private static UserTransaction uTx;
     
     /** GET all the Employees from the Database
      * 
      * @return all the Employees from the Database
      */
-    public List<EmployeeApi> GET()
+    public static List<EmployeeApi> GET()
     {
         // We manage our Entity Managers
         emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
@@ -38,7 +50,7 @@ public class SB_Employee
         
         
         // We do our SQL query
-        TypedQuery q = em.createNamedQuery("EmployeeApi.findAll", EmployeeApi.class);
+        TypedQuery<EmployeeApi> q = em.createNamedQuery("EmployeeApi.findAll", EmployeeApi.class);
         
         
         // We initialize a list at null, then fill it with the query's results
@@ -62,7 +74,7 @@ public class SB_Employee
      * @param id ID of the Employee we search
      * @return The Employee from the database corresponding to a given ID
      */
-    public EmployeeApi GET(int id)
+    public static EmployeeApi GET(int id)
     {
         // We manage our Entity Managers
         emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
@@ -74,17 +86,17 @@ public class SB_Employee
         q.setParameter("id", id);
         
         // We initialize a list at null, then fill it with the query's results
-        List<EmployeeApi> returnList = null;
-        returnList = q.getResultList();
+        EmployeeApi returnEmployee = null;        
+        returnEmployee = q.getSingleResult();
         
         
         // If the list is empty, display an error message
-        if(returnList == null)
+        if(returnEmployee == null)
             System.out.println("ERROR IN SB_EMPLOYEE (get by ID)");
         
         
         // We return the FIRST element of the query
-        return returnList.get(0);
+        return returnEmployee;
     }
     
     
@@ -101,7 +113,7 @@ public class SB_Employee
      * 
      * @return the new Employee
      */
-    public EmployeeApi POST(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email){
+    public static EmployeeApi POST(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email){
         return new EmployeeApi(first_name, last_name, home_pho, mob_pho, work_pho, email);
     }
     
@@ -118,7 +130,7 @@ public class SB_Employee
      * @param work_pho new Work phone
      * @param email new Email
      */
-    public void PUT(int id, String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email)
+    public static void PUT(int id, String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email)
     {
         EmployeeApi employee = GET(id);
         
