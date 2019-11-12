@@ -29,7 +29,6 @@
                         </c:when>
                                 
                         <c:otherwise>
-                            <c:set var="adress" value="${employee.adresses[0]}" scope="page" />
                     <form action="Controller_Employee_PUT" method="POST">                            
                         </c:otherwise>
                                 
@@ -115,8 +114,8 @@
                             <label for="<%=Constants.FORM_EMPLOYEE_STREET%>" class="col-sm-2 col-form-label" style="text-align: right;">Adresse</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_STREET%>" id="<%=Constants.FORM_EMPLOYEE_STREET%>" placeholder="Adresse"
-                                       <c:if test="${not empty adress}">
-                                    value="${adress.rue}"
+                                       <c:if test="${not empty employee}">
+                                    value="${employee.rue}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -130,8 +129,8 @@
                             <label for="<%=Constants.FORM_EMPLOYEE_CITY%>" class="col-sm-2 col-form-label" style="text-align: right;">Ville</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_CITY%>" id="<%=Constants.FORM_EMPLOYEE_CITY%>" placeholder="Ville"
-                                       <c:if test="${not empty adress}">
-                                    value="${adress.ville}"
+                                       <c:if test="${not empty employee}">
+                                    value="${employee.ville}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -146,8 +145,8 @@
                             <label for="<%=Constants.FORM_EMPLOYEE_POSTAL%>" class="col-sm-2 col-form-label" style="text-align: right;">Code postal</label>
                             <div class="col-sm-3">
                                 <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_POSTAL%>" id="<%=Constants.FORM_EMPLOYEE_POSTAL%>" placeholder="Code postal"
-                                       <c:if test="${not empty adress}">
-                                    value="${adress.code_postal}"
+                                       <c:if test="${not empty employee}">
+                                    value="${employee.code_postal}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -171,10 +170,6 @@
                         
                         <c:if test="${not empty employee}">
                         <input type="hidden" id="<%=Constants.FORM_EMPLOYEE_ID%>" name="<%=Constants.FORM_EMPLOYEE_ID%>" value="${employee.id}">
-                        </c:if>
-                            
-                        <c:if test="${not empty adress}">
-                        <input type="hidden" id="<%=Constants.FORM_EMPLOYEE_AID%>" name="<%=Constants.FORM_EMPLOYEE_AID%>" value="${adress.id}">
                         </c:if>
                             
                         <hr/>
