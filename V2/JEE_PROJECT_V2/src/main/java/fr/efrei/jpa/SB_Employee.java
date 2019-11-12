@@ -7,14 +7,8 @@ package fr.efrei.jpa;
 
 import fr.efrei.API.EmployeeApi;
 import java.util.List;
-import javax.annotation.Resource;
 import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -93,8 +87,17 @@ public class SB_Employee
      * @return the id of new Employee
      */
     public Integer Post(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email){
+        System.out.println("EMPLOYEE POST : HERE1");
         EmployeeApi employee = new EmployeeApi(first_name, last_name, home_pho, mob_pho, work_pho, email);
+        System.out.println("EMPLOYEE POST : HERE2");
+
         em.persist(employee);
+        
+        employee = em.merge(employee);
+        
+        
+        System.out.println("EMPLOYEE POST : HERE3");
+        System.out.println("EMPLOYEE POST : " + employee.getId());
         
         
         return  employee.getId();

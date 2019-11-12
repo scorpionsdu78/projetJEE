@@ -64,16 +64,20 @@ public class Controller_Employee_POST extends HttpServlet
             String postal = request.getParameter(FORM_EMPLOYEE_POSTAL);
             String city = request.getParameter(FORM_EMPLOYEE_CITY);
             
-            //int employee_id = sB_Employee.Post(first_name, last_name, home_tel, mob_tel, pro_tel, email);
-            System.out.println(street + ", " + postal + ", " + city + ", " +14);
-            int adress_id = sB_Adress.Post(street, postal, city, 14);
             
-            request.getSession().setAttribute("highlight_ID", 14);
+            System.out.println(first_name + ", " + last_name + ", " + home_tel + ", " + mob_tel + ", " + pro_tel + ", " + email);
+            int employee_id = sB_Employee.Post(first_name, last_name, home_tel, mob_tel, pro_tel, email);
+            //int employee_id = 15;
+            System.out.println("HERE");
+            System.out.println(street + ", " + postal + ", " + city + ", " + employee_id);
+            int adress_id = sB_Adress.Post(street, postal, city, employee_id);
+            
+            request.getSession().setAttribute("highlight_ID", employee_id);
             response.sendRedirect("employees");
             System.out.println("Succed");
             return;
         }catch(Exception e){
-            System.out.println("CATCH");
+            System.out.println("CATCH : " + e.getClass());
             System.out.println(e.getMessage());
             request.getSession().setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
             response.sendRedirect("employees");

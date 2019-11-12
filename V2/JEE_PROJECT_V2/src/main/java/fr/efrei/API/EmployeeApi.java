@@ -12,6 +12,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,16 +38,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class EmployeeApi implements Serializable
 {
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "first_name")
     private String first_name;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -71,7 +75,8 @@ public class EmployeeApi implements Serializable
     
     @OneToMany(
         cascade = CascadeType.ALL,
-        orphanRemoval = false
+        orphanRemoval = false,
+        fetch = FetchType.EAGER
     )
     @JoinColumn(name="id_employee", referencedColumnName="id")
     private List<AdressApi> adresses = new ArrayList<>(); 

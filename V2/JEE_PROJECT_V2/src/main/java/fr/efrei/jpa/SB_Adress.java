@@ -6,11 +6,10 @@
 package fr.efrei.jpa;
 
 import fr.efrei.API.AdressApi;
+import fr.efrei.API.EmployeeApi;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -90,9 +89,19 @@ public class SB_Adress
      * @param id_employee the Employee's ID
      * @return The id of the new Adress
      */
-    public Integer Post(String street, String postal, String city, int id_employee){
-        AdressApi adress = new AdressApi(street, postal, city, id_employee);
-        em.persist(adress);
+    public Integer Post(String street, String postal, String city, int id_employee){        
+        System.out.println("ADRESS POST : HERE1");
+        AdressApi adress = new AdressApi(street, postal, city, id_employee);     
+        System.out.println("ADRESS POST : HERE2");
+        em.persist(adress);  
+        
+        EmployeeApi employee_parent = em.find(EmployeeApi.class, id_employee);
+        employee_parent = em.merge(employee_parent);     
+        
+        em.flush();
+        
+        System.out.println("ADRESS POST : HERE3");     
+        System.out.println("ADRESS POST : " + adress.getId());
         
         
         return adress.getId();
