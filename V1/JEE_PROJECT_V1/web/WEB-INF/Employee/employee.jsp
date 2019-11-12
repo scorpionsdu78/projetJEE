@@ -45,9 +45,9 @@
                         {
                             out.print( "<form action=\"Controller_Employee_put\" method=\"POST\">");
                         }
-                        
-                    
                      %>  
+                     
+                        <%-- LAST_NAME FIELD --%>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_nom" class="col-sm-2 col-form-label" style="text-align: right;">Nom</label>
@@ -66,6 +66,8 @@
                             </div>
                         </div>
                             
+                            
+                        <%-- FIRST_NAME FIELD --%>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_prenom" class="col-sm-2 col-form-label" style="text-align: right;">Prénom</label>
@@ -84,6 +86,8 @@
                             </div>
                         </div>
                             
+                            
+                        <%-- HOME_PHONE FIELD --%>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_tel_dom" class="col-sm-2 col-form-label" style="text-align: right;">Tél dom</label>
@@ -102,6 +106,8 @@
                             </div>
                         </div>
                             
+                            
+                        <%-- MOBILE_PHONE FIELD --%>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_tel_mob" class="col-sm-2 col-form-label" style="text-align: right;">Tél mob</label>
@@ -120,6 +126,8 @@
                             </div>
                         </div>
                             
+                            
+                        <%-- WORK_PHONE FIELD --%>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_tel_pro" class="col-sm-2 col-form-label" style="text-align: right;">Tél pro</label>
@@ -138,6 +146,8 @@
                             </div>
                         </div>
                             
+                            
+                        <%-- STREET FIELD --%>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_adresse" class="col-sm-2 col-form-label" style="text-align: right;">Adresse</label>
@@ -156,6 +166,8 @@
                             </div>
                         </div>
                             
+                            
+                        <%-- CITY FIELD --%>
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
                             <label for="Employee_ville" class="col-sm-2 col-form-label" style="text-align: right;">Ville</label>
@@ -174,6 +186,8 @@
                             </div>
                         </div>
                             
+                            
+                        <%-- POSTAL FIELD --%>
                         <div class="form-group row">
                             
                             <div class="col-sm-1"></div>
@@ -192,6 +206,8 @@
                                 %> required pattern="[0-9]{5}">
                             </div>
                             
+                            
+                            <%-- EMAIL FIELD --%>
                             <label for="Employee_email" class="col-sm-2 col-form-label" style="text-align: right;">Adresse e-mail</label>
                             
                             <div class="col-sm-3">
