@@ -24,13 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Controller_Employee")
 public class Controller_Employee extends HttpServlet
 {
-
     @EJB
     private SB_Employee sB_Employee;
-    
-    
-    
-    
     
     
     /**
@@ -67,7 +62,6 @@ public class Controller_Employee extends HttpServlet
         
         if(request.getParameter("button").equals("Delete"))
         {
-
             try
             {
                 // if the user is an employee and not an admin
@@ -82,7 +76,7 @@ public class Controller_Employee extends HttpServlet
                 //call the api to delete here                
                 sB_Employee.Delete(Integer.valueOf(request.getParameter("radio_employees_v1")));
             }
-            catch(Exception e)
+            catch(IOException | NumberFormatException e)
             {
                 System.out.println(e.getMessage());
                 request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
@@ -92,12 +86,15 @@ public class Controller_Employee extends HttpServlet
         }
         if(request.getParameter("button").equals("Details"))
         {
-            try{
+            try
+            {
                 //call the api to get the employee here
                 EmployeeApi employee = sB_Employee.Get(Integer.valueOf(request.getParameter("radio_employees_v1")));
                 
                 request.setAttribute("employee", employee);
-            }catch(Exception e){
+            }
+            catch(NumberFormatException e)
+            {
                 System.out.println(e.getMessage());
                 request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
             }
@@ -122,7 +119,8 @@ public class Controller_Employee extends HttpServlet
             throws ServletException, IOException {
         
         //Admin privilege is required
-        if(request.getSession().getAttribute("role") != null && !request.getSession().getAttribute("role").equals("admin")){
+        if(request.getSession().getAttribute("role") != null && !request.getSession().getAttribute("role").equals("admin"))
+        {
             request.getSession().setAttribute("JSP_TEMPLATE_SQL_ERROR", "You don't have the permission to be here !");
             response.sendRedirect("employees");
             return;
@@ -130,7 +128,6 @@ public class Controller_Employee extends HttpServlet
         
         if(request.getParameter("method").equals("POST"))
         {
-
             try
             {
                 String last_name = request.getParameter(FORM_EMPLOYEE_LAST_NAME);
@@ -151,7 +148,7 @@ public class Controller_Employee extends HttpServlet
                 response.sendRedirect("employees");
                 return;
             }
-            catch(Exception e)
+            catch(IOException e)
             {
                 System.out.println("CATCH");
                 System.out.println(e.getMessage());
@@ -200,7 +197,7 @@ public class Controller_Employee extends HttpServlet
                 response.sendRedirect("employees");
                 return;
             }
-            catch(Exception e)
+            catch(IOException e)
             {
                 System.out.println(e.getMessage());
                 request.getSession().setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
@@ -219,8 +216,7 @@ public class Controller_Employee extends HttpServlet
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+    public String getServletInfo(){
         return "Short description";
     }// </editor-fold>
-
 }

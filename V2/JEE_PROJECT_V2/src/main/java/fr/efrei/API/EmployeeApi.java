@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -90,10 +89,10 @@ public class EmployeeApi implements Serializable
     private String ville;
     
 
-    public EmployeeApi()
-    {
+    public EmployeeApi() {
     }
     
+
     public EmployeeApi(String first_name, String last_name, String home_phone, String cell_phone, String work_phone, String email, String street, String postal, String city) {
         this.first_name = first_name;
         this.last_name = last_name;
@@ -201,15 +200,12 @@ public class EmployeeApi implements Serializable
             return false;
         }
         EmployeeApi other = (EmployeeApi) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override
     public String toString() {
         return "fr.efrei.API.Employee[ id=" + id + " ]";
     }
-    
 }

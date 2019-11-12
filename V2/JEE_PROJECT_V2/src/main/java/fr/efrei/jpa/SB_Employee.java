@@ -36,13 +36,13 @@ public class SB_Employee
         
         
         // We initialize a list at null, then fill it with the query's results
-        List<EmployeeApi> returnList = null;
-        returnList = q.getResultList();
+        List<EmployeeApi> returnList = returnList = q.getResultList();
         
         
         // If the list is empty, display an error message
-        if(returnList == null)
+        if(returnList.isEmpty())
             System.out.println("ERROR IN SB_EMPLOYEE (get all)");
+        
         
         // Return the list
         return returnList;

@@ -10,8 +10,6 @@
       rue          varchar(45) NOT NULL ,
       code_postal  varchar(45) NOT NULL ,
       ville        varchar(45) NOT NULL ,
-      complement   varchar(45)  ,
-      batiment     varchar(45), 
 
     PRIMARY KEY ( id )
     );
