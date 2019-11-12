@@ -43,7 +43,7 @@
                                         try
                                         {
                                             if(request.getAttribute("highlight_ID").equals(employee.getId()))
-                                                out.println(" border-left: 4px solid CornflowerBlue ; border-right: 2px solid CornflowerBlue;");
+                                                out.println(" border-left: 4px solid " + Constants.THEME_COLOR + "; border-right: 2px solid " + Constants.THEME_COLOR + ";");
                                         }
                                         catch(NullPointerException e)
                                         {
@@ -86,7 +86,7 @@
             <div class="row">
                 <div class="col">
                     
-                    <hr/>
+                    <hr class="theme"/>
                     
                     <div>
                         <form class="d-inline" action="employee" method="GET" id="employee">
@@ -109,7 +109,7 @@
                         
                     </div>
                     
-                    <hr/>
+                    <hr class="theme"/>
                     
                 </div>
             </div>

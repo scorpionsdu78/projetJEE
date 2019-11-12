@@ -11,14 +11,14 @@
 
                  
         <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/JEE_PROJECT_V1">Employees Management</a>
+            <a class="navbar-brand" href="/JEE_PROJECT_V1" style="color: <%=Constants.THEME_COLOR%>;"><b>Employees Management</b></a>
             <div class="collapse navbar-collapse" id="navbarText">
 
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item" style="width: 10vh">
                     </li>
                     <li class="nav-item active">
-                        <span class="navbar-text">             
+                        <span class="navbar-text" style="color: <%=Constants.THEME_COLOR%>;">             
                                 <%
                                     if(session.getAttribute("role") != null)
                                     {
@@ -34,7 +34,7 @@
                     {
                         out.println("        <ul class=\"navbar-nav\">");
                         out.println("            <li class=\"nav-item\">");
-                        out.println("                <a class=\"btn btn-light\" href=\"logout\" style=\"color: black; font-size: 8px; font-size: 1.2vw;\">");
+                        out.println("                <a class=\"btn btn-light\" href=\"logout\" style=\"color: " + Constants.THEME_COLOR + "; font-size: 8px; font-size: 1.2vw;\">");
                         out.println("                    Log out");
                         out.println("                    <span style=\"");
                         out.println("                        background-image: url('https://c7.uihere.com/icons/826/332/883/operating-log-off-860f8851a94474056cfa47ff8435ddc1.png');");

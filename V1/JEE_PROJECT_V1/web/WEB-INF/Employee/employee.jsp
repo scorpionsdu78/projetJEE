@@ -18,7 +18,7 @@
                     
                     <h1>Details of employee :</h1>
                     
-                    <hr/>
+                    <hr class="theme"/>
                     
                     <%
                         Employee emp = null;
@@ -217,7 +217,7 @@
                             out.print("<input type=\"hidden\" id=\"addID\" name=\"addID\" value="+add.getId()+">" );
                         }%> 
                             
-                        <hr/>
+                        <hr class="theme"/>
                         <%
                             
                             // If the user is an ADMIN, he can access the BUTTONS
