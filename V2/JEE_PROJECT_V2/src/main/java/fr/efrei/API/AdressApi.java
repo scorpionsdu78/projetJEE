@@ -12,8 +12,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -27,61 +30,59 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "adress")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Adress.findAll", query = "SELECT a FROM Adress a")
-    , @NamedQuery(name = "Adress.findById", query = "SELECT a FROM Adress a WHERE a.id = :id")
-    , @NamedQuery(name = "Adress.findByRue", query = "SELECT a FROM Adress a WHERE a.rue = :rue")
-    , @NamedQuery(name = "Adress.findByCodePostal", query = "SELECT a FROM Adress a WHERE a.codePostal = :codePostal")
-    , @NamedQuery(name = "Adress.findByVille", query = "SELECT a FROM Adress a WHERE a.ville = :ville")
-    , @NamedQuery(name = "Adress.findByComplement", query = "SELECT a FROM Adress a WHERE a.complement = :complement")
-    , @NamedQuery(name = "Adress.findByBatiment", query = "SELECT a FROM Adress a WHERE a.batiment = :batiment")
-    , @NamedQuery(name = "Adress.findByIdEmployee", query = "SELECT a FROM Adress a WHERE a.idEmployee = :idEmployee")})
+    @NamedQuery(name = "AdressApi.findAll", query = "SELECT a FROM AdressApi a")
+    , @NamedQuery(name = "AdressApi.findById", query = "SELECT a FROM AdressApi a WHERE a.id = :id")
+    , @NamedQuery(name = "AdressApi.findById_employee", query = "SELECT a FROM AdressApi a WHERE a.id_employee = :id_employee")})
 public class AdressApi implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "rue")
     private String rue;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "code_postal")
-    private String codePostal;
+    private String code_postal;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "ville")
     private String ville;
+    
     @Size(max = 45)
     @Column(name = "complement")
     private String complement;
+    
     @Size(max = 45)
     @Column(name = "batiment")
     private String batiment;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "id_employee")
-    private int idEmployee;
+    private int id_employee;
+    
 
     public AdressApi() {
     }
 
-    public AdressApi(Integer id) {
-        this.id = id;
-    }
-
-    public AdressApi(Integer id, String rue, String codePostal, String ville, int idEmployee) {
-        this.id = id;
+    public AdressApi(String rue, String code_postal, String ville, int id_employee) {
         this.rue = rue;
-        this.codePostal = codePostal;
+        this.code_postal = code_postal;
         this.ville = ville;
-        this.idEmployee = idEmployee;
+        this.id_employee = id_employee;
     }
 
     public Integer getId() {
@@ -100,12 +101,12 @@ public class AdressApi implements Serializable {
         this.rue = rue;
     }
 
-    public String getCodePostal() {
-        return codePostal;
+    public String getCode_postal() {
+        return code_postal;
     }
 
-    public void setCodePostal(String codePostal) {
-        this.codePostal = codePostal;
+    public void setCode_postal(String code_postal) {
+        this.code_postal = code_postal;
     }
 
     public String getVille() {
@@ -132,12 +133,12 @@ public class AdressApi implements Serializable {
         this.batiment = batiment;
     }
 
-    public int getIdEmployee() {
-        return idEmployee;
+    public int getId_employee() {
+        return id_employee;
     }
 
-    public void setIdEmployee(int idEmployee) {
-        this.idEmployee = idEmployee;
+    public void setId_employee(int id_employee) {
+        this.id_employee = id_employee;
     }
 
     @Override
@@ -162,7 +163,7 @@ public class AdressApi implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.efrei.API.Adress[ id=" + id + " ]";
+        return "fr.efrei.API.AdressApi[ id=" + id + " ]";
     }
     
 }

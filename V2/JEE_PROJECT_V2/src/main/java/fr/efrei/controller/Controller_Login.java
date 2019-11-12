@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Eddy
  */
-@WebServlet(name = "Controller_Logout")
+@WebServlet(name = "Controller_Login")
 public class Controller_Login extends HttpServlet
 {
     /**

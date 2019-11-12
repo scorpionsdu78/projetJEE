@@ -5,11 +5,16 @@
  */
 package fr.efrei.controller;
 
-import fr.efrei.API.Employee_API;
-import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_SINGLE;
-import fr.efrei.jeeproject.Employee;
+import fr.efrei.API.AdressApi;
+import fr.efrei.API.EmployeeApi;
+import static fr.efrei.jeeproject.Constants.*;
+import fr.efrei.jpa.SB_Adress;
+import fr.efrei.jpa.SB_Employee;
+import fr.efrei.jpa.delete;
+
 import java.io.IOException;
 import java.sql.SQLException;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +28,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Controller_Employee")
 public class Controller_Employee extends HttpServlet
 {
+
+    @EJB
+    private SB_Employee sB_Employee;
+    
+    
+    
+    
+    
+    
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * Processes requests for both HTTP <code>Get</code> and <code>Post</code>
      * methods.
      *
      * @param request servlet request
@@ -44,6 +58,7 @@ public class Controller_Employee extends HttpServlet
         
         if(request.getParameter("button").equals("Delete"))
         {
+                System.out.println("1HERE");
 
             try
             {
@@ -57,10 +72,20 @@ public class Controller_Employee extends HttpServlet
                 }
                     
                 //call the api to delete here
-                Employee_API.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
+
+                System.out.println(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                EmployeeApi employee = sB_Employee.Get(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                
+                for(AdressApi adress : employee.getAdresses()){
+                    sB_Employee.Delete(adress.getId());
+                }
+                
+                sB_Employee.Delete(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                System.out.println("2HERE");
             }
-            catch(SQLException e)
+            catch(Exception e)
             {
+                System.out.println("1.IN CATCH : " + e.getClass());
                 System.out.println(e.getMessage());
                 request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
             }
@@ -69,13 +94,16 @@ public class Controller_Employee extends HttpServlet
         }
         if(request.getParameter("button").equals("Details"))
         {
-            try{//call the api to get the employee here
-                Employee employee = Employee_API.GET((Integer.valueOf(request.getParameter("radio_employees_v1"))));
+            try{
+                //call the api to get the employee here
+                EmployeeApi employee = sB_Employee.Get(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                
                 request.setAttribute("employee", employee);
-            }catch(SQLException e){
+            }catch(Exception e){
                 System.out.println(e.getMessage());
                 request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
             }
+            
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
             return;
         }
@@ -85,7 +113,7 @@ public class Controller_Employee extends HttpServlet
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP <code>Get</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -99,7 +127,7 @@ public class Controller_Employee extends HttpServlet
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP <code>Post</code> method.
      *
      * @param request servlet request
      * @param response servlet response

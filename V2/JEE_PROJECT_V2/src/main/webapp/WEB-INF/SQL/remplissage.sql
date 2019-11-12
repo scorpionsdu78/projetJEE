@@ -1,10 +1,20 @@
  -- "Adding EMPLOYEE rows"
-INSERT INTO EMPLOYEE("id", "first_name", "last_name", "home_phone", "cell_phone", "work_phone", "e_mail")
-VALUES(1, "John", "DOE", "01 46 77 46 77", "01 88 28 91 04", "01 88 28 91 33", "johnDoe@gmail.com");
+INSERT INTO `employee` (`id`, `first_name`, `last_name`, `home_phone`, `cell_phone`, `work_phone`, `e_mail`) VALUES
+(NULL, 'John', 'DOE', '0102030405', '0102030405', '0102030405', 'johnDoe@gmail.com'),
+(NULL, 'Jane', 'DOE', '0102030405', '0102030405', '0102030405', 'JaneDOE@gmail.com'),
+(NULL, 'Hugues', 'BEGEOT', '0102030405', '0102030405', '0102030405', 'hugues.begeot@efrei.net'),
+(NULL, 'François', 'BONI', '0102030405', '0102030405', '0102030405', 'françois.boni@efrei.net'),
+(NULL, 'Eddy', 'DULCHE', '0102030405', '0102030405', '0102030405', 'eddy.dulche@efrei.net'),
+(NULL, 'Obi-Wan', 'Kenobi', '0102030405', '0102030405', '0102030405', '404notFound@coruscant.web'),
+(NULL, 'General', 'Grievous', '0102030405', '0102030405', '0102030405', 'default@mail.com'),
+(NULL, 'Sheev', 'Palpatine', '0102030405', '0102030405', '0102030405', 'default@mail.com'),
+(NULL, 'Mace', 'Windu', '0102030405', '0102030405', '0102030405', 'default@mail.com')
+
 
 
 
  
 -- "Adding ADRESS rows"
-INSERT INTO ADRESS("id", "rue", "code_postal", "ville", "complement", "batiment", "id_employee")
-VALUES("1", "30-32 avenue de la Republique", "94 800", "Villejuif", "Efrei Paris", "Batiment C", "1");
+INSERT INTO `adress` (`id`, `rue`, `code_postal`, `ville`, `complement`, `batiment`, `id_employee`) VALUES
+(NULL, '46, Avenue Mozart', '75016', 'Paris', 'Centre commercial', 'bâtiment A', '1'),
+(NULL, '46, Avenue Mozart', '75016', 'Paris', 'Centre Commercial', 'bâtiment B', '2')

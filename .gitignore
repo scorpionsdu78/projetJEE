@@ -23,3 +23,5 @@ V1/JEE_PROJECT_V1/nbproject/project.properties
 V1/JEE_PROJECT_V1/nbproject/project.xml
 /V2/JEE_PROJECT_V2/nbproject/private/
 /V2/JEE_PROJET_V2/target/
+*.class
+/V2/JEE_PROJECT_V2/target/

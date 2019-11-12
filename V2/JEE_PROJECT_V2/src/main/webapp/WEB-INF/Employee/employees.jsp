@@ -55,7 +55,7 @@
                                         <c:when test="${not empty adress}">
 
                                 <td> ${adress.rue} </td>
-                                <td> ${adress.codePostal} </td>
+                                <td> ${adress.code_postal} </td>
                                 <td> ${adress.ville} </td>
                                     
                                         </c:when>
@@ -89,21 +89,19 @@
                     <div>
                         <form class="d-inline" action="employee" method="GET" id="employee">
                             <input type="radio" name="radio_employees_v1" hidden required>
-                            <%
-                                // If the user is an ADMIN, he can access the DELETE BUTTON
-                                if( session.getAttribute("role").equals( "admin") )
-                                        out.println("<input type=\"submit\" class=\"btn btn-primary\" name=\"button\" value=\"Delete\">");
-                            %>
+                            
+                            <%-- If the user is an ADMIN, he can access the DELETE BUTTON --%>
+                            <c:if test="${role == 'admin'}">
+                                <input type="submit" class="btn btn-primary" name="button" value="Delete">
+                            </c:if>
+                                
                             <input type="submit" class="btn btn-primary" name="button" value="Details">
                         </form>
                             
-                            
-                        <%
-                            // If the user is an ADMIN, he can access the ADD BUTTON
-                            
-                            if( session.getAttribute("role").equals( "admin") )
-                                    out.println("<a class=\"btn btn-primary\" href=\"employee\">Add</a>");
-                        %>
+                        <%-- If the user is an ADMIN, he can access the ADD BUTTON --%>
+                        <c:if test="${role == 'admin'}">
+                            <a class="btn btn-primary" href="employee">Add</a>
+                        </c:if>
                         
                     </div>
                     

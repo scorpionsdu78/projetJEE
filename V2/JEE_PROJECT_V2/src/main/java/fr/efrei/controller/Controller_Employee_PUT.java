@@ -5,11 +5,13 @@
  */
 package fr.efrei.controller;
 
-import fr.efrei.API.Employee_API;
 import static fr.efrei.jeeproject.Constants.*;
+import fr.efrei.jpa.SB_Adress;
+import fr.efrei.jpa.SB_Employee;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +23,16 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Controller_Employee_PUT extends HttpServlet {
 
+    @EJB
+    private SB_Adress sB_Adress;
+
+    @EJB
+    private SB_Employee sB_Employee;
+    
+    
+
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * Processes requests for both HTTP <code>Get</code> and <code>Post</code>
      * methods.
      *
      * @param request servlet request
@@ -52,10 +62,10 @@ public class Controller_Employee_PUT extends HttpServlet {
         String city = request.getParameter(FORM_EMPLOYEE_CITY);
         
         int id = 0;
-        int idadd = 0;
+        int id_adress = 0;
         try{
             id = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_ID));
-            idadd = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_AID));
+            id_adress = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_AID));
         }catch(NumberFormatException e){
             System.out.printf(e.getMessage());
             
@@ -65,13 +75,16 @@ public class Controller_Employee_PUT extends HttpServlet {
         
         
         try{
-            Employee_API.PUT(id, last_name, first_name, home_tel, mob_tel, pro_tel, email, street, postal, city, idadd);
-
+            System.out.println(id + " " + first_name + " " + last_name + " " + home_tel + " " + mob_tel + " " + pro_tel + " " + email);
+            sB_Employee.Put(id, first_name, last_name, home_tel, mob_tel, pro_tel, email);
+            sB_Adress.Put(id_adress, street, postal, city);
+            
             request.getSession().setAttribute("highlight_ID", id);
+            
             response.sendRedirect("employees");
             return;
         }
-        catch(SQLException e)
+        catch(Exception e)
         {
             System.out.println(e.getMessage());
             request.getSession().setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
@@ -85,7 +98,7 @@ public class Controller_Employee_PUT extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP <code>Get</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -99,7 +112,7 @@ public class Controller_Employee_PUT extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP <code>Post</code> method.
      *
      * @param request servlet request
      * @param response servlet response
