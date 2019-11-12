@@ -32,7 +32,7 @@
                         
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="btn btn-light" href="logout" style="color: <%=Constants.THEME_COLOR%>; font-size: 8px; font-size: 1.2vw;">
+                        <a class="btn btn-light" href="login" style="color: <%=Constants.THEME_COLOR%>; font-size: 8px; font-size: 1.2vw;">
                             Log out
                             <span style="
                                 background-image: url('https://c7.uihere.com/icons/826/332/883/operating-log-off-860f8851a94474056cfa47ff8435ddc1.png');

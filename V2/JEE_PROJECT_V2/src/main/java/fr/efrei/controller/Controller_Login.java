@@ -28,56 +28,69 @@ public class Controller_Login extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        // We verify that the user has entered input ( != null )
-        if(request.getParameter(FORM_LOGIN_USERNAME) == null || request.getParameter(FORM_LOGIN_PASSWORD) == null)
-        {
+        //If we don't have a role in the session, we are in the login page
+        if(request.getSession().getAttribute("role") == null){
+        
+            // We verify that the user has entered input ( != null )
+            if(request.getParameter(FORM_LOGIN_USERNAME) == null || request.getParameter(FORM_LOGIN_PASSWORD) == null)
+            {
+                request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
+                return;
+            }
+            // Data entered by the user
+            String inputLogin = request.getParameter(FORM_LOGIN_USERNAME);
+            String inputPwd = request.getParameter(FORM_LOGIN_PASSWORD);
+
+
+
+            // Checking if the inputs correspond to the ADMIN credentials
+            String adminLogin = getServletContext().getInitParameter("Admin_Login");
+            String adminPwd = getServletContext().getInitParameter("Admin_Pwd");
+
+            // If true, we create an ADMIN session
+            if(adminLogin.equals(inputLogin) && adminPwd.equals(inputPwd))
+            {
+                // Setting the session value
+                HttpSession session = request.getSession();
+                session.setAttribute("role", "admin");
+
+                // Redirecting
+                response.sendRedirect("employees");
+                return;
+            }
+
+
+
+            // Checking if the inputs correspond to the EMPLOYEE credentials
+            String EmployeeLogin = getServletContext().getInitParameter("Employee_Login");
+            String EmployeePwd = getServletContext().getInitParameter("Employee_Pwd");
+
+            // If true, we create an EMPLOYEE session
+            if(EmployeeLogin.equals(inputLogin) && EmployeePwd.equals(inputPwd))
+            {
+                // Setting the session value
+                HttpSession session = request.getSession();
+                session.setAttribute("role", "employee");
+
+                // Redirecting
+                response.sendRedirect("employees");
+                return;
+            }
+
+
+            // Since no match was found
+            request.setAttribute("errKey", ERR_MESSAGE_INVALID);
+            
             request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
             return;
         }
-        // Data entered by the user
-        String inputLogin = request.getParameter(FORM_LOGIN_USERNAME);
-        String inputPwd = request.getParameter(FORM_LOGIN_PASSWORD);
-        
-        
-        
-        // Checking if the inputs correspond to the ADMIN credentials
-        String adminLogin = getServletContext().getInitParameter("Admin_Login");
-        String adminPwd = getServletContext().getInitParameter("Admin_Pwd");
-        
-        // If true, we create an ADMIN session
-        if(adminLogin.equals(inputLogin) && adminPwd.equals(inputPwd))
-        {
-            // Setting the session value
-            HttpSession session = request.getSession();
-            session.setAttribute("role", "admin");
+        //else, we are in the logout page
+        else{
+            request.getSession().invalidate();
             
-            // Redirecting
-            response.sendRedirect("employees");
+            request.getRequestDispatcher(JSP_PAGE_LOGOUT).forward(request, response);
             return;
         }
-        
-        
-        
-        // Checking if the inputs correspond to the EMPLOYEE credentials
-        String EmployeeLogin = getServletContext().getInitParameter("Employee_Login");
-        String EmployeePwd = getServletContext().getInitParameter("Employee_Pwd");
-        
-        // If true, we create an EMPLOYEE session
-        if(EmployeeLogin.equals(inputLogin) && EmployeePwd.equals(inputPwd))
-        {
-            // Setting the session value
-            HttpSession session = request.getSession();
-            session.setAttribute("role", "employee");
-            
-            // Redirecting
-            response.sendRedirect("employees");
-            return;
-        }
-        
-        
-        // Since no match was found
-        request.setAttribute("errKey", ERR_MESSAGE_INVALID);
-        request.getRequestDispatcher(JSP_PAGE_LOGIN).forward(request, response);
     }
 
     

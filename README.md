@@ -54,7 +54,7 @@ We are aware that the subject specifically said "Unique Servlet".
 Yet, we deployed many of them in each versions.
 
 We felt that it was more convenient and more secure to have several files doing the job, instead of a big one doing all at once.
-Hence, we have 5 servlets for our V1, and 3 for our V2 (we enhanced our handling of servlet, so we reduced their number).
+Hence, we have 6 servlets for our V1, and 3 for our V2 (we enhanced our handling of servlet, so we reduced their number).
 
 For instance, we have a dedicated servlet doing the transition from the Login.jsp to the Employees.jsp page,
 or a dedicated servlet doing the operations in the Logout.jsp page.
