@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Controller_Employees extends HttpServlet
 {
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * Processes requests for both HTTP <code>Get</code> and <code>Post</code>
      * methods.
      *
      * @param request servlet request
@@ -48,7 +48,7 @@ public class Controller_Employees extends HttpServlet
         
         try
         {
-            ArrayList<Employee> employees = Employee_API.GET();
+            ArrayList<Employee> employees = Employee_API.Get();
             request.setAttribute("employees", employees);
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
             return;
@@ -64,7 +64,7 @@ public class Controller_Employees extends HttpServlet
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP <code>Get</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -78,7 +78,7 @@ public class Controller_Employees extends HttpServlet
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP <code>Post</code> method.
      *
      * @param request servlet request
      * @param response servlet response

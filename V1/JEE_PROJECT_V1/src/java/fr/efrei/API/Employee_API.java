@@ -22,7 +22,12 @@ import java.util.ArrayList;
  */
 public class Employee_API
 {
-    static public ArrayList<Employee> GET()
+    /** Returns all the {@link Employee} from the Database
+     * 
+     * @return All the {@link Employee} from the Database
+     * @throws SQLException 
+     */
+    static public ArrayList<Employee> Get()
             throws SQLException
     {
         DBaction db = new DBaction();
@@ -31,7 +36,7 @@ public class Employee_API
 
         PreparedStatement psmt = db.getPreparedStatement("SELECT * FROM EMPLOYEE");
 
-        // We get all the employees
+        // We Get all the employees
         ResultSet rs = psmt.executeQuery();
         while(rs.next())
         {
@@ -52,7 +57,7 @@ public class Employee_API
             psmt = db.getPreparedStatement("SELECT * FROM ADRESS WHERE \"id_employee\" = ?");
             psmt.setInt(1, emp.getId());
         
-            // We get all the adress of the given employee (we verify the ID)
+            // We Get all the adress of the given employee (we verify the ID)
             ResultSet rs_adress = psmt.executeQuery();
             while( rs_adress.next() )
             {
@@ -79,7 +84,14 @@ public class Employee_API
     }
     
     
-    static public Employee GET(int id)
+    
+    /** Returns a given  {@link Employee} from the database
+     * 
+     * @param id ID of the  {@link Employee} we search
+     * @return  A given {@link Employee} from the database
+     * @throws SQLException 
+     */
+    static public Employee Get(int id)
             throws SQLException
     {
         DBaction dba = new DBaction();
@@ -128,7 +140,22 @@ public class Employee_API
     }
     
     
-    static public int POST(String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city)
+    
+    /** Creates a new  {@link Employee} in the Database
+     * 
+     * @param last_name Its last name
+     * @param first_name Its first name
+     * @param home_pho Its home phone number
+     * @param mob_pho Its mobile phone number
+     * @param work_pho Its work phone number
+     * @param email Its email adress
+     * @param street Its street
+     * @param postal Its home postal code
+     * @param city Its city
+     * @return the ID of the new {@link Employee}
+     * @throws SQLException 
+     */
+    static public int Post(String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city)
             throws SQLException
     {
         DBaction db = new DBaction();
@@ -164,7 +191,24 @@ public class Employee_API
         return 0;
     }
     
-    static public void PUT(int id, String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city, int idadd)
+    
+    
+    
+    /** Modify a {@link Employee} in the database
+     * 
+     * @param id ID of the {@link Employee} to modify
+     * @param last_name New last name
+     * @param first_name New first name
+     * @param home_pho New home phone number
+     * @param mob_pho New mobile phone number
+     * @param work_pho New work phone number
+     * @param email New email adress
+     * @param street New street
+     * @param postal New home postal code
+     * @param city New city
+     * @throws SQLException 
+     */
+    static public void Put(int id, String last_name, String first_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city, int idadd)
         throws SQLException
     {
         
@@ -192,6 +236,13 @@ public class Employee_API
         psmt2.executeUpdate();
     }
     
+    
+    
+    /** Deletes an {@link Employee} from the database
+     * 
+     * @param id ID of the {@link Employee} to delete
+     * @throws SQLException 
+     */
     static public void DELETE(int id)
         throws SQLException
     {

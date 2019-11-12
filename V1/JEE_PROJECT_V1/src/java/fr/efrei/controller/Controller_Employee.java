@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Controller_Employee extends HttpServlet
 {
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * Processes requests for both HTTP <code>Get</code> and <code>Post</code>
      * methods.
      *
      * @param request servlet request
@@ -82,12 +82,12 @@ public class Controller_Employee extends HttpServlet
         {
             try
             {
-                // Call the api to get the employee here
-                Employee employee = Employee_API.GET((Integer.valueOf(request.getParameter("radio_employees_v1"))));
+                // Call the api to Get the employee here
+                Employee employee = Employee_API.Get((Integer.valueOf(request.getParameter("radio_employees_v1"))));
                 
                 
                 // If the return employee is null :
-                // - I'm an Admin : this is normal, you'll get to the ADD page
+                // - I'm an Admin : this is normal, you'll Get to the ADD page
                 // - I'm an Employee : this is NOT normal, you go back to the main page
                 if(employee == null && request.getSession().getAttribute("role").equals("employee"))
                 {
@@ -111,7 +111,7 @@ public class Controller_Employee extends HttpServlet
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP <code>Get</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -125,7 +125,7 @@ public class Controller_Employee extends HttpServlet
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP <code>Post</code> method.
      *
      * @param request servlet request
      * @param response servlet response
