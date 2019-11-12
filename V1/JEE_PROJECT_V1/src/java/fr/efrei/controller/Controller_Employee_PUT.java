@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Controller_Employee_PUT extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * Processes requests for both HTTP <code>Get</code> and <code>Post</code>
      * methods.
      *
      * @param request servlet request
@@ -64,7 +64,7 @@ public class Controller_Employee_PUT extends HttpServlet {
         
         
         try{
-            Employee_API.PUT(id,last_name,first_name, home_tel,  mob_tel,  pro_tel,  email, street,  postal,  city, idadd);
+            Employee_API.Put(id,last_name,first_name, home_tel,  mob_tel,  pro_tel,  email, street,  postal,  city, idadd);
 
             request.getSession().setAttribute("highlight_ID", id);
             response.sendRedirect("employees");
@@ -84,7 +84,7 @@ public class Controller_Employee_PUT extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP <code>Get</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -98,7 +98,7 @@ public class Controller_Employee_PUT extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP <code>Post</code> method.
      *
      * @param request servlet request
      * @param response servlet response
