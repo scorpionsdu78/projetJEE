@@ -116,11 +116,11 @@ public class SB_Employee
      * @param mob_pho new Mobile phone
      * @param work_pho new Work phone
      * @param email new Email
-     * @param rue new Street
-     * @param codePostal new Postal Code
-     * @param ville new Town
+     * @param street new Street
+     * @param postal new Postal Code
+     * @param city new City
      */
-    public void Put(int id, String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email)
+    public void Put(int id, String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city)
     {
         EmployeeApi employee = Get(id);
         

@@ -6,13 +6,9 @@
 package fr.efrei.controller;
 
 import fr.efrei.API.EmployeeApi;
-import fr.efrei.API.Employee_API;
-import fr.efrei.jeeproject.Adress;
-import fr.efrei.jeeproject.Employee;
 import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_ALL;
 import fr.efrei.jpa.SB_Employee;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

@@ -126,51 +126,51 @@ public class EmployeeApi implements Serializable
     }
 
     public String getFirst_name() {
-        return firstName;
+        return first_name;
     }
 
     public void setFirst_name(String firstName) {
-        this.firstName = firstName;
+        this.first_name = firstName;
     }
 
     public String getLast_name() {
-        return lastName;
+        return last_name;
     }
 
     public void setLast_name(String lastName) {
-        this.lastName = lastName;
+        this.last_name = lastName;
     }
 
     public String getHome_phone() {
-        return homePhone;
+        return home_phone;
     }
 
     public void setHome_phone(String homePhone) {
-        this.homePhone = homePhone;
+        this.home_phone = homePhone;
     }
 
     public String getCell_phone() {
-        return cellPhone;
+        return cell_phone;
     }
 
     public void setCell_phone(String cellPhone) {
-        this.cellPhone = cellPhone;
+        this.cell_phone = cellPhone;
     }
 
     public String getWork_phone() {
-        return workPhone;
+        return work_phone;
     }
 
     public void setWork_phone(String workPhone) {
-        this.workPhone = workPhone;
+        this.work_phone = workPhone;
     }
 
     public String getEmail() {
-        return eMail;
+        return email;
     }
 
     public void setEmail(String eMail) {
-        this.eMail = eMail;
+        this.email = eMail;
     }
 
     public String getRue() {
