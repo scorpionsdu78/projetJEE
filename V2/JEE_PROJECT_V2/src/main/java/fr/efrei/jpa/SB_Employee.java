@@ -83,11 +83,14 @@ public class SB_Employee
      * @param mob_pho his Mobile phone
      * @param work_pho his Work phone
      * @param email his Email
-     * 
-     * @return the id of new Employee
+     * @param rue his Street
+     * @param codePostal his Postal Code
+     * @param ville his City
+     * @return 
      */
-    public Integer Post(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email){
-        EmployeeApi employee = new EmployeeApi(first_name, last_name, home_pho, mob_pho, work_pho, email);
+    public Integer Post(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email, String rue, String codePostal, String ville)
+    {
+        EmployeeApi employee = new EmployeeApi(first_name, last_name, home_pho, mob_pho, work_pho, email, rue, codePostal, ville);
         em.persist(employee);
         
         
@@ -106,8 +109,11 @@ public class SB_Employee
      * @param mob_pho new Mobile phone
      * @param work_pho new Work phone
      * @param email new Email
+     * @param rue new Street
+     * @param codePostal new Postal Code
+     * @param ville new Town
      */
-    public void Put(int id, String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email)
+    public void Put(int id, String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email, String rue, String codePostal, String ville)
     {
         EmployeeApi employee = Get(id);
         
@@ -130,7 +136,11 @@ public class SB_Employee
             employee.setEmail(email);
     }
     
-    public void Delete(int id){        
+    
+    
+    
+    public void Delete(int id)
+    {
         EmployeeApi emp = em.find(EmployeeApi.class, id);  
         
         em.remove(emp);        

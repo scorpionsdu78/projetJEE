@@ -6,19 +6,14 @@
 package fr.efrei.API;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -26,14 +21,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author francois
+ * @author Hugues
  */
 @Entity
 @Table(name = "employee")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "EmployeeApi.findAll", query = "SELECT e FROM EmployeeApi e")
-    , @NamedQuery(name = "EmployeeApi.findById", query = "SELECT e FROM EmployeeApi e WHERE e.id = :id")})
+    @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e")
+    , @NamedQuery(name = "Employee.findById", query = "SELECT e FROM Employee e WHERE e.id = :id")
+    , @NamedQuery(name = "Employee.findByFirstName", query = "SELECT e FROM Employee e WHERE e.firstName = :firstName")
+    , @NamedQuery(name = "Employee.findByLastName", query = "SELECT e FROM Employee e WHERE e.lastName = :lastName")
+    , @NamedQuery(name = "Employee.findByHomePhone", query = "SELECT e FROM Employee e WHERE e.homePhone = :homePhone")
+    , @NamedQuery(name = "Employee.findByCellPhone", query = "SELECT e FROM Employee e WHERE e.cellPhone = :cellPhone")
+    , @NamedQuery(name = "Employee.findByWorkPhone", query = "SELECT e FROM Employee e WHERE e.workPhone = :workPhone")
+    , @NamedQuery(name = "Employee.findByEMail", query = "SELECT e FROM Employee e WHERE e.eMail = :eMail")
+    , @NamedQuery(name = "Employee.findByRue", query = "SELECT e FROM Employee e WHERE e.rue = :rue")
+    , @NamedQuery(name = "Employee.findByCodePostal", query = "SELECT e FROM Employee e WHERE e.codePostal = :codePostal")
+    , @NamedQuery(name = "Employee.findByVille", query = "SELECT e FROM Employee e WHERE e.ville = :ville")
+    , @NamedQuery(name = "Employee.findByComplement", query = "SELECT e FROM Employee e WHERE e.complement = :complement")
+    , @NamedQuery(name = "Employee.findByBatiment", query = "SELECT e FROM Employee e WHERE e.batiment = :batiment")})
 public class EmployeeApi implements Serializable
 {
     private static final long serialVersionUID = 1L;
@@ -42,58 +48,79 @@ public class EmployeeApi implements Serializable
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "first_name")
-    private String first_name;
+    private String firstName;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "last_name")
-    private String last_name;
+    private String lastName;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "home_phone")
-    private String home_phone;
+    private String homePhone;
+    
     @Size(max = 45)
     @Column(name = "cell_phone")
-    private String cell_phone;
+    private String cellPhone;
+    
     @Size(max = 45)
     @Column(name = "work_phone")
-    private String work_phone;
+    private String workPhone;
+    
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 45)
     @Column(name = "e_mail")
-    private String email;
-   
+    private String eMail;
     
-    @OneToMany(
-        cascade = CascadeType.ALL,
-        orphanRemoval = false
-    )
-    @JoinColumn(name="id_employee", referencedColumnName="id")
-    private List<AdressApi> adresses = new ArrayList<>(); 
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "rue")
+    private String rue;
     
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "code_postal")
+    private String codePostal;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "ville")
+    private String ville;
+    
+    @Size(max = 45)
+    @Column(name = "complement")
+    private String complement;
+    
+    @Size(max = 45)
+    @Column(name = "batiment")
+    private String batiment;
 
-    public EmployeeApi() {
+    public EmployeeApi()
+    {
     }
 
-    public EmployeeApi(String first_name, String last_name, String home_phone, String email) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.home_phone = home_phone;
-        this.email = email;
-    }
-    
-    public EmployeeApi(String first_name, String last_name, String home_phone, String cell_phone, String work_phone, String email) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.home_phone = home_phone;
-        this.cell_phone = cell_phone;
-        this.work_phone = work_phone;
-        this.email = email;
+    public EmployeeApi(String firstName, String lastName, String homePhone, String cellPhone, String workPhone, String eMail, String rue, String codePostal, String ville)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.homePhone = homePhone;
+        this.cellPhone = cellPhone;
+        this.workPhone = workPhone;
+        this.eMail = eMail;
+        this.rue = rue;
+        this.codePostal = codePostal;
+        this.ville = ville;
     }
 
     public Integer getId() {
@@ -105,61 +132,92 @@ public class EmployeeApi implements Serializable
     }
 
     public String getFirst_name() {
-        return first_name;
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirst_name(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLast_name() {
-        return last_name;
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLast_name(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getHome_phone() {
-        return home_phone;
+        return homePhone;
     }
 
-    public void setHome_phone(String home_phone) {
-        this.home_phone = home_phone;
+    public void setHome_phone(String homePhone) {
+        this.homePhone = homePhone;
     }
 
     public String getCell_phone() {
-        return cell_phone;
+        return cellPhone;
     }
 
-    public void setCell_phone(String cell_phone) {
-        this.cell_phone = cell_phone;
+    public void setCell_phone(String cellPhone) {
+        this.cellPhone = cellPhone;
     }
 
     public String getWork_phone() {
-        return work_phone;
+        return workPhone;
     }
 
-    public void setWork_phone(String work_phone) {
-        this.work_phone = work_phone;
+    public void setWork_phone(String workPhone) {
+        this.workPhone = workPhone;
     }
 
     public String getEmail() {
-        return email;
+        return eMail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String eMail) {
+        this.eMail = eMail;
     }
 
-    public List<AdressApi> getAdresses() {
-        return adresses;
+    public String getRue() {
+        return rue;
     }
 
-    public void setAdresses(ArrayList<AdressApi> adresses) {
-        this.adresses = adresses;
+    public void setRue(String rue) {
+        this.rue = rue;
     }
 
+    public String getCode_postal() {
+        return codePostal;
+    }
+
+    public void setCode_postal(String codePostal) {
+        this.codePostal = codePostal;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public String getComplement() {
+        return complement;
+    }
+
+    public void setComplement(String complement) {
+        this.complement = complement;
+    }
+
+    public String getBatiment() {
+        return batiment;
+    }
+
+    public void setBatiment(String batiment) {
+        this.batiment = batiment;
+    }
 
     @Override
     public int hashCode() {
@@ -169,20 +227,20 @@ public class EmployeeApi implements Serializable
     }
 
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof EmployeeApi))
-        {
+        if (!(object instanceof EmployeeApi)) {
             return false;
         }
-        
         EmployeeApi other = (EmployeeApi) object;
-        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "fr.efrei.API.EmployeeApi[ id=" + id + " ]";
+        return "fr.efrei.API.Employee[ id=" + id + " ]";
     }
 }

@@ -5,15 +5,12 @@
  */
 package fr.efrei.controller;
 
-import fr.efrei.API.AdressApi;
 import fr.efrei.API.EmployeeApi;
 import static fr.efrei.jeeproject.Constants.*;
-import fr.efrei.jpa.SB_Adress;
 import fr.efrei.jpa.SB_Employee;
 import fr.efrei.jpa.delete;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,7 +42,6 @@ public class Controller_Employee extends HttpServlet
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException

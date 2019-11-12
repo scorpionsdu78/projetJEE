@@ -5,15 +5,9 @@
  */
 package fr.efrei.controller;
 
-import fr.efrei.API.AdressApi;
-import fr.efrei.API.EmployeeApi;
-import fr.efrei.API.Employee_API;
 import static fr.efrei.jeeproject.Constants.*;
-import fr.efrei.jpa.SB_Adress;
 import fr.efrei.jpa.SB_Employee;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,9 +25,6 @@ public class Controller_Employee_POST extends HttpServlet
 
     @EJB
     private SB_Employee sB_Employee;
-
-    @EJB
-    private SB_Adress sB_Adress;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -53,7 +44,8 @@ public class Controller_Employee_POST extends HttpServlet
             return;
         }
         
-        try{
+        try
+        {
             String last_name = request.getParameter(FORM_EMPLOYEE_LAST_NAME);
             String first_name = request.getParameter(FORM_EMPLOYEE_FIRST_NAME);
             String home_tel = request.getParameter(FORM_EMPLOYEE_HOME_PHO);
@@ -64,15 +56,16 @@ public class Controller_Employee_POST extends HttpServlet
             String postal = request.getParameter(FORM_EMPLOYEE_POSTAL);
             String city = request.getParameter(FORM_EMPLOYEE_CITY);
             
-            //int employee_id = sB_Employee.Post(first_name, last_name, home_tel, mob_tel, pro_tel, email);
-            System.out.println(street + ", " + postal + ", " + city + ", " +14);
-            int adress_id = sB_Adress.Post(street, postal, city, 14);
+            int employee_id = sB_Employee.Post(first_name, last_name, home_tel, mob_tel, pro_tel, email, street, postal, city);
             
-            request.getSession().setAttribute("highlight_ID", 14);
+            
+            request.getSession().setAttribute("highlight_ID", employee_id);
             response.sendRedirect("employees");
             System.out.println("Succed");
             return;
-        }catch(Exception e){
+        }
+        catch(Exception e)
+        {
             System.out.println("CATCH");
             System.out.println(e.getMessage());
             request.getSession().setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());

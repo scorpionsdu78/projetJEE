@@ -6,11 +6,8 @@
 package fr.efrei.controller;
 
 import static fr.efrei.jeeproject.Constants.*;
-import fr.efrei.jpa.SB_Adress;
 import fr.efrei.jpa.SB_Employee;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,11 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author francois
  */
-public class Controller_Employee_PUT extends HttpServlet {
-
-    @EJB
-    private SB_Adress sB_Adress;
-
+public class Controller_Employee_PUT extends HttpServlet
+{
     @EJB
     private SB_Employee sB_Employee;
     
@@ -62,11 +56,12 @@ public class Controller_Employee_PUT extends HttpServlet {
         String city = request.getParameter(FORM_EMPLOYEE_CITY);
         
         int id = 0;
-        int id_adress = 0;
-        try{
+        try
+        {
             id = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_ID));
-            id_adress = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_AID));
-        }catch(NumberFormatException e){
+        }
+        catch(NumberFormatException e)
+        {
             System.out.printf(e.getMessage());
             
             response.sendRedirect("employees");
@@ -74,10 +69,10 @@ public class Controller_Employee_PUT extends HttpServlet {
         }
         
         
-        try{
+        try
+        {
             System.out.println(id + " " + first_name + " " + last_name + " " + home_tel + " " + mob_tel + " " + pro_tel + " " + email);
-            sB_Employee.Put(id, first_name, last_name, home_tel, mob_tel, pro_tel, email);
-            sB_Adress.Put(id_adress, street, postal, city);
+            sB_Employee.Put(id, first_name, last_name, home_tel, mob_tel, pro_tel, email, street, postal, city);
             
             request.getSession().setAttribute("highlight_ID", id);
             

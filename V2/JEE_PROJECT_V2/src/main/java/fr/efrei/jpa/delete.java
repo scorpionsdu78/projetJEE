@@ -25,8 +25,8 @@ public class delete {
     EntityManager em;
     EntityManagerFactory emf;
     
-    public void DELETE(int id){
-        
+    public void DELETE(int id)
+    {
         emf = Persistence.createEntityManagerFactory("se.m1_JEE_PROJECT_V2_war_1.0PU");
         em = emf.createEntityManager();
         
@@ -55,12 +55,10 @@ public class delete {
             System.out.println("\n\n\nunable to get the employee to delete\n\n\n");
         }
         
-        em.remove(employee.getAdresses().get(0));
-        em.remove(employee);
-        
-        
-        
+        em.remove(employee); 
     }
+    
+    
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
