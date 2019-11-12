@@ -41,7 +41,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Employee_nom" id="Employee_nom" placeholder="Nom" 
                                        <c:if test="${not empty employee}">
-                                    value="${employee.Last_name}"
+                                    value="${employee.last_name}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -56,7 +56,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Employee_prenom" id="Employee_prenom" placeholder="Prénom"
                                        <c:if test="${not empty employee}">
-                                    value="${employee.FirstName}"
+                                    value="${employee.first_name}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -71,7 +71,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Employee_tel_dom" id="Employee_tel_dom" placeholder="Tél dom"
                                        <c:if test="${not empty employee}">
-                                    value="${employee.Home_phone}"
+                                    value="${employee.home_phone}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -86,7 +86,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Employee_tel_mob" id="Employee_tel_mob" placeholder="Tél mob"
                                        <c:if test="${not empty employee}">
-                                    value="${employee.Cell_phone}"
+                                    value="${employee.cell_phone}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -101,7 +101,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Employee_tel_pro" id="Employee_tel_pro" placeholder="Tél pro"
                                        <c:if test="${not empty employee}">
-                                    value="${employee.Work_phone}"
+                                    value="${employee.work_phone}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -116,7 +116,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Employee_street" id="Employee_adresse" placeholder="Adresse"
                                        <c:if test="${not empty adress}">
-                                    value="${adress.Rue}"
+                                    value="${adress.rue}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -131,7 +131,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Employee_ville" id="Employee_ville" placeholder="Ville"
                                        <c:if test="${not empty adress}">
-                                    value="${adress.Ville}"
+                                    value="${adress.ville}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -147,7 +147,7 @@
                             <div class="col-sm-3">
                                 <input type="text" class="form-control" name="Employee_code_postal" id="Employee_code_postal" placeholder="Code postal"
                                        <c:if test="${not empty adress}">
-                                    value="${adress.CodePostal}"
+                                    value="${adress.code_postal}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -160,7 +160,7 @@
                             <div class="col-sm-3">
                                 <input type="email" class="form-control" name="Employee_email" id="Employee_email" placeholder="Adresse e-mail"
                                        <c:if test="${not empty employee}">
-                                    value="${employee.Email}"
+                                    value="${employee.email}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -170,11 +170,11 @@
                         </div>
                         
                         <c:if test="${not empty employee}">
-                        <input type="hidden" id="empID" name="empID" value="${employee.Id}">
+                        <input type="hidden" id="empID" name="empID" value="${employee.id}">
                         </c:if>
                             
                         <c:if test="${not empty adress}">
-                        <input type="hidden" id="addID" name="addID" value="${address.Id}">
+                        <input type="hidden" id="addID" name="addID" value="${address.id}">
                         </c:if>
                             
                         <hr/>

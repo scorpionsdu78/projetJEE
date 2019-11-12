@@ -5,8 +5,9 @@
  */
 package fr.efrei.controller;
 
-import fr.efrei.API.Employee_API;
 import static fr.efrei.jeeproject.Constants.*;
+import fr.efrei.jpa.SB_Adress;
+import fr.efrei.jpa.SB_Employee;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -51,10 +52,10 @@ public class Controller_Employee_PUT extends HttpServlet {
         String postal = request.getParameter(FORM_EMPLOYEE_POSTAL);
         String city = request.getParameter(FORM_EMPLOYEE_CITY);
         int id = 0;
-        int idadd = 0;
+        int id_adress = 0;
         try{
             id = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_ID));
-            idadd = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_AID));
+            id_adress = Integer.valueOf(request.getParameter(FORM_EMPLOYEE_AID));
         }catch(NumberFormatException e){
             System.out.printf(e.getMessage());
             
@@ -64,13 +65,16 @@ public class Controller_Employee_PUT extends HttpServlet {
         
         
         try{
-            Employee_API.PUT(id,last_name,first_name, home_tel,  mob_tel,  pro_tel,  email, street,  postal,  city, idadd);
-
+            System.out.println(id + " " + first_name + " " + last_name + " " + home_tel + " " + mob_tel + " " + pro_tel + " " + email);
+            SB_Employee.PUT(id, first_name, last_name, home_tel, mob_tel, pro_tel, email);
+            SB_Adress.PUT(id_adress, street, postal, city);
+            
             request.getSession().setAttribute("highlight_ID", id);
+            
             response.sendRedirect("employees");
             return;
         }
-        catch(SQLException e)
+        catch(Exception e)
         {
             System.out.println(e.getMessage());
             request.getSession().setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
