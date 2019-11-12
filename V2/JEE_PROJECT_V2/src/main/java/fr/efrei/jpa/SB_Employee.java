@@ -93,6 +93,13 @@ public class SB_Employee
         EmployeeApi employee = new EmployeeApi(first_name, last_name, home_pho, mob_pho, work_pho, email, rue, codePostal, ville);
         em.persist(employee);
         
+        employee = em.merge(employee);
+        em.flush();
+        
+        
+        System.out.println("EMPLOYEE POST : HERE3");
+        System.out.println("EMPLOYEE POST : " + employee.getId());
+        
         
         return  employee.getId();
     }
@@ -113,7 +120,7 @@ public class SB_Employee
      * @param codePostal new Postal Code
      * @param ville new Town
      */
-    public void Put(int id, String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email, String rue, String codePostal, String ville)
+    public void Put(int id, String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email)
     {
         EmployeeApi employee = Get(id);
         
@@ -134,6 +141,15 @@ public class SB_Employee
         
         if(email != null)
             employee.setEmail(email);
+        
+        if(street != null)
+            employee.setRue(street);
+        
+        if(postal != null)
+            employee.setCode_postal(postal);
+        
+        if(city != null)
+            employee.setVille(city);
     }
     
     

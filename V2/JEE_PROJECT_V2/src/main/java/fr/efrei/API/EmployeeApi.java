@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,6 +44,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class EmployeeApi implements Serializable
 {
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -53,32 +55,32 @@ public class EmployeeApi implements Serializable
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "first_name")
-    private String firstName;
+    private String first_name;
     
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "last_name")
-    private String lastName;
+    private String last_name;
     
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "home_phone")
-    private String homePhone;
+    private String home_phone;
     
     @Size(max = 45)
     @Column(name = "cell_phone")
-    private String cellPhone;
+    private String cell_phone;
     
     @Size(max = 45)
     @Column(name = "work_phone")
-    private String workPhone;
+    private String work_phone;
     
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 45)
     @Column(name = "e_mail")
-    private String eMail;
+    private String email;
     
     @Basic(optional = false)
     @NotNull
@@ -90,7 +92,7 @@ public class EmployeeApi implements Serializable
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "code_postal")
-    private String codePostal;
+    private String code_postal;
     
     @Basic(optional = false)
     @NotNull
@@ -98,29 +100,21 @@ public class EmployeeApi implements Serializable
     @Column(name = "ville")
     private String ville;
     
-    @Size(max = 45)
-    @Column(name = "complement")
-    private String complement;
-    
-    @Size(max = 45)
-    @Column(name = "batiment")
-    private String batiment;
 
     public EmployeeApi()
     {
     }
-
-    public EmployeeApi(String firstName, String lastName, String homePhone, String cellPhone, String workPhone, String eMail, String rue, String codePostal, String ville)
-    {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.homePhone = homePhone;
-        this.cellPhone = cellPhone;
-        this.workPhone = workPhone;
-        this.eMail = eMail;
-        this.rue = rue;
-        this.codePostal = codePostal;
-        this.ville = ville;
+    
+    public EmployeeApi(String first_name, String last_name, String home_phone, String cell_phone, String work_phone, String email, String street, String postal, String city) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.home_phone = home_phone;
+        this.cell_phone = cell_phone;
+        this.work_phone = work_phone;
+        this.rue = street;
+        this.code_postal = postal;
+        this.ville = work_phone;
+        this.email = email;
     }
 
     public Integer getId() {
@@ -188,11 +182,11 @@ public class EmployeeApi implements Serializable
     }
 
     public String getCode_postal() {
-        return codePostal;
+        return code_postal;
     }
 
-    public void setCode_postal(String codePostal) {
-        this.codePostal = codePostal;
+    public void setCode_postal(String code_postal) {
+        this.code_postal = code_postal;
     }
 
     public String getVille() {
@@ -203,21 +197,6 @@ public class EmployeeApi implements Serializable
         this.ville = ville;
     }
 
-    public String getComplement() {
-        return complement;
-    }
-
-    public void setComplement(String complement) {
-        this.complement = complement;
-    }
-
-    public String getBatiment() {
-        return batiment;
-    }
-
-    public void setBatiment(String batiment) {
-        this.batiment = batiment;
-    }
 
     @Override
     public int hashCode() {
@@ -243,4 +222,5 @@ public class EmployeeApi implements Serializable
     public String toString() {
         return "fr.efrei.API.Employee[ id=" + id + " ]";
     }
+    
 }

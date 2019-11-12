@@ -46,30 +46,9 @@
                                 <td> ${employee.home_phone} </td>
                                 <td> ${employee.cell_phone} </td>
                                 <td> ${employee.work_phone} </td>
-                                    
-                                    
-                                    <c:set var="adress" value="${employee.adresses[0]}" scope="page" />
-                                    
-                                    <c:choose>
-
-                                        <c:when test="${not empty adress}">
-
-                                <td> ${adress.rue} </td>
-                                <td> ${adress.code_postal} </td>
-                                <td> ${adress.ville} </td>
-                                    
-                                        </c:when>
-
-                                        <c:otherwise>
-
-                                <td>NA</td>
-                                <td>NA</td>
-                                <td>NA</td>
-
-                                        </c:otherwise>
-
-                                    </c:choose>
-
+                                <td> ${employee.rue} </td>
+                                <td> ${employee.code_postal} </td>
+                                <td> ${employee.ville} </td>
                                 <td> ${employee.email} </td>
                             </tr>
                             
