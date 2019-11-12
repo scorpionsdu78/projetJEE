@@ -10,8 +10,6 @@ import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_SINGLE;
 import fr.efrei.jeeproject.Employee;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,20 +31,19 @@ public class Controller_Employee extends HttpServlet
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
-    {        
+    {
         if(request.getParameter("radio_employees_v1") == null)
         {
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);
             return;
         }
         
+        
         if(request.getParameter("button").equals("Delete"))
         {
-
             try
             {
                 // if the user is an employee and not an admin
@@ -68,12 +65,30 @@ public class Controller_Employee extends HttpServlet
             response.sendRedirect("employees");
             return;
         }
+        
+        
         if(request.getParameter("button").equals("Details"))
         {
-            try{//call the api to get the employee here
+            try
+            {
+                // Call the api to get the employee here
                 Employee employee = Employee_API.GET((Integer.valueOf(request.getParameter("radio_employees_v1"))));
+                
+                
+                // If the return employee is null :
+                // - I'm an Admin : this is normal, you'll get to the ADD page
+                // - I'm an Employee : this is NOT normal, you go back to the main page
+                if(employee == null && request.getSession().getAttribute("role").equals("employee"))
+                {
+                    response.sendRedirect("employees");
+                    return;
+                }
+                
+                
                 request.setAttribute("employee", employee);
-            }catch(SQLException e){
+            }
+            catch(SQLException e)
+            {
                 System.out.println(e.getMessage());
             }
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_SINGLE).forward(request, response);

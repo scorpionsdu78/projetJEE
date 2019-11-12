@@ -15,8 +15,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -84,7 +82,6 @@ public class Employee_API
     static public Employee GET(int id)
             throws SQLException
     {
-        
         DBaction dba = new DBaction();
         
         PreparedStatement psmt = dba.getPreparedStatement("SELECT * FROM EMPLOYEE WHERE \"id\" = ?");
@@ -92,35 +89,41 @@ public class Employee_API
         ResultSet rs = psmt.executeQuery();
         ResultSet rsAdress; 
             
-        rs.next();
+        
+        Employee emp = null;
+        if( rs.next() )
+        {
+            emp = new Employee();
+            emp.setId(rs.getInt("id"));
+            emp.setFirst_name(rs.getString("first_name"));
+            emp.setLast_name(rs.getString("last_name"));
+            emp.setHome_phone(rs.getString("home_phone"));
+            emp.setCell_phone(rs.getString("cell_phone"));
+            emp.setWork_phone(rs.getString("work_phone"));
+            emp.setEmail(rs.getString("e_mail"));
             
-        Employee emp = new Employee();
-        emp.setId(rs.getInt("id"));
-        emp.setFirst_name(rs.getString("first_name"));
-        emp.setLast_name(rs.getString("last_name"));
-        emp.setHome_phone(rs.getString("home_phone"));
-        emp.setCell_phone(rs.getString("cell_phone"));
-        emp.setWork_phone(rs.getString("work_phone"));
-        emp.setEmail(rs.getString("e_mail"));
-            
-        psmt = dba.getPreparedStatement("SELECT * FROM ADRESS WHERE \"id_employee\" = ?");
-        psmt.setInt(1, id);
-        rsAdress = psmt.executeQuery();
-            
-        ArrayList<Adress> adresses = new ArrayList<Adress>();
-            
-        while(rsAdress.next()){
-            Adress addr = new Adress();
-            addr.setId(rsAdress.getInt("id"));
-            addr.setRue(rsAdress.getString("rue"));
-            addr.setCodePostal(rsAdress.getString("code_postal"));
-            addr.setVille(rsAdress.getString("ville"));
-            addr.setComplement(rsAdress.getString("complement"));
-            addr.setBatiment(rsAdress.getString("batiment"));
-            adresses.add(addr);
+            psmt = dba.getPreparedStatement("SELECT * FROM ADRESS WHERE \"id_employee\" = ?");
+            psmt.setInt(1, id);
+            rsAdress = psmt.executeQuery();
+
+            ArrayList<Adress> adresses = new ArrayList<Adress>();
+
+            while(rsAdress.next())
+            {
+                Adress addr = new Adress();
+                addr.setId(rsAdress.getInt("id"));
+                addr.setRue(rsAdress.getString("rue"));
+                addr.setCodePostal(rsAdress.getString("code_postal"));
+                addr.setVille(rsAdress.getString("ville"));
+                addr.setComplement(rsAdress.getString("complement"));
+                addr.setBatiment(rsAdress.getString("batiment"));
+                adresses.add(addr);
+            }
+
+            emp.setAdresses(adresses);
         }
 
-        emp.setAdresses(adresses);
+          
         return emp;
     }
     
