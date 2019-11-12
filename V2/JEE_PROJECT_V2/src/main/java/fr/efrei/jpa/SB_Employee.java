@@ -7,12 +7,22 @@ package fr.efrei.jpa;
 
 import fr.efrei.API.EmployeeApi;
 import java.util.List;
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
 /**
  *
@@ -24,6 +34,9 @@ public class SB_Employee
     @PersistenceContext
     private static EntityManager em;
     private static EntityManagerFactory emf;
+
+    @Resource
+    private static UserTransaction uTx;
     
     /** GET all the Employees from the Database
      * 
@@ -149,11 +162,19 @@ public class SB_Employee
      * 
      * @param id ID of the Employee we search
      */
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public static void DELETE(int id)
-    {
-        EmployeeApi employee = GET(id);
-        
+            throws Exception
+    {  
+        System.out.println("Here DELETE 1");
+
+        EmployeeApi employee = GET(id);        
+
+        System.out.println("Here DELETE 2 : " + employee.getId());
+
         em.remove(employee);
+        
+        System.out.println("Here DELETE 3");
     }
     
     

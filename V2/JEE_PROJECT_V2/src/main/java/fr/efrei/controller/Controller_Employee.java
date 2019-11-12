@@ -73,6 +73,7 @@ public class Controller_Employee extends HttpServlet
             }
             catch(Exception e)
             {
+                System.out.println("1.IN CATCH : " + e.getClass());
                 System.out.println(e.getMessage());
                 request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
             }
