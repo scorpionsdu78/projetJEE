@@ -10,6 +10,7 @@ import fr.efrei.API.Employee_API;
 import static fr.efrei.jeeproject.Constants.JSP_PAGE_EMPLOYEE_SINGLE;
 import fr.efrei.jeeproject.Employee;
 import fr.efrei.jpa.SB_Employee;
+import fr.efrei.jpa.delete;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
@@ -59,9 +60,13 @@ public class Controller_Employee extends HttpServlet
                 }
                     
                 //call the api to delete here
-                Employee_API.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                System.out.println("trying to delete");
+                delete deleter = new delete();
+                deleter.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
+                
+                //Employee_API.DELETE(Integer.valueOf(request.getParameter("radio_employees_v1")));
             }
-            catch(SQLException e)
+            catch(Exception e)
             {
                 System.out.println(e.getMessage());
                 request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
