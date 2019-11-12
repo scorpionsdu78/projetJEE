@@ -56,48 +56,57 @@ public class EmployeeApi implements Serializable
     @Size(min = 1, max = 45)
     @Column(name = "last_name")
     private String last_name;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "home_phone")
     private String home_phone;
+    
     @Size(max = 45)
     @Column(name = "cell_phone")
     private String cell_phone;
+    
     @Size(max = 45)
     @Column(name = "work_phone")
     private String work_phone;
+    
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 45)
     @Column(name = "e_mail")
     private String email;
-   
     
-    @OneToMany(
-        cascade = CascadeType.ALL,
-        orphanRemoval = false,
-        fetch = FetchType.EAGER
-    )
-    @JoinColumn(name="id_employee", referencedColumnName="id")
-    private List<AdressApi> adresses = new ArrayList<>(); 
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "rue")
+    private String rue;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "code_postal")
+    private String code_postal;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "ville")
+    private String ville;
     
 
     public EmployeeApi() {
     }
-
-    public EmployeeApi(String first_name, String last_name, String home_phone, String email) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.home_phone = home_phone;
-        this.email = email;
-    }
     
-    public EmployeeApi(String first_name, String last_name, String home_phone, String cell_phone, String work_phone, String email) {
+    public EmployeeApi(String first_name, String last_name, String home_phone, String cell_phone, String work_phone, String email, String street, String postal, String city) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.home_phone = home_phone;
         this.cell_phone = cell_phone;
         this.work_phone = work_phone;
+        this.rue = street;
+        this.code_postal = postal;
+        this.ville = work_phone;
         this.email = email;
     }
 
@@ -157,12 +166,28 @@ public class EmployeeApi implements Serializable
         this.email = email;
     }
 
-    public List<AdressApi> getAdresses() {
-        return adresses;
+    public String getRue() {
+        return rue;
     }
 
-    public void setAdresses(ArrayList<AdressApi> adresses) {
-        this.adresses = adresses;
+    public void setRue(String rue) {
+        this.rue = rue;
+    }
+
+    public String getCode_postal() {
+        return code_postal;
+    }
+
+    public void setCode_postal(String code_postal) {
+        this.code_postal = code_postal;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
     }
 
 
@@ -174,20 +199,21 @@ public class EmployeeApi implements Serializable
     }
 
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof EmployeeApi))
-        {
+        if (!(object instanceof EmployeeApi)) {
             return false;
         }
-        
         EmployeeApi other = (EmployeeApi) object;
-        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
         return "fr.efrei.API.EmployeeApi[ id=" + id + " ]";
     }
+    
 }

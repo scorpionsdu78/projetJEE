@@ -86,14 +86,15 @@ public class SB_Employee
      * 
      * @return the id of new Employee
      */
-    public Integer Post(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email){
+    public Integer Post(String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city){
         System.out.println("EMPLOYEE POST : HERE1");
-        EmployeeApi employee = new EmployeeApi(first_name, last_name, home_pho, mob_pho, work_pho, email);
+        EmployeeApi employee = new EmployeeApi(first_name, last_name, home_pho, mob_pho, work_pho, email, street, postal, city);
         System.out.println("EMPLOYEE POST : HERE2");
 
         em.persist(employee);
         
         employee = em.merge(employee);
+        em.flush();
         
         
         System.out.println("EMPLOYEE POST : HERE3");
@@ -116,7 +117,7 @@ public class SB_Employee
      * @param work_pho new Work phone
      * @param email new Email
      */
-    public void Put(int id, String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email)
+    public void Put(int id, String first_name, String last_name, String home_pho, String mob_pho, String work_pho, String email, String street, String postal, String city)
     {
         EmployeeApi employee = Get(id);
         
@@ -137,6 +138,15 @@ public class SB_Employee
         
         if(email != null)
             employee.setEmail(email);
+        
+        if(street != null)
+            employee.setRue(street);
+        
+        if(postal != null)
+            employee.setCode_postal(postal);
+        
+        if(city != null)
+            employee.setVille(city);
     }
     
     public void Delete(int id){        
