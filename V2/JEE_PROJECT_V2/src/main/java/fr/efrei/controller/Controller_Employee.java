@@ -8,7 +8,6 @@ package fr.efrei.controller;
 import fr.efrei.API.EmployeeApi;
 import static fr.efrei.jeeproject.Constants.*;
 import fr.efrei.jpa.SB_Employee;
-import fr.efrei.jpa.delete;
 
 import java.io.IOException;
 import javax.ejb.EJB;

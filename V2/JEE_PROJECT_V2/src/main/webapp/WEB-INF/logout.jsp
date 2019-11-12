@@ -6,8 +6,6 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@page import="java.sql.ResultSet"%>
-
 <c:set var="JSP_TEMPLATE_TITLE" value="Logout" scope="page" />
 <c:set var="JSP_TEMPLATE_SECURITY" value="false" scope="page" />
 <%@include file="includes/template_top.jsp" %>

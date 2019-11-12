@@ -6,8 +6,6 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@page import="fr.efrei.jeeproject.Adress"%>
-<%@page import="fr.efrei.jeeproject.Employee"%>
 
 <c:set var="JSP_TEMPLATE_TITLE" value="Employee" scope="page" />
 <c:set var="JSP_TEMPLATE_SECURITY" value="true" scope="page" />

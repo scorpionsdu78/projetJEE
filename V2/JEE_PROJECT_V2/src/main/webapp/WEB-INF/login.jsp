@@ -6,8 +6,6 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@page import="fr.efrei.dbcontroller.DBaction"%>
-
 <c:set var="JSP_TEMPLATE_TITLE" value="Login" scope="page" />
 <c:set var="JSP_TEMPLATE_SECURITY" value="false" scope="page" />
 <%@include file="includes/template_top.jsp" %>
