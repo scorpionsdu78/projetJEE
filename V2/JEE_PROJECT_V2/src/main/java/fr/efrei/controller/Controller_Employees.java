@@ -58,6 +58,7 @@ public class Controller_Employees extends HttpServlet
         {
             System.out.println(e.getMessage());
             request.setAttribute("JSP_TEMPLATE_SQL_ERROR", e.getMessage());
+            
             request.getRequestDispatcher(JSP_PAGE_EMPLOYEE_ALL).forward(request, response);
             return;
         }

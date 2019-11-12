@@ -50,6 +50,7 @@ public class Controller_Employee_PUT extends HttpServlet {
         String street = request.getParameter(FORM_EMPLOYEE_STREET);
         String postal = request.getParameter(FORM_EMPLOYEE_POSTAL);
         String city = request.getParameter(FORM_EMPLOYEE_CITY);
+        
         int id = 0;
         int idadd = 0;
         try{
@@ -64,7 +65,7 @@ public class Controller_Employee_PUT extends HttpServlet {
         
         
         try{
-            Employee_API.PUT(id,last_name,first_name, home_tel,  mob_tel,  pro_tel,  email, street,  postal,  city, idadd);
+            Employee_API.PUT(id, last_name, first_name, home_tel, mob_tel, pro_tel, email, street, postal, city, idadd);
 
             request.getSession().setAttribute("highlight_ID", id);
             response.sendRedirect("employees");

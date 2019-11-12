@@ -29,9 +29,7 @@
                         </c:when>
                                 
                         <c:otherwise>
-                            <c:forEach items="employee.adresses" var="adress_" begin="1" end="1">
-                                <c:set var="adress" value="${adress_}" scope="page" />
-                            </c:forEach>
+                            <c:set var="adress" value="${employee.adresses[0]}" scope="page" />
                     <form action="Controller_Employee_PUT" method="POST">                            
                         </c:otherwise>
                                 
@@ -39,11 +37,11 @@
                                 
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="Employee_nom" class="col-sm-2 col-form-label" style="text-align: right;">Nom</label>
+                            <label for="<%=Constants.FORM_EMPLOYEE_LAST_NAME%>" class="col-sm-2 col-form-label" style="text-align: right;">Nom</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_nom" id="Employee_nom" placeholder="Nom" 
+                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_LAST_NAME%>" id="<%=Constants.FORM_EMPLOYEE_LAST_NAME%>" placeholder="Nom" 
                                        <c:if test="${not empty employee}">
-                                    value="${employee.Last_name}"
+                                    value="${employee.last_name}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -54,11 +52,11 @@
                             
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="Employee_prenom" class="col-sm-2 col-form-label" style="text-align: right;">Prénom</label>
+                            <label for="<%=Constants.FORM_EMPLOYEE_FIRST_NAME%>" class="col-sm-2 col-form-label" style="text-align: right;">Prénom</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_prenom" id="Employee_prenom" placeholder="Prénom"
+                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_FIRST_NAME%>" id="<%=Constants.FORM_EMPLOYEE_FIRST_NAME%>" placeholder="Prénom"
                                        <c:if test="${not empty employee}">
-                                    value="${employee.FirstName}"
+                                    value="${employee.first_name}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -69,11 +67,11 @@
                             
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="Employee_tel_dom" class="col-sm-2 col-form-label" style="text-align: right;">Tél dom</label>
+                            <label for="<%=Constants.FORM_EMPLOYEE_HOME_PHO%>" class="col-sm-2 col-form-label" style="text-align: right;">Tél dom</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_tel_dom" id="Employee_tel_dom" placeholder="Tél dom"
+                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_HOME_PHO%>" id="<%=Constants.FORM_EMPLOYEE_HOME_PHO%>" placeholder="Tél dom"
                                        <c:if test="${not empty employee}">
-                                    value="${employee.Home_phone}"
+                                    value="${employee.home_phone}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -84,11 +82,11 @@
                             
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="Employee_tel_mob" class="col-sm-2 col-form-label" style="text-align: right;">Tél mob</label>
+                            <label for="<%=Constants.FORM_EMPLOYEE_MOB_PHO%>" class="col-sm-2 col-form-label" style="text-align: right;">Tél mob</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_tel_mob" id="Employee_tel_mob" placeholder="Tél mob"
+                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_MOB_PHO%>" id="<%=Constants.FORM_EMPLOYEE_MOB_PHO%>" placeholder="Tél mob"
                                        <c:if test="${not empty employee}">
-                                    value="${employee.Cell_phone}"
+                                    value="${employee.cell_phone}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -99,11 +97,11 @@
                             
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="Employee_tel_pro" class="col-sm-2 col-form-label" style="text-align: right;">Tél pro</label>
+                            <label for="<%=Constants.FORM_EMPLOYEE_PRO_PHO%>" class="col-sm-2 col-form-label" style="text-align: right;">Tél pro</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_tel_pro" id="Employee_tel_pro" placeholder="Tél pro"
+                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_PRO_PHO%>" id="<%=Constants.FORM_EMPLOYEE_PRO_PHO%>" placeholder="Tél pro"
                                        <c:if test="${not empty employee}">
-                                    value="${employee.Work_phone}"
+                                    value="${employee.work_phone}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -114,11 +112,11 @@
                             
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="Employee_adresse" class="col-sm-2 col-form-label" style="text-align: right;">Adresse</label>
+                            <label for="<%=Constants.FORM_EMPLOYEE_STREET%>" class="col-sm-2 col-form-label" style="text-align: right;">Adresse</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_street" id="Employee_adresse" placeholder="Adresse"
+                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_STREET%>" id="<%=Constants.FORM_EMPLOYEE_STREET%>" placeholder="Adresse"
                                        <c:if test="${not empty adress}">
-                                    value="${adress.Rue}"
+                                    value="${adress.rue}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -129,11 +127,11 @@
                             
                         <div class="form-group row">
                             <div class="col-sm-1"></div>
-                            <label for="Employee_ville" class="col-sm-2 col-form-label" style="text-align: right;">Ville</label>
+                            <label for="<%=Constants.FORM_EMPLOYEE_CITY%>" class="col-sm-2 col-form-label" style="text-align: right;">Ville</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="Employee_ville" id="Employee_ville" placeholder="Ville"
+                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_CITY%>" id="<%=Constants.FORM_EMPLOYEE_CITY%>" placeholder="Ville"
                                        <c:if test="${not empty adress}">
-                                    value="${adress.Ville}"
+                                    value="${adress.ville}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -145,11 +143,11 @@
                         <div class="form-group row">
                             
                             <div class="col-sm-1"></div>
-                            <label for="Employee_code_postal" class="col-sm-2 col-form-label" style="text-align: right;">Code postal</label>
+                            <label for="<%=Constants.FORM_EMPLOYEE_POSTAL%>" class="col-sm-2 col-form-label" style="text-align: right;">Code postal</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" name="Employee_code_postal" id="Employee_code_postal" placeholder="Code postal"
+                                <input type="text" class="form-control" name="<%=Constants.FORM_EMPLOYEE_POSTAL%>" id="<%=Constants.FORM_EMPLOYEE_POSTAL%>" placeholder="Code postal"
                                        <c:if test="${not empty adress}">
-                                    value="${adress.CodePostal}"
+                                    value="${adress.codePostal}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -157,12 +155,12 @@
                                     required pattern="[0-9]{5}">
                             </div>
                             
-                            <label for="Employee_email" class="col-sm-2 col-form-label" style="text-align: right;">Adresse e-mail</label>
+                            <label for="<%=Constants.FORM_EMPLOYEE_EMAIL%>" class="col-sm-2 col-form-label" style="text-align: right;">Adresse e-mail</label>
                             
                             <div class="col-sm-3">
-                                <input type="email" class="form-control" name="Employee_email" id="Employee_email" placeholder="Adresse e-mail"
+                                <input type="email" class="form-control" name="<%=Constants.FORM_EMPLOYEE_EMAIL%>" id="<%=Constants.FORM_EMPLOYEE_EMAIL%>" placeholder="Adresse e-mail"
                                        <c:if test="${not empty employee}">
-                                    value="${employee.Email}"
+                                    value="${employee.email}"
                                        </c:if>
                                        <c:if test="${role != 'admin'}">
                                     disabled
@@ -172,11 +170,11 @@
                         </div>
                         
                         <c:if test="${not empty employee}">
-                        <input type="hidden" id="empID" name="empID" value="${employee.Id}">
+                        <input type="hidden" id="<%=Constants.FORM_EMPLOYEE_ID%>" name="<%=Constants.FORM_EMPLOYEE_ID%>" value="${employee.id}">
                         </c:if>
                             
                         <c:if test="${not empty adress}">
-                        <input type="hidden" id="addID" name="addID" value="${address.Id}">
+                        <input type="hidden" id="<%=Constants.FORM_EMPLOYEE_AID%>" name="<%=Constants.FORM_EMPLOYEE_AID%>" value="${adress.id}">
                         </c:if>
                             
                         <hr/>

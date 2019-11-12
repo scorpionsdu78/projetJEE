@@ -8,8 +8,6 @@ package fr.efrei.API;
 import fr.efrei.dbcontroller.DBaction;
 import fr.efrei.jeeproject.Adress;
 import fr.efrei.jeeproject.Constants;
-import static fr.efrei.jeeproject.Constants.DELETE_ADRESS;
-import static fr.efrei.jeeproject.Constants.DELETE_EMPLOYEE;
 import fr.efrei.jeeproject.Employee;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,7 +29,7 @@ public class Employee_API
         
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
 
-        PreparedStatement psmt = db.getPreparedStatement("SELECT * FROM EMPLOYEE");
+        PreparedStatement psmt = db.getPreparedStatement(Constants.GET_ALL_EMPLOYEES);
 
         // We get all the employees
         ResultSet rs = psmt.executeQuery();
@@ -51,7 +49,7 @@ public class Employee_API
             ArrayList<Adress> adresses = new ArrayList<Adress>();
             
             
-            psmt = db.getPreparedStatement("SELECT * FROM ADRESS WHERE \"id_employee\" = ?");
+            psmt = db.getPreparedStatement(Constants.GET_ADRESSES_BY_EMPLOYEE_ID);
             psmt.setInt(1, emp.getId());
         
             // We get all the adress of the given employee (we verify the ID)
@@ -68,7 +66,7 @@ public class Employee_API
                 
                 // We add the current adress to the list of Adresses
                 adresses.add(addr);
-            }        
+            }  
             
             // We add the Adresses to the current Employee
             emp.setAdresses(adresses);
@@ -87,7 +85,7 @@ public class Employee_API
         
         DBaction dba = new DBaction();
         
-        PreparedStatement psmt = dba.getPreparedStatement("SELECT * FROM EMPLOYEE WHERE \"id\" = ?");
+        PreparedStatement psmt = dba.getPreparedStatement(Constants.GET_EMPLOYEE_BY_ID);
         psmt.setInt(1, id);
         ResultSet rs = psmt.executeQuery();
         ResultSet rsAdress; 
@@ -103,7 +101,7 @@ public class Employee_API
         emp.setWork_phone(rs.getString("work_phone"));
         emp.setEmail(rs.getString("e_mail"));
             
-        psmt = dba.getPreparedStatement("SELECT * FROM ADRESS WHERE \"id_employee\" = ?");
+        psmt = dba.getPreparedStatement(Constants.GET_ADRESSES_BY_EMPLOYEE_ID);
         psmt.setInt(1, id);
         rsAdress = psmt.executeQuery();
             
@@ -179,6 +177,7 @@ public class Employee_API
         psmt.setInt(7, id);
 
         psmt.executeUpdate();
+        
 
         psmt2.setString(1, street);
         psmt2.setString(2, postal);
@@ -193,11 +192,13 @@ public class Employee_API
         throws SQLException
     {
         DBaction dba = new DBaction();
-        PreparedStatement delete_adress = dba.getPreparedStatement(DELETE_ADRESS);
-        PreparedStatement delete_employee = dba.getPreparedStatement(DELETE_EMPLOYEE);
+        PreparedStatement delete_adress = dba.getPreparedStatement(Constants.DELETE_ADRESS);
+        PreparedStatement delete_employee = dba.getPreparedStatement(Constants.DELETE_EMPLOYEE);
 
         ResultSet rsAdress; 
-        rsAdress = dba.getPreparedStatement("SELECT * FROM ADRESS WHERE \"id_employee\" = "+id).executeQuery();
+        PreparedStatement psmt = dba.getPreparedStatement(Constants.GET_ADRESSES_BY_EMPLOYEE_ID);
+        psmt.setInt(1, id);
+        rsAdress = psmt.executeQuery();
 
         while(rsAdress.next()){
             delete_adress.setInt(1,rsAdress.getInt(1));
